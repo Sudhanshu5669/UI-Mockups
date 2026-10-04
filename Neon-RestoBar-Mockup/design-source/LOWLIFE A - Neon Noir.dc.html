@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0B0D;--sf:#141416;--sf2:#1D1D20;--ln:rgba(243,241,236,.12);--tx:#F3F1EC;--mu:#9C998F;--ac:#CFFF2E;--act:#CFFF2E;--on:#0B0B0D;--ph1:#19191C;--ph2:#121214}
+:root[data-mode=light]{--bg:#F1EFE9;--sf:#FFFFFF;--sf2:#E6E3DB;--ln:rgba(11,11,13,.13);--tx:#0B0B0D;--mu:#5F5C55;--on:#0B0B0D;--ph1:#E4E1D9;--ph2:#DAD6CC}
+body{margin:0;background:#232325;font-family:Archivo,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--act);text-decoration:none}a:hover{color:var(--tx)}
+@keyframes llpulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--ac) 70%,transparent)}100%{box-shadow:0 0 0 12px transparent}}
+@keyframes llmarq{to{transform:translateX(-50%)}}
+@keyframes llbump{0%{transform:scale(.3)}55%{transform:scale(1.45)}100%{transform:scale(1)}}
+@keyframes lltoast{0%{transform:translateY(24px);opacity:0}10%,82%{transform:none;opacity:1}100%{transform:translateY(-8px);opacity:0}}
+@keyframes llfloat{0%,100%{transform:rotate(-10deg) translateY(0)}50%{transform:rotate(-6deg) translateY(-10px)}}
+</style>
+</helmet>
+<section style="padding:72px 72px 24px;color:#EDEBE6;max-width:1440px">
+  <div style="font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#CFFF2E;margin-bottom:18px">DIRECTION A / 3 — FULL SITE</div>
+  <div style="font:900 120px/.85 'Big Shoulders Display',sans-serif;letter-spacing:-.01em">LOWLIFE — NEON NOIR</div>
+  <p style="font:400 17px/1.55 Archivo,sans-serif;color:#A9A69E;max-width:760px;margin:24px 0 0;text-wrap:pretty">Fictional late-night cocktail bar &amp; small-plates spot. Black-on-black with one electric accent, condensed editorial type, and live signals everywhere (open-now pulse, seat counter, tables that flip on the floor plan). Use the Tweaks panel for light mode, accent swap, and live data on/off.</p>
+  <div style="display:flex;gap:12px;margin-top:28px;font:500 12px/1 'JetBrains Mono',monospace">
+    <a href="LOWLIFE B — Velvet Lounge.dc.html" style="padding:10px 14px;border:1px solid rgba(255,255,255,.18);border-radius:999px;color:#EDEBE6">→ Direction B · Velvet Lounge</a>
+    <a href="LOWLIFE C — Acid Sunset.dc.html" style="padding:10px 14px;border:1px solid rgba(255,255,255,.18);border-radius:999px;color:#EDEBE6">→ Direction C · Acid Sunset</a>
+  </div>
+</section>
+
+<section style="padding:48px 72px">
+  <div style="font:600 12px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#8A8780;margin-bottom:28px">DESKTOP · 1440 — DISCOVER &amp; ORDER</div>
+  <div style="display:flex;flex-wrap:wrap;gap:72px;align-items:flex-start">
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:10px;align-items:center;font:500 12px/1 'JetBrains Mono',monospace;color:#B5B2AA"><span style="background:#CFFF2E;color:#0B0B0D;padding:4px 7px;border-radius:4px;font-weight:600">A01</span>Home / hero</div>
+      <div data-screen-label="A01 Home" style="width:1440px;background:var(--bg);color:var(--tx);overflow:hidden;border-radius:6px;transition:background .4s,color .4s">
+        <dc-import name="LowlifeNav" active="home" badge="{{ cartBadge }}" hint-size="1440px,88px"></dc-import>
+        <div style="padding:40px 48px 0;display:flex;justify-content:space-between;font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu)">
+          <div style="display:flex;align-items:center;gap:12px;color:var(--tx)">{{ liveDot }}OPEN NOW — KITCHEN TIL 1AM · BAR TIL 3AM</div>
+          <div>88 WIRE ST · DOWNTOWN · EST. 2019</div>
+        </div>
+        <div style="padding:28px 48px 0;font:900 236px/.8 'Big Shoulders Display',sans-serif;letter-spacing:-.02em;text-transform:uppercase">
+          <div>Drink like</div>
+          <div style="display:flex;align-items:center;gap:28px">
+            <span>nobody’s</span>
+            <span style="flex:1;height:170px;border-radius:999px;background:repeating-linear-gradient(135deg,var(--ph1) 0 10px,var(--ph2) 10px 20px);display:flex;align-items:center;justify-content:center;font:500 11px/1.4 'JetBrains Mono',monospace;letter-spacing:.08em;color:var(--mu);transition:flex .5s" style-hover="flex:1.6">[ PHOTO — NEGRONI POUR, BACKLIT ]</span>
+          </div>
+          <div style="display:flex;align-items:flex-end;justify-content:space-between">
+            <span style="color:var(--act)">watching.</span>
+            <div style="display:flex;flex-direction:column;gap:22px;max-width:380px;padding-bottom:22px">
+              <p style="font:500 17px/1.5 Archivo,sans-serif;letter-spacing:0;text-transform:none;color:var(--mu);margin:0;text-wrap:pretty">Small plates, loud cocktails and a sound system that’s had complaints. Walk-ins welcome. Regrets not.</p>
+              <div style="display:flex;gap:10px">
+                <span style="background:var(--ac);color:var(--on);padding:18px 26px;border-radius:999px;font:800 13px/1 Archivo,sans-serif;letter-spacing:.14em;cursor:pointer;transition:transform .2s" style-hover="transform:translateY(-3px) rotate(-2deg)">BOOK A TABLE →</span>
+                <span style="border:1.5px solid var(--tx);padding:17px 24px;border-radius:999px;font:800 13px/1 Archivo,sans-serif;letter-spacing:.14em;cursor:pointer;transition:all .2s" style-hover="background:var(--tx);color:var(--bg)">ORDER PICKUP</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="position:relative;margin:36px 48px 0;height:560px;border-radius:20px;background:repeating-linear-gradient(135deg,var(--ph1) 0 10px,var(--ph2) 10px 20px);display:flex;align-items:flex-end;padding:28px;box-sizing:border-box;font:500 11px/1.4 'JetBrains Mono',monospace;letter-spacing:.08em;color:var(--mu)">
+          [ HERO PHOTO — BARTENDER TORCHING AN OLD FASHIONED, CROWD BLURRED, NEON BACKLIGHT ]
+          <div style="position:absolute;top:-34px;right:80px;width:190px;height:190px;border-radius:50%;background:var(--ac);color:var(--on);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;animation:llfloat 5s ease-in-out infinite">
+            <span style="font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em">TONIGHT · 10PM</span>
+            <span style="font:900 40px/.85 'Big Shoulders Display',sans-serif">DJ KAYA<br>DISCO</span>
+            <span style="font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em">FREE B4 11</span>
+          </div>
+        </div>
+        <div style="margin-top:56px;background:var(--ac);color:var(--on);overflow:hidden;padding:20px 0;font:900 44px/1 'Big Shoulders Display',sans-serif;letter-spacing:.02em;white-space:nowrap">{{ marquee }}</div>
+        <div style="padding:96px 48px 0;display:flex;justify-content:space-between;align-items:flex-end">
+          <div style="font:900 120px/.82 'Big Shoulders Display',sans-serif;text-transform:uppercase">The hits</div>
+          <div style="font:600 12px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu)">SIGNATURES · ALL $16–18 · <a href="#">FULL BAR MENU →</a></div>
+        </div>
+        <div style="padding:40px 48px 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px">
+          <sc-for list="{{ hits }}" as="h" hint-placeholder-count="4">
+            <div style="display:flex;flex-direction:column;gap:16px;cursor:pointer;transition:transform .35s cubic-bezier(.2,.8,.2,1)" style-hover="transform:translateY(-10px) rotate(-1deg)">
+              <div style="aspect-ratio:3/4;border-radius:16px;background:repeating-linear-gradient(135deg,var(--ph1) 0 10px,var(--ph2) 10px 20px);display:flex;flex-direction:column;justify-content:space-between;padding:18px;font:500 10px/1.4 'JetBrains Mono',monospace;letter-spacing:.08em;color:var(--mu)">
+                <span style="font:900 64px/.8 'Big Shoulders Display',sans-serif;color:var(--act)">{{ h.n }}</span>
+                <span>[ COCKTAIL — {{ h.shot }} ]</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:baseline">
+                <span style="font:800 32px/1 'Big Shoulders Display',sans-serif;text-transform:uppercase">{{ h.name }}</span>
+                <span style="font:600 14px/1 'JetBrains Mono',monospace">${{ h.price }}</span>
+              </div>
+              <span style="font:400 14px/1.45 Archivo,sans-serif;color:var(--mu)">{{ h.spec }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="padding:112px 48px 0;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:20px">
+          <div style="background:var(--sf);border:1px solid var(--ln);border-radius:20px;padding:36px;min-height:300px;display:flex;flex-direction:column;justify-content:space-between;transition:all .3s;cursor:pointer" style-hover="background:var(--ac);color:var(--on)">
+            <span style="font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em">01 — ORDER</span>
+            <div><div style="font:900 84px/.82 'Big Shoulders Display',sans-serif">LATE-NIGHT<br>PICKUP</div><div style="font:500 15px/1.5 Archivo,sans-serif;margin-top:16px;opacity:.75">Ready in ~20 min. Kitchen takes orders until 12:45AM.</div></div>
+          </div>
+          <div style="background:var(--sf);border:1px solid var(--ln);border-radius:20px;padding:36px;min-height:300px;display:flex;flex-direction:column;justify-content:space-between;transition:all .3s;cursor:pointer" style-hover="background:var(--ac);color:var(--on)">
+            <span style="font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em">02 — BOOK</span>
+            <div><div style="font:900 64px/.82 'Big Shoulders Display',sans-serif">{{ seats }} SEATS<br>LEFT TONIGHT</div><div style="font:500 15px/1.5 Archivo,sans-serif;margin-top:16px;opacity:.75">Pick your exact booth on the floor plan.</div></div>
+          </div>
+          <div style="background:var(--sf);border:1px solid var(--ln);border-radius:20px;padding:36px;min-height:300px;display:flex;flex-direction:column;justify-content:space-between;transition:all .3s;cursor:pointer" style-hover="background:var(--ac);color:var(--on)">
+            <span style="font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em">03 — PRIVATE</span>
+            <div><div style="font:900 64px/.82 'Big Shoulders Display',sans-serif">TAKE OVER<br>THE BACK ROOM</div><div style="font:500 15px/1.5 Archivo,sans-serif;margin-top:16px;opacity:.75">12 to 180 guests. Bar tab or open bar.</div></div>
+          </div>
+        </div>
+        <div style="margin-top:120px;border-top:1px solid var(--ln);padding:56px 48px 40px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px">
+          <div>
+            <div style="font:900 120px/.8 'Big Shoulders Display',sans-serif">LOWLIFE</div>
+            <div style="display:flex;gap:8px;margin-top:28px">
+              <span style="flex:1;max-width:320px;border:1px solid var(--ln);border-radius:999px;padding:16px 20px;font:500 14px/1 Archivo,sans-serif;color:var(--mu)">Email for secret menu drops</span>
+              <span style="background:var(--tx);color:var(--bg);border-radius:999px;padding:16px 22px;font:800 12px/1 Archivo,sans-serif;letter-spacing:.14em">JOIN</span>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px;font:500 14px/1.4 Archivo,sans-serif"><span style="font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu);margin-bottom:6px">VISIT</span><span>88 Wire St</span><span>Downtown</span><span>(555) 014-0300</span></div>
+          <div style="display:flex;flex-direction:column;gap:12px;font:500 14px/1.4 Archivo,sans-serif"><span style="font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu);margin-bottom:6px">HOURS</span><span>Tue–Thu 5PM–1AM</span><span>Fri–Sat 5PM–3AM</span><span>Sun 4PM–12AM</span></div>
+          <div style="display:flex;flex-direction:column;gap:12px;font:500 14px/1.4 Archivo,sans-serif"><span style="font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu);margin-bottom:6px">FOLLOW</span><span>Instagram</span><span>TikTok</span><span>Spotify playlists</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:10px;align-items:center;font:500 12px/1 'JetBrains Mono',monospace;color:#B5B2AA"><span style="background:#CFFF2E;color:#0B0B0D;padding:4px 7px;border-radius:4px;font-weight:600">A02</span>Menu browse</div>
+      <div data-screen-label="A02 Menu" style="width:1440px;background:var(--bg);color:var(--tx);overflow:hidden;border-radius:6px">
+        <dc-import name="LowlifeNav" active="menu" badge="{{ cartBadge }}" hint-size="1440px,88px"></dc-import>
+        <div style="padding:48px 48px 0;display:flex;justify-content:space-between;align-items:flex-end">
+          <div style="font:900 200px/.8 'Big Shoulders Display',sans-serif">THE MENU</div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:16px;padding-bottom:12px">
+            <div style="display:flex;padding:5px;border-radius:999px;background:var(--sf2);font:800 12px/1 Archivo,sans-serif;letter-spacing:.14em">
+              <span style="background:var(--tx);color:var(--bg);padding:13px 22px;border-radius:999px">PICKUP</span>
+              <span style="padding:13px 22px;opacity:.6">DELIVERY</span>
+              <span style="padding:13px 22px;opacity:.6">DINE-IN QR</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu)">{{ liveDot }}KITCHEN OPEN · READY IN ~20 MIN</div>
+          </div>
+        </div>
+        <div style="margin:40px 48px 0;padding:18px 0;border-top:1px solid var(--ln);border-bottom:1px solid var(--ln);display:flex;justify-content:space-between;align-items:center">
+          <div style="display:flex;gap:8px;font:700 12px/1 Archivo,sans-serif;letter-spacing:.12em">
+            <span style="background:var(--ac);color:var(--on);padding:12px 18px;border-radius:999px">SMALL PLATES · 14</span>
+            <span style="border:1px solid var(--ln);padding:12px 18px;border-radius:999px;cursor:pointer;transition:border-color .2s" style-hover="border-color:var(--tx)">RAW BAR · 6</span>
+            <span style="border:1px solid var(--ln);padding:12px 18px;border-radius:999px;cursor:pointer;transition:border-color .2s" style-hover="border-color:var(--tx)">FRIED &amp; FILTHY · 8</span>
+            <span style="border:1px solid var(--ln);padding:12px 18px;border-radius:999px;cursor:pointer;transition:border-color .2s" style-hover="border-color:var(--tx)">SWEETS · 4</span>
+            <span style="border:1px solid var(--ln);padding:12px 18px;border-radius:999px;cursor:pointer;transition:border-color .2s" style-hover="border-color:var(--tx)">COCKTAILS · 16</span>
+            <span style="border:1px solid var(--ln);padding:12px 18px;border-radius:999px;cursor:pointer;transition:border-color .2s" style-hover="border-color:var(--tx)">ZERO-PROOF · 6</span>
+          </div>
+          <div style="display:flex;gap:16px;font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--mu)">
+            <span style="color:var(--tx)">☐ VEG</span><span>☐ GF</span><span style="color:var(--act)">☒ SPICY</span>
+          </div>
+        </div>
+        <div style="padding:40px 48px 72px;display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:40px;align-items:start">
+          <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 20px">
+            <sc-for list="{{ dishes }}" as="d" hint-placeholder-count="6">
+              <div style="background:var(--sf);border:1px solid var(--ln);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s" style-hover="transform:translateY(-6px);border-color:var(--ac)">
+                <div style="position:relative;aspect-ratio:4/3;background:repeating-linear-gradient(135deg,var(--ph1) 0 10px,var(--ph2) 10px 20px);display:flex;align-items:flex-end;padding:14px;font:500 10px/1.4 'JetBrains Mono',monospace;letter-spacing:.08em;color:var(--mu)">
+                  [ {{ d.shot }} ]
+                  <span style="position:absolute;top:14px;left:14px;background:var(--bg);color:var(--act);padding:7px 10px;border-radius:999px;font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:.1em">{{ d.tag }}</span>
+                </div>
+                <div style="padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px">
+                  <span style="font:800 30px/.95 'Big Shoulders Display',sans-serif;text-transform:uppercase">{{ d.name }}</span>
+                  <span style="font:400 14px/1.45 Archivo,sans-serif;color:var(--mu);min-height:40px">{{ d.desc }}</span>
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+                    <span style="font:600 16px/1 'JetBrains Mono',monospace">${{ d.price }}</span>
+                    <span style="width:42px;height:42px;border-radius:50%;background:var(--ac);color:var(--on);display:grid;place-items:center;font:500 24px/1 Archivo,sans-serif;transition:transform .25s" style-hover="transform:rotate(90deg) scale(1.1)">+</span>
+                  </div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="background:var(--sf);border:1px solid var(--ln);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:18px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:900 40px/1 'Big Shoulders Display',sans-serif">YOUR BAG</span><span style="font:600 12px/1 'JetBrains Mono',monospace;color:var(--mu)">3 ITEMS</span></div>
+            <div style="display:flex;flex-direction:column;gap:14px;border-top:1px solid var(--ln);padding-top:18px">
+              <div style="display:flex;gap:12px;align-items:center"><span style="width:52px;height:52px;border-radius:10px;background:repeating-linear-gradient(135deg,var(--ph1) 0 6px,var(--ph2) 6px 12px);flex:none"></span><div style="flex:1;display:flex;flex-direction:column;gap:4px"><span style="font:700 15px/1.2 Archivo,sans-serif">Burnt Honey Wings</span><span style="font:500 12px/1 Archivo,sans-serif;color:var(--mu)">Loud heat</span></div><span style="display:flex;gap:10px;align-items:center;border:1px solid var(--ln);border-radius:999px;padding:6px 10px;font:600 13px/1 'JetBrains Mono',monospace">− 1 +</span></div>
+              <div style="display:flex;gap:12px;align-items:center"><span style="width:52px;height:52px;border-radius:10px;background:repeating-linear-gradient(135deg,var(--ph1) 0 6px,var(--ph2) 6px 12px);flex:none"></span><div style="flex:1;display:flex;flex-direction:column;gap:4px"><span style="font:700 15px/1.2 Archivo,sans-serif">Wagyu Smash Sliders</span><span style="font:500 12px/1 Archivo,sans-serif;color:var(--mu)">+ Truffle cheese</span></div><span style="display:flex;gap:10px;align-items:center;border:1px solid var(--ln);border-radius:999px;padding:6px 10px;font:600 13px/1 'JetBrains Mono',monospace">− 1 +</span></div>
+              <div style="display:flex;gap:12px;align-items:center"><span style="width:52px;height:52px;border-radius:10px;background:repeating-linear-gradient(135deg,var(--ph1) 0 6px,var(--ph2) 6px 12px);flex:none"></span><div style="flex:1;display:flex;flex-direction:column;gap:4px"><span style="font:700 15px/1.2 Archivo,sans-serif">Truffle Fries, Filthy</span><span style="font:500 12px/1 Archivo,sans-serif;color:var(--mu)">Extra parm snow</span></div><span style="display:flex;gap:10px;align-items:center;border:1px solid var(--ln);border-radius:999px;padding:6px 10px;font:600 13px/1 'JetBrains Mono',monospace">− 1 +</span></div>
+            </div>
+            <div style="border:1.5px dashed var(--ac);border-radius:14px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px"><div style="display:flex;flex-direction:column;gap:4px"><span style="font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--act)">THE BAR SAYS</span><span style="font:600 14px/1.3 Archivo,sans-serif">Add a Neon Gimlet to go?</span></div><span style="font:700 12px/1 'JetBrains Mono',monospace;background:var(--ac);color:var(--on);padding:9px 12px;border-radius:999px">+ $16</span></div>
+            <div style="display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--ln);padding-top:18px;font:500 14px/1 Archivo,sans-serif">
+              <div style="display:flex;justify-content:space-between;color:var(--mu)"><span>Subtotal</span><span style="font-family:'JetBrains Mono',monospace">$47.00</span></div>
+              <div style="display:flex;justify-content:space-between;color:var(--mu)"><span>Pickup</span><span style="font-family:'JetBrains Mono',monospace">FREE</span></div>
+              <div style="display:flex;justify-content:space-between;font-weight:700;font-size:18px;margin-top:4px"><span>Total</span><span style="font-family:'JetBrains Mono',monospace">$47.00</span></div>
+            </div>
+            <span style="background:var(--ac);color:var(--on);padding:20px;border-radius:999px;text-align:center;font:800 13px/1 Archivo,sans-serif;letter-spacing:.14em;cursor:pointer;transition:transform .2s" style-hover="transform:scale(1.03)">CHECKOUT →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:10px;align-items:center;font:500 12px/1 'JetBrains Mono',monospace;color:#B5B2AA"><span style="background:#CFFF2E;color:#0B0B0D;padding:4px 7px;border-radius:4px;font-weight:600">A03</span>Dish detail</div>
+      <div data-screen-label="A03 Dish detail" style="width:1440px;background:var(--bg);color:var(--tx);overflow:hidden;border-radius:6px">
+        <dc-import name="LowlifeNav" active="menu" badge="{{ cartBadge }}" hint-size="1440px,88px"></dc-import>
+        <div style="padding:28px 48px 0;font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu)">MENU / FRIED &amp; FILTHY / <span style="color:var(--tx)">WAGYU SMASH SLIDERS</span></div>
+        <div style="padding:28px 48px 72px;display:grid;grid-template-columns:1.15fr 1fr;gap:56px">
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div style="position:relative;aspect-ratio:1/1;border-radius:24px;background:repeating-linear-gradient(135deg,var(--ph1) 0 10px,var(--ph2) 10px 20px);display:flex;align-items:flex-end;padding:24px;box-sizing:border-box;font:500 11px/1.4 'JetBrains Mono',monospace;letter-spacing:.08em;color:var(--mu)">[ HERO — SLIDERS ON STEEL TRAY, CHEESE PULL, HARD FLASH ]
+              <span style="position:absolute;top:24px;right:24px;background:var(--ac);color:var(--on);padding:10px 14px;border-radius:999px;font:700 11px/1 'JetBrains Mono',monospace;letter-spacing:.1em">#1 AFTER MIDNIGHT</span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
+              <span style="aspect-ratio:1;border-radius:14px;border:2px solid var(--ac);background:repeating-linear-gradient(135deg,var(--ph1) 0 6px,var(--ph2) 6px 12px)"></span>
+              <span style="aspect-ratio:1;border-radius:14px;background:repeating-linear-gradient(135deg,var(--ph1) 0 6px,var(--ph2) 6px 12px)"></span>
+              <span style="aspect-ratio:1;border-radius:14px;background:repeating-linear-gradient(135deg,var(--ph1) 0 6px,var(--ph2) 6px 12px)"></span>
+              <span style="aspect-ratio:1;border-radius:14px;background:repeating-linear-gradient(135deg,var(--ph1) 0 6px,var(--ph2) 6px 12px);display:grid;place-items:center;font:500 10px/1 'JetBrains Mono',monospace;color:var(--mu)">▶ 0:12</span>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:28px">
+            <div style="display:flex;gap:8px;font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:.12em">
+              <span style="border:1px solid var(--ln);padding:8px 10px;border-radius:999px">BEEF</span><span style="border:1px solid var(--ln);padding:8px 10px;border-radius:999px">CONTAINS DAIRY</span><span style="border:1px solid var(--ac);color:var(--act);padding:8px 10px;border-radius:999px">🌶 CAN GO LOUD</span>
+            </div>
+            <div style="font:900 132px/.8 'Big Shoulders Display',sans-serif">WAGYU<br>SMASH<br>SLIDERS</div>
+            <div style="display:flex;align-items:baseline;gap:18px"><span style="font:600 32px/1 'JetBrains Mono',monospace">$18</span><span style="font:500 15px/1.5 Archivo,sans-serif;color:var(--mu)">Two per order. Black garlic aioli, pickled shallot, American cheese that refuses to apologise.</span></div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <span style="font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu)">CHOOSE YOUR HEAT</span>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--ln);border-radius:999px;padding:5px;font:800 13px/1 Archivo,sans-serif;letter-spacing:.12em;text-align:center">
+                <span style="padding:15px;opacity:.6">MILD</span><span style="padding:15px;background:var(--ac);color:var(--on);border-radius:999px">LOUD</span><span style="padding:15px;opacity:.6">UNHINGED</span>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <span style="font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu)">MAKE IT WORSE (BETTER)</span>
+              <div style="display:flex;flex-direction:column;border-top:1px solid var(--ln)">
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid var(--ln);font:500 16px/1 Archivo,sans-serif"><span style="display:flex;gap:14px;align-items:center"><span style="width:22px;height:22px;border-radius:6px;background:var(--ac);color:var(--on);display:grid;place-items:center;font-size:14px;font-weight:800">✓</span>Truffle cheese</span><span style="font-family:'JetBrains Mono',monospace;color:var(--mu)">+$4</span></div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid var(--ln);font:500 16px/1 Archivo,sans-serif"><span style="display:flex;gap:14px;align-items:center"><span style="width:20px;height:20px;border-radius:6px;border:1.5px solid var(--mu)"></span>Extra patty</span><span style="font-family:'JetBrains Mono',monospace;color:var(--mu)">+$6</span></div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid var(--ln);font:500 16px/1 Archivo,sans-serif"><span style="display:flex;gap:14px;align-items:center"><span style="width:20px;height:20px;border-radius:6px;border:1.5px solid var(--mu)"></span>Pickled jalapeños</span><span style="font-family:'JetBrains Mono',monospace;color:var(--mu)">+$1</span></div>
+              </div>
+            </div>
+            <div style="display:flex;gap:16px;align-items:center;background:var(--sf);border:1px solid var(--ln);border-radius:18px;padding:14px">
+              <span style="width:72px;height:72px;border-radius:12px;background:repeating-linear-gradient(135deg,var(--ph1) 0 6px,var(--ph2) 6px 12px);flex:none"></span>
+              <div style="flex:1;display:flex;flex-direction:column;gap:6px"><span style="font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--act)">THE BAR SAYS DRINK THIS</span><span style="font:800 24px/1 'Big Shoulders Display',sans-serif">BAD DECISIONS — MEZCAL, PASSIONFRUIT, CHILI</span></div>
+              <span style="border:1.5px solid var(--tx);border-radius:999px;padding:11px 14px;font:700 12px/1 'JetBrains Mono',monospace">+ $17</span>
+            </div>
+            <div style="display:flex;gap:12px">
+              <span style="display:flex;align-items:center;gap:22px;border:1.5px solid var(--ln);border-radius:999px;padding:0 24px;font:600 18px/1 'JetBrains Mono',monospace"><span style="opacity:.5">−</span>2<span>+</span></span>
+              <span style="flex:1;background:var(--ac);color:var(--on);padding:24px;border-radius:999px;display:flex;justify-content:space-between;font:800 14px/1 Archivo,sans-serif;letter-spacing:.14em;cursor:pointer;transition:transform .2s" style-hover="transform:scale(1.02)"><span>ADD TO BAG</span><span style="font-family:'JetBrains Mono',monospace">$44.00</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section style="padding:48px 72px">
+  <div style="font:600 12px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#8A8780;margin-bottom:28px">DESKTOP · 1440 — CHECKOUT &amp; BOOKING FLOW</div>
+  <div style="display:flex;flex-wrap:wrap;gap:72px;align-items:flex-start">
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:10px;align-items:center;font:500 12px/1 'JetBrains Mono',monospace;color:#B5B2AA"><span style="background:#CFFF2E;color:#0B0B0D;padding:4px 7px;border-radius:4px;font-weight:600">A04</span>Cart &amp; checkout · animated add-to-bag toast + badge</div>
+      <div data-screen-label="A04 Checkout" style="position:relative;width:1440px;background:var(--bg);color:var(--tx);overflow:hidden;border-radius:6px">
+        <dc-import name="LowlifeNav" active="menu" badge="{{ cartBadge }}" hint-size="1440px,88px"></dc-import>
+        {{ toast }}
+        <div style="padding:48px 48px 0;display:flex;justify-content:space-between;align-items:flex-end">
+          <div style="font:900 168px/.8 'Big Shoulders Display',sans-serif">CHECKOUT</div>
+          <div style="display:flex;gap:28px;font:700 12px/1 'JetBrains Mono',monospace;letter-spacing:.14em;padding-bottom:16px">
+            <span style="color:var(--mu)">01 BAG ✓</span><span style="color:var(--act);border-bottom:2px solid var(--ac);padding-bottom:8px">02 DETAILS</span><span style="color:var(--mu)">03 PAY</span>
+          </div>
+        </div>
+        <div style="padding:48px 48px 72px;display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:48px;align-items:start">
+          <div style="display:flex;flex-direction:column;gap:44px">
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <span style="font:800 36px/1 'Big Shoulders Display',sans-serif">HOW’S IT GETTING TO YOU?</span>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+                <div style="border:2px solid var(--ac);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:8px"><span style="display:flex;justify-content:space-between;font:800 22px/1 Archivo,sans-serif">Pickup <span style="width:22px;height:22px;border-radius:50%;background:var(--ac);box-shadow:inset 0 0 0 5px var(--sf)"></span></span><span style="font:500 14px/1.4 Archivo,sans-serif;color:var(--mu)">Side door on Wire St. Say the password: “lowlife”.</span></div>
+                <div style="border:1px solid var(--ln);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:8px"><span style="display:flex;justify-content:space-between;font:800 22px/1 Archivo,sans-serif">Delivery <span style="width:20px;height:20px;border-radius:50%;border:1.5px solid var(--mu)"></span></span><span style="font:500 14px/1.4 Archivo,sans-serif;color:var(--mu)">Within 3 miles · $4.99 · ~35 min</span></div>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <span style="font:800 36px/1 'Big Shoulders Display',sans-serif">WHEN?</span>
+              <div style="display:flex;flex-wrap:wrap;gap:10px;font:600 14px/1 'JetBrains Mono',monospace">
+                <span style="background:var(--ac);color:var(--on);padding:16px 20px;border-radius:12px">ASAP · ~20 MIN</span>
+                <span style="border:1px solid var(--ln);padding:16px 20px;border-radius:12px;transition:border-color .2s;cursor:pointer" style-hover="border-color:var(--tx)">10:15 PM</span>
+                <span style="border:1px solid var(--ln);padding:16px 20px;border-radius:12px;transition:border-color .2s;cursor:pointer" style-hover="border-color:var(--tx)">10:30 PM</span>
+                <span style="border:1px solid var(--ln);padding:16px 20px;border-radius:12px;transition:border-color .2s;cursor:pointer" style-hover="border-color:var(--tx)">10:45 PM</span>
+                <span style="border:1px solid var(--ln);padding:16px 20px;border-radius:12px;color:var(--mu);text-decoration:line-through">11:00 PM</span>
+                <span style="border:1px solid var(--ln);padding:16px 20px;border-radius:12px;transition:border-color .2s;cursor:pointer" style-hover="border-color:var(--tx)">11:15 PM</span>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <span style="font:800 36px/1 'Big Shoulders Display',sans-serif">WHO’S HUNGRY?</span>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+                <div style="border:1px solid var(--ln);border-radius:14px;padding:14px 18px;display:flex;flex-direction:column;gap:8px"><span style="font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu)">NAME</span><span style="font:500 17px/1 Archivo,sans-serif">Jordan Reyes</span></div>
+                <div style="border:1.5px solid var(--tx);border-radius:14px;padding:14px 18px;display:flex;flex-direction:column;gap:8px"><span style="font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu)">PHONE · FOR “IT’S READY” TEXT</span><span style="font:500 17px/1 Archivo,sans-serif">(555) 201-88<span style="display:inline-block;width:2px;height:18px;background:var(--ac);vertical-align:-3px;margin-left:2px"></span></span></div>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <span style="font:800 36px/1 'Big Shoulders Display',sans-serif">TIP THE KITCHEN</span>
+              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;font:700 16px/1 'JetBrains Mono',monospace;text-align:center">
+                <span style="border:1px solid var(--ln);padding:20px;border-radius:14px">15%</span>
+                <span style="background:var(--tx);color:var(--bg);padding:20px;border-radius:14px">18%</span>
+                <span style="border:1px solid var(--ln);padding:20px;border-radius:14px">22%</span>
+                <span style="border:1px solid var(--ln);padding:20px;border-radius:14px;font-size:13px">CUSTOM</span>
+              </div>
+            </div>
+          </div>
+          <div style="background:var(--sf);border:1px solid var(--ln);border-radius:22px;padding:28px;display:flex;flex-direction:column;gap:18px">
+            <span style="font:900 40px/1 'Big Shoulders Display',sans-serif">ORDER #LL-2741</span>
+            <div style="display:flex;flex-direction:column;gap:12px;font:500 15px/1.3 Archivo,sans-serif;border-top:1px solid var(--ln);padding-top:18px">
+              <div style="display:flex;justify-content:space-between"><span>1 × Burnt Honey Wings</span><span style="font-family:'JetBrains Mono',monospace">$14.00</span></div>
+              <div style="display:flex;justify-content:space-between"><span>2 × Wagyu Smash Sliders</span><span style="font-family:'JetBrains Mono',monospace">$44.00</span></div>
+              <div style="display:flex;justify-content:space-between"><span>1 × Filthy Truffle Fries</span><span style="font-family:'JetBrains Mono',monospace">$11.00</span></div>
+              <div style="display:flex;justify-content:space-between;color:var(--act)"><span>1 × Neon Gimlet (to go)</span><span style="font-family:'JetBrains Mono',monospace">$16.00</span></div>
+            </div>
+            <div style="display:flex;gap:8px"><span style="flex:1;border:1px dashed var(--ln);border-radius:12px;padding:14px;font:600 13px/1 'JetBrains Mono',monospace;color:var(--mu)">PROMO CODE</span><span style="border:1px solid var(--tx);border-radius:12px;padding:14px 16px;font:700 12px/1 'JetBrains Mono',monospace">APPLY</span></div>
+            <div style="display:flex;flex-direction:column;gap:10px;font:500 14px/1 Archivo,sans-serif;color:var(--mu);border-top:1px solid var(--ln);padding-top:18px">
+              <div style="display:flex;justify-content:space-between"><span>Subtotal</span><span style="font-family:'JetBrains Mono',monospace">$85.00</span></div>
+              <div style="display:flex;justify-content:space-between"><span>Tax</span><span style="font-family:'JetBrains Mono',monospace">$7.54</span></div>
+              <div style="display:flex;justify-content:space-between"><span>Kitchen tip 18%</span><span style="font-family:'JetBrains Mono',monospace">$15.30</span></div>
+              <div style="display:flex;justify-content:space-between;color:var(--act)"><span>Regular reward −10%</span><span style="font-family:'JetBrains Mono',monospace">−$8.50</span></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--ln);padding-top:18px"><span style="font:800 32px/1 'Big Shoulders Display',sans-serif">TOTAL</span><span style="font:700 34px/1 'JetBrains Mono',monospace">$99.34</span></div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <span style="background:var(--tx);color:var(--bg);padding:20px;border-radius:999px;text-align:center;font:800 14px/1 Archivo,sans-serif;letter-spacing:.1em"> PAY</span>
+              <span style="background:var(--ac);color:var(--on);padding:20px;border-radius:999px;text-align:center;font:800 13px/1 Archivo,sans-serif;letter-spacing:.14em;cursor:pointer;transition:transform .2s" style-hover="transform:scale(1.03)">PAY WITH CARD →</span>
+            </div>
+            <span style="font:500 12px/1.5 Archivo,sans-serif;color:var(--mu);text-align:center">You’ll earn <span style="color:var(--act);font-weight:700">+99 pts</span> toward Inner Circle.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:10px;align-items:center;font:500 12px/1 'JetBrains Mono',monospace;color:#B5B2AA"><span style="background:#CFFF2E;color:#0B0B0D;padding:4px 7px;border-radius:4px;font-weight:600">A05</span>Table booking · live seat counter</div>
+      <div data-screen-label="A05 Booking" style="width:1440px;background:var(--bg);color:var(--tx);overflow:hidden;border-radius:6px">
+        <dc-import name="LowlifeNav" active="book" badge="{{ cartBadge }}" hint-size="1440px,88px"></dc-import>
+        <div style="padding:56px 48px 0;font:900 150px/.8 'Big Shoulders Display',sans-serif">GET A TABLE BEFORE<br><span style="color:var(--act)">SOMEONE ELSE DOES.</span></div>
+        <div style="padding:56px 48px 72px;display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:48px;align-items:start">
+          <div style="display:flex;flex-direction:column;gap:48px">
+            <div style="display:flex;gap:48px;align-items:center">
+              <div style="display:flex;flex-direction:column;gap:14px">
+                <span style="font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu)">HOW MANY OF YOU</span>
+                <div style="display:flex;align-items:center;gap:24px">
+                  <span style="width:56px;height:56px;border-radius:50%;border:1.5px solid var(--ln);display:grid;place-items:center;font:400 28px/1 Archivo,sans-serif;cursor:pointer;transition:all .2s" style-hover="border-color:var(--tx)">−</span>
+                  <span style="font:900 120px/.8 'Big Shoulders Display',sans-serif;width:80px;text-align:center">4</span>
+                  <span style="width:56px;height:56px;border-radius:50%;background:var(--ac);color:var(--on);display:grid;place-items:center;font:400 28px/1 Archivo,sans-serif;cursor:pointer;transition:transform .2s" style-hover="transform:scale(1.1)">+</span>
+                </div>
+              </div>
+              <div style="flex:1;font:500 15px/1.5 Archivo,sans-serif;color:var(--mu);border-left:1px solid var(--ln);padding-left:40px;text-wrap:pretty">Parties of 9+ go through <a href="#">Private Events</a>. We hold tables for 15 minutes, then they go to the walk-in queue. No hard feelings.</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <div style="display:flex;justify-content:space-between"><span style="font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu)">PICK A NIGHT — OCTOBER</span><span style="font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu)">← →</span></div>
+              <div style="display:grid;grid-template-columns:repeat(8,1fr);gap:10px">
+                <div style="border:1px solid var(--ln);border-radius:16px;padding:16px 12px;display:flex;flex-direction:column;gap:8px;align-items:center;opacity:.4"><span style="font:600 11px/1 'JetBrains Mono',monospace">MON</span><span style="font:900 44px/.8 'Big Shoulders Display',sans-serif">05</span><span style="font:600 9px/1 'JetBrains Mono',monospace">CLOSED</span></div>
+                <div style="border:1px solid var(--ln);border-radius:16px;padding:16px 12px;display:flex;flex-direction:column;gap:8px;align-items:center;cursor:pointer;transition:border-color .2s" style-hover="border-color:var(--tx)"><span style="font:600 11px/1 'JetBrains Mono',monospace">TUE</span><span style="font:900 44px/.8 'Big Shoulders Display',sans-serif">06</span><span style="width:6px;height:6px;border-radius:50%;background:var(--ac)"></span></div>
+                <div style="border:1px solid var(--ln);border-radius:16px;padding:16px 12px;display:flex;flex-direction:column;gap:8px;align-items:center;cursor:pointer;transition:border-color .2s" style-hover="border-color:var(--tx)"><span style="font:600 11px/1 'JetBrains Mono',monospace">WED</span><span style="font:900 44px/.8 'Big Shoulders Display',sans-serif">07</span><span style="width:6px;height:6px;border-radius:50%;background:var(--ac)"></span></div>
+                <div style="border:1px solid var(--ln);border-radius:16px;padding:16px 12px;display:flex;flex-direction:column;gap:8px;align-items:center;cursor:pointer;transition:border-color .2s" style-hover="border-color:var(--tx)"><span style="font:600 11px/1 'JetBrains Mono',monospace">THU</span><span style="font:900 44px/.8 'Big Shoulders Display',sans-serif">08</span><span style="width:6px;height:6px;border-radius:50%;background:var(--mu)"></span></div>
+                <div style="background:var(--ac);color:var(--on);border-radius:16px;padding:16px 12px;display:flex;flex-direction:column;gap:8px;align-items:center;transform:translateY(-6px);box-shadow:0 16px 30px color-mix(in srgb,var(--ac) 30%,transparent)"><span style="font:600 11px/1 'JetBrains Mono',monospace">FRI</span><span style="font:900 44px/.8 'Big Shoulders Display',sans-serif">09</span><span style="font:700 9px/1 'JetBrains Mono',monospace">DJ NIGHT</span></div>
+                <div style="border:1px solid var(--ln);border-radius:16px;padding:16px 12px;display:flex;flex-direction:column;gap:8px;align-items:center;cursor:pointer;transition:border-color .2s" style-hover="border-color:var(--tx)"><span style="font:600 11px/1 'JetBrains Mono',monospace">SAT</span><span style="font:900 44px/.8 'Big Shoulders Display',sans-serif">10</span><span style="font:600 9px/1 'JetBrains Mono',monospace;color:var(--act)">3 LEFT</span></div>
+                <div style="border:1px solid var(--ln);border-radius:16px;padding:16px 12px;display:flex;flex-direction:column;gap:8px;align-items:center;cursor:pointer;transition:border-color .2s" style-hover="border-color:var(--tx)"><span style="font:600 11px/1 'JetBrains Mono',monospace">SUN</span><span style="font:900 44px/.8 'Big Shoulders Display',sans-serif">11</span><span style="width:6px;height:6px;border-radius:50%;background:var(--ac)"></span></div>
+                <div style="border:1px solid var(--ln);border-radius:16px;padding:16px 12px;display:flex;flex-direction:column;gap:8px;align-items:center;opacity:.4"><span style="font:600 11px/1 'JetBrains Mono',monospace">MON</span><span style="font:900 44px/.8 'Big Shoulders Display',sans-serif">12</span><span style="font:600 9px/1 'JetBrains Mono',monospace">CLOSED</span></div>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <span style="font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu)">WHAT TIME · FRI 09</span>
+              <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;font:600 16px/1 'JetBrains Mono',monospace;text-align:center">
+                <span style="border:1px solid var(--ln);border-radius:12px;padding:18px 0;color:var(--mu);text-decoration:line-through">6:00</span>
+                <span style="border:1px solid var(--ln);border-radius:12px;padding:18px 0;color:var(--mu);text-decoration:line-through">6:30</span>
+                <span style="border:1px solid var(--ln);border-radius:12px;padding:18px 0;cursor:pointer;transition:border-color .2s" style-hover="border-color:var(--tx)">7:00</span>
+                <span style="border:1px solid var(--ln);border-radius:12px;padding:18px 0;color:var(--mu);text-decoration:line-through">7:30</span>
+                <span style="border:1px solid var(--ln);border-radius:12px;padding:18px 0;cursor:pointer;transition:border-color .2s" style-hover="border-color:var(--tx)">8:00</span>
+                <span style="position:relative;border:1px solid var(--ln);border-radius:12px;padding:18px 0;cursor:pointer;transition:border-color .2s" style-hover="border-color:var(--tx)">8:30<span style="position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--tx);color:var(--bg);font-size:9px;padding:4px 6px;border-radius:999px;white-space:nowrap">2 LEFT</span></span>
+                <span style="border:1px solid var(--ln);border-radius:12px;padding:18px 0;color:var(--mu);text-decoration:line-through">9:00</span>
+                <span style="background:var(--ac);color:var(--on);border-radius:12px;padding:18px 0">9:30</span>
+                <span style="border:1px solid var(--ln);border-radius:12px;padding:18px 0;cursor:pointer;transition:border-color .2s" style-hover="border-color:var(--tx)">10:00</span>
+                <span style="border:1px solid var(--ln);border-radius:12px;padding:18px 0;cursor:pointer;transition:border-color .2s" style-hover="border-color:var(--tx)">10:30</span>
+                <span style="border:1px solid var(--ln);border-radius:12px;padding:18px 0;cursor:pointer;transition:border-color .2s" style-hover="border-color:var(--tx)">11:00</span>
+                <span style="border:1px solid var(--ln);border-radius:12px;padding:18px 0;cursor:pointer;transition:border-color .2s" style-hover="border-color:var(--tx)">11:30</span>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <span style="font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu)">WHERE DO YOU WANT TO BE</span>
+              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+                <div style="border:1px solid var(--ln);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:12px;cursor:pointer;transition:transform .25s" style-hover="transform:translateY(-4px)"><span style="aspect-ratio:16/10;border-radius:10px;background:repeating-linear-gradient(135deg,var(--ph1) 0 6px,var(--ph2) 6px 12px)"></span><span style="font:800 24px/1 'Big Shoulders Display',sans-serif">BAR STOOLS</span><span style="font:500 12px/1.3 Archivo,sans-serif;color:var(--mu)">Front-row to the shakers</span></div>
+                <div style="border:2px solid var(--ac);border-radius:18px;padding:15px;display:flex;flex-direction:column;gap:12px"><span style="aspect-ratio:16/10;border-radius:10px;background:repeating-linear-gradient(135deg,var(--ph1) 0 6px,var(--ph2) 6px 12px)"></span><span style="font:800 24px/1 'Big Shoulders Display',sans-serif;color:var(--act)">VELVET BOOTH ✓</span><span style="font:500 12px/1.3 Archivo,sans-serif;color:var(--mu)">Closest to the DJ</span></div>
+                <div style="border:1px solid var(--ln);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:12px;cursor:pointer;transition:transform .25s" style-hover="transform:translateY(-4px)"><span style="aspect-ratio:16/10;border-radius:10px;background:repeating-linear-gradient(135deg,var(--ph1) 0 6px,var(--ph2) 6px 12px)"></span><span style="font:800 24px/1 'Big Shoulders Display',sans-serif">TERRACE</span><span style="font:500 12px/1.3 Archivo,sans-serif;color:var(--mu)">Heaters on · smokers OK</span></div>
+                <div style="border:1px solid var(--ln);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:12px;cursor:pointer;transition:transform .25s" style-hover="transform:translateY(-4px)"><span style="aspect-ratio:16/10;border-radius:10px;background:repeating-linear-gradient(135deg,var(--ph1) 0 6px,var(--ph2) 6px 12px)"></span><span style="font:800 24px/1 'Big Shoulders Display',sans-serif">CHEF’S COUNTER</span><span style="font:500 12px/1.3 Archivo,sans-serif;color:var(--mu)">Tasting · $65 pp</span></div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div style="background:var(--ac);color:var(--on);border-radius:22px;padding:28px;display:flex;flex-direction:column;gap:14px">
+              <span style="display:flex;align-items:center;gap:10px;font:700 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em"><span style="width:8px;height:8px;border-radius:50%;background:var(--on)"></span>LIVE · FRIDAY</span>
+              <span style="font:900 110px/.8 'Big Shoulders Display',sans-serif">{{ seats }}</span>
+              <span style="font:800 26px/1 'Big Shoulders Display',sans-serif">TABLES LEFT AT 9:30</span>
+              <span style="font:500 14px/1.4 Archivo,sans-serif;opacity:.8">37 people are looking at Friday right now.</span>
+            </div>
+            <div style="background:var(--sf);border:1px solid var(--ln);border-radius:22px;padding:26px;display:flex;flex-direction:column;gap:14px;font:500 15px/1 Archivo,sans-serif">
+              <span style="font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu)">YOUR NIGHT</span>
+              <div style="display:flex;justify-content:space-between"><span style="color:var(--mu)">Party</span><span>4 people</span></div>
+              <div style="display:flex;justify-content:space-between"><span style="color:var(--mu)">When</span><span>Fri 09 Oct · 9:30 PM</span></div>
+              <div style="display:flex;justify-content:space-between"><span style="color:var(--mu)">Where</span><span>Velvet booth</span></div>
+              <div style="display:flex;justify-content:space-between"><span style="color:var(--mu)">Deposit</span><span>$10 pp · back as credit</span></div>
+              <span style="margin-top:8px;border:1.5px solid var(--tx);padding:18px;border-radius:999px;text-align:center;font:800 12px/1 Archivo,sans-serif;letter-spacing:.14em;cursor:pointer;transition:all .2s" style-hover="background:var(--tx);color:var(--bg)">PICK EXACT TABLE ON MAP</span>
+              <span style="background:var(--ac);color:var(--on);padding:20px;border-radius:999px;text-align:center;font:800 13px/1 Archivo,sans-serif;letter-spacing:.14em">CONTINUE →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:10px;align-items:center;font:500 12px/1 'JetBrains Mono',monospace;color:#B5B2AA"><span style="background:#CFFF2E;color:#0B0B0D;padding:4px 7px;border-radius:4px;font-weight:600">A06</span>Floor-plan table picker · tables flip live</div>
+      <div data-screen-label="A06 Floor plan" style="width:1440px;background:var(--bg);color:var(--tx);overflow:hidden;border-radius:6px">
+        <dc-import name="LowlifeNav" active="book" badge="{{ cartBadge }}" hint-size="1440px,88px"></dc-import>
+        <div style="padding:48px 48px 0;display:flex;justify-content:space-between;align-items:flex-end">
+          <div style="font:900 160px/.8 'Big Shoulders Display',sans-serif">PICK YOUR SPOT.</div>
+          <div style="display:flex;gap:22px;font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--mu);padding-bottom:14px">
+            <span style="display:flex;gap:8px;align-items:center"><span style="width:14px;height:14px;border-radius:50%;border:1.5px solid var(--ac)"></span>FREE</span>
+            <span style="display:flex;gap:8px;align-items:center"><span style="width:14px;height:14px;border-radius:50%;border:1.5px dashed var(--mu)"></span>BEING BOOKED</span>
+            <span style="display:flex;gap:8px;align-items:center"><span style="width:14px;height:14px;border-radius:50%;background:repeating-linear-gradient(45deg,var(--mu) 0 2px,transparent 2px 4px)"></span>TAKEN</span>
+            <span style="display:flex;gap:8px;align-items:center;color:var(--tx)"><span style="width:14px;height:14px;border-radius:50%;background:var(--ac)"></span>YOURS</span>
+          </div>
+        </div>
+        <div style="padding:40px 48px 72px;display:grid;grid-template-columns:900px minmax(0,1fr);gap:40px;align-items:start">
+          <div style="position:relative;height:580px;border-radius:24px;background:var(--sf);border:1px solid var(--ln);overflow:hidden">
+            <div style="position:absolute;inset:0;background-image:radial-gradient(var(--ln) 1px,transparent 1px);background-size:22px 22px;opacity:.7"></div>
+            <div style="position:absolute;left:40px;top:28px;width:560px;height:44px;border-radius:10px;background:var(--sf2);display:flex;align-items:center;padding-left:18px;font:700 11px/1 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--mu)">THE BAR</div>
+            <div style="position:absolute;left:200px;top:420px;width:400px;height:40px;border-radius:10px;background:var(--sf2);display:flex;align-items:center;padding-left:18px;font:700 11px/1 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--mu)">CHEF’S COUNTER · OPEN KITCHEN</div>
+            <div style="position:absolute;left:640px;top:28px;width:220px;height:500px;border-radius:16px;border:1.5px dashed var(--ln)"></div>
+            <div style="position:absolute;left:660px;top:46px;font:700 11px/1 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--mu)">TERRACE ☾</div>
+            <div style="position:absolute;left:226px;top:144px;font:700 10px/1 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--mu)">MAIN FLOOR</div>
+            <div style="position:absolute;left:470px;top:300px;width:110px;height:80px;border-radius:50%;border:1.5px solid var(--ln);display:grid;place-items:center;font:700 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu)">DJ ♫</div>
+            <sc-for list="{{ tables }}" as="t" hint-placeholder-count="0">
+              <div style="position:absolute;left:{{ t.l }};top:{{ t.t }};width:{{ t.wd }};height:{{ t.ht }};border-radius:{{ t.r }};background:{{ t.bg }};border:{{ t.bd }};color:{{ t.fg }};box-shadow:{{ t.sh }};box-sizing:border-box;display:grid;place-items:center;font:700 10px/1 'JetBrains Mono',monospace;letter-spacing:.06em;transition:all .7s cubic-bezier(.2,.8,.2,1);cursor:pointer" style-hover="transform:scale(1.12)">{{ t.label }}</div>
+            </sc-for>
+            <div style="position:absolute;left:20px;bottom:18px;display:flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--ln);padding:10px 14px;border-radius:999px;font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.1em">{{ liveDot }}LIVE · UPDATES EVERY FEW SECONDS</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <div style="aspect-ratio:4/3;border-radius:20px;background:repeating-linear-gradient(135deg,var(--ph1) 0 10px,var(--ph2) 10px 20px);display:flex;align-items:flex-end;padding:18px;font:500 10px/1.4 'JetBrains Mono',monospace;letter-spacing:.08em;color:var(--mu)">[ PHOTO — BOOTH 02 FROM SEAT VIEW ]</div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:900 72px/.85 'Big Shoulders Display',sans-serif">BOOTH 02</span><span style="font:600 12px/1 'JetBrains Mono',monospace;color:var(--act)">4–5 SEATS</span></div>
+            <span style="font:500 15px/1.5 Archivo,sans-serif;color:var(--mu);text-wrap:pretty">Oxblood velvet, 3 metres from the decks, eye contact with the bar. You’ll need to shout a bit. Worth it.</span>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <div style="border:1px solid var(--ln);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px"><span style="font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu)">MIN SPEND</span><span style="font:700 20px/1 'JetBrains Mono',monospace">$160</span></div>
+              <div style="border:1px solid var(--ac);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px"><span style="font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--act)">HELD FOR YOU</span><span style="font:700 20px/1 'JetBrains Mono',monospace">09:42</span></div>
+            </div>
+            <span style="background:var(--ac);color:var(--on);padding:22px;border-radius:999px;text-align:center;font:800 13px/1 Archivo,sans-serif;letter-spacing:.14em;cursor:pointer;transition:transform .2s" style-hover="transform:scale(1.03)">LOCK IN BOOTH 02 →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:10px;align-items:center;font:500 12px/1 'JetBrains Mono',monospace;color:#B5B2AA"><span style="background:#CFFF2E;color:#0B0B0D;padding:4px 7px;border-radius:4px;font-weight:600">A07</span>Booking confirmation</div>
+      <div data-screen-label="A07 Confirmation" style="width:1440px;background:var(--bg);color:var(--tx);overflow:hidden;border-radius:6px">
+        <dc-import name="LowlifeNav" active="book" badge="{{ cartBadge }}" hint-size="1440px,88px"></dc-import>
+        <div style="padding:64px 48px 0;display:grid;grid-template-columns:1fr 520px;gap:56px;align-items:center">
+          <div>
+            <div style="font:600 12px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:var(--act);margin-bottom:18px">CONFIRMATION · LL-0917-B02</div>
+            <div style="font:900 300px/.84 'Big Shoulders Display',sans-serif;letter-spacing:-.02em">YOU’RE<br><span style="color:var(--act)">IN.</span></div>
+            <p style="font:500 18px/1.5 Archivo,sans-serif;color:var(--mu);max-width:520px;margin:28px 0 0;text-wrap:pretty">Booth 02 is yours Friday at 9:30. We’ll text a reminder at 5PM. Running late? Hit “I’m late” and we’ll hold it 15 more.</p>
+            <div style="display:flex;gap:10px;margin-top:32px;font:800 12px/1 Archivo,sans-serif;letter-spacing:.14em">
+              <span style="background:var(--ac);color:var(--on);padding:18px 24px;border-radius:999px">ADD TO CALENDAR</span>
+              <span style="border:1.5px solid var(--tx);padding:17px 22px;border-radius:999px">DIRECTIONS</span>
+              <span style="border:1.5px solid var(--ln);padding:17px 22px;border-radius:999px;color:var(--mu)">MODIFY</span>
+            </div>
+          </div>
+          <div style="position:relative;background:var(--ac);color:var(--on);border-radius:28px;transform:rotate(3deg);box-shadow:0 40px 80px rgba(0,0,0,.35)">
+            <div style="padding:32px 32px 26px;display:flex;flex-direction:column;gap:22px">
+              <div style="display:flex;justify-content:space-between;font:700 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em"><span>LOWLIFE · ADMIT 4</span><span>FRI 09.10</span></div>
+              <div style="font:900 96px/.82 'Big Shoulders Display',sans-serif">BOOTH 02<br>9:30 PM</div>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;font:600 12px/1.4 'JetBrains Mono',monospace"><div><div style="opacity:.6">NAME</div>J. REYES</div><div><div style="opacity:.6">PARTY</div>4 PPL</div><div><div style="opacity:.6">DEPOSIT</div>$40 PAID</div></div>
+            </div>
+            <div style="position:relative;border-top:2px dashed color-mix(in srgb,var(--on) 35%,transparent);padding:24px 32px 30px;display:flex;justify-content:space-between;align-items:center">
+              <span style="position:absolute;left:-18px;top:-18px;width:36px;height:36px;border-radius:50%;background:var(--bg)"></span>
+              <span style="position:absolute;right:-18px;top:-18px;width:36px;height:36px;border-radius:50%;background:var(--bg)"></span>
+              <div style="font:600 12px/1.5 'JetBrains Mono',monospace">SHOW AT THE DOOR<br>SKIP THE QUEUE</div>
+              <div style="width:110px;height:110px;border-radius:12px;background:var(--on);display:grid;place-items:center;font:600 9px/1 'JetBrains Mono',monospace;color:var(--ac)">[ QR ]</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin:96px 48px 72px;border-top:1px solid var(--ln);padding-top:40px;display:grid;grid-template-columns:1fr 2fr;gap:40px;align-items:center">
+          <div><div style="font:900 64px/.85 'Big Shoulders Display',sans-serif">SKIP THE BAR QUEUE.</div><div style="font:500 15px/1.5 Archivo,sans-serif;color:var(--mu);margin-top:12px">Pre-order the first round. It’ll be on the table when you sit down.</div></div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+            <div style="display:flex;gap:14px;align-items:center;background:var(--sf);border:1px solid var(--ln);border-radius:16px;padding:12px;cursor:pointer;transition:border-color .2s" style-hover="border-color:var(--ac)"><span style="width:64px;height:64px;border-radius:10px;background:repeating-linear-gradient(135deg,var(--ph1) 0 6px,var(--ph2) 6px 12px);flex:none"></span><div style="display:flex;flex-direction:column;gap:6px"><span style="font:800 20px/1 'Big Shoulders Display',sans-serif">4 × BAD DECISIONS</span><span style="font:600 13px/1 'JetBrains Mono',monospace;color:var(--act)">+ $68</span></div></div>
+            <div style="display:flex;gap:14px;align-items:center;background:var(--sf);border:1px solid var(--ln);border-radius:16px;padding:12px;cursor:pointer;transition:border-color .2s" style-hover="border-color:var(--ac)"><span style="width:64px;height:64px;border-radius:10px;background:repeating-linear-gradient(135deg,var(--ph1) 0 6px,var(--ph2) 6px 12px);flex:none"></span><div style="display:flex;flex-direction:column;gap:6px"><span style="font:800 20px/1 'Big Shoulders Display',sans-serif">BOTTLE · PET-NAT</span><span style="font:600 13px/1 'JetBrains Mono',monospace;color:var(--act)">+ $62</span></div></div>
+            <div style="display:flex;gap:14px;align-items:center;background:var(--sf);border:1px solid var(--ln);border-radius:16px;padding:12px;cursor:pointer;transition:border-color .2s" style-hover="border-color:var(--ac)"><span style="width:64px;height:64px;border-radius:10px;background:repeating-linear-gradient(135deg,var(--ph1) 0 6px,var(--ph2) 6px 12px);flex:none"></span><div style="display:flex;flex-direction:column;gap:6px"><span style="font:800 20px/1 'Big Shoulders Display',sans-serif">OYSTERS × 12</span><span style="font:600 13px/1 'JetBrains Mono',monospace;color:var(--act)">+ $44</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<section style="padding:48px 72px">
+  <div style="font:600 12px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#8A8780;margin-bottom:28px">DESKTOP · 1440 — NIGHTS, PRIVATE, MEMBERS, VISIT</div>
+  <div style="display:flex;flex-wrap:wrap;gap:72px;align-items:flex-start">
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:10px;align-items:center;font:500 12px/1 'JetBrains Mono',monospace;color:#B5B2AA"><span style="background:#CFFF2E;color:#0B0B0D;padding:4px 7px;border-radius:4px;font-weight:600">A08</span>Events / DJ nights</div>
+      <div data-screen-label="A08 Events" style="width:1440px;background:var(--bg);color:var(--tx);overflow:hidden;border-radius:6px">
+        <dc-import name="LowlifeNav" active="events" badge="{{ cartBadge }}" hint-size="1440px,88px"></dc-import>
+        <div style="padding:48px 48px 0;display:flex;justify-content:space-between;align-items:flex-end">
+          <div style="font:900 220px/.78 'Big Shoulders Display',sans-serif">LOUD<br>NIGHTS.</div>
+          <div style="display:flex;gap:8px;font:700 12px/1 Archivo,sans-serif;letter-spacing:.12em;padding-bottom:16px">
+            <span style="background:var(--ac);color:var(--on);padding:12px 18px;border-radius:999px">ALL</span>
+            <span style="border:1px solid var(--ln);padding:12px 18px;border-radius:999px">DJ</span>
+            <span style="border:1px solid var(--ln);padding:12px 18px;border-radius:999px">LIVE</span>
+            <span style="border:1px solid var(--ln);padding:12px 18px;border-radius:999px">TASTINGS</span>
+            <span style="border:1px solid var(--ln);padding:12px 18px;border-radius:999px">QUIZ</span>
+          </div>
+        </div>
+        <div style="margin:48px 48px 0;position:relative;height:520px;border-radius:24px;background:repeating-linear-gradient(135deg,var(--ph1) 0 10px,var(--ph2) 10px 20px);overflow:hidden">
+          <div style="position:absolute;left:28px;top:28px;font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.08em;color:var(--mu)">[ PHOTO — DJ BOOTH, HANDS UP, STROBE ]</div>
+          <div style="position:absolute;left:0;right:0;bottom:0;padding:40px;display:flex;justify-content:space-between;align-items:flex-end;background:linear-gradient(transparent,color-mix(in srgb,var(--bg) 92%,transparent))">
+            <div>
+              <div style="display:flex;gap:10px;align-items:center;font:700 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--act);margin-bottom:16px">{{ liveDot }}THIS FRIDAY · 10PM–3AM</div>
+              <div style="font:900 150px/.8 'Big Shoulders Display',sans-serif">DJ KAYA:<br>DISCO AFTER DARK</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-end">
+              <span style="font:600 13px/1 'JetBrains Mono',monospace;color:var(--mu)">FREE BEFORE 11 · $15 AFTER</span>
+              <span style="background:var(--ac);color:var(--on);padding:20px 28px;border-radius:999px;font:800 13px/1 Archivo,sans-serif;letter-spacing:.14em">GET ON THE GUESTLIST →</span>
+            </div>
+          </div>
+        </div>
+        <div style="padding:56px 48px 72px;display:flex;flex-direction:column;border-top:0">
+          <sc-for list="{{ events }}" as="e" hint-placeholder-count="5">
+            <div style="display:grid;grid-template-columns:160px 1fr 260px 200px;gap:32px;align-items:center;padding:26px 20px;border-top:1px solid var(--ln);border-radius:16px;cursor:pointer;transition:background .25s,color .25s,padding .25s" style-hover="background:var(--ac);color:var(--on);padding-left:36px">
+              <div style="display:flex;align-items:baseline;gap:10px"><span style="font:900 84px/.8 'Big Shoulders Display',sans-serif">{{ e.d }}</span><span style="font:700 12px/1.3 'JetBrains Mono',monospace;letter-spacing:.1em">{{ e.m }}<br>{{ e.w }}</span></div>
+              <span style="font:900 52px/.9 'Big Shoulders Display',sans-serif">{{ e.title }}</span>
+              <span style="font:600 12px/1.5 'JetBrains Mono',monospace;letter-spacing:.08em;opacity:.7">{{ e.meta }}</span>
+              <span style="justify-self:end;border:1.5px solid currentColor;padding:14px 20px;border-radius:999px;font:800 12px/1 Archivo,sans-serif;letter-spacing:.14em">{{ e.cta }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:10px;align-items:center;font:500 12px/1 'JetBrains Mono',monospace;color:#B5B2AA"><span style="background:#CFFF2E;color:#0B0B0D;padding:4px 7px;border-radius:4px;font-weight:600">A09</span>Private events enquiry</div>
+      <div data-screen-label="A09 Private events" style="width:1440px;background:var(--bg);color:var(--tx);overflow:hidden;border-radius:6px">
+        <dc-import name="LowlifeNav" active="private" badge="{{ cartBadge }}" hint-size="1440px,88px"></dc-import>
+        <div style="padding:56px 48px 0;font:900 170px/.8 'Big Shoulders Display',sans-serif">THE WHOLE PLACE.<br><span style="color:var(--act)">ALL YOURS.</span></div>
+        <div style="padding:56px 48px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+          <div style="border:1px solid var(--ln);border-radius:20px;overflow:hidden;cursor:pointer;transition:transform .3s" style-hover="transform:translateY(-6px)"><div style="aspect-ratio:16/10;background:repeating-linear-gradient(135deg,var(--ph1) 0 10px,var(--ph2) 10px 20px);display:flex;align-items:flex-end;padding:16px;font:500 10px/1 'JetBrains Mono',monospace;color:var(--mu)">[ CHEF’S COUNTER ]</div><div style="padding:22px;display:flex;justify-content:space-between;align-items:flex-end"><div><div style="font:900 40px/.9 'Big Shoulders Display',sans-serif">CHEF’S COUNTER</div><div style="font:500 14px/1.4 Archivo,sans-serif;color:var(--mu);margin-top:6px">Tasting menu + pairings</div></div><span style="font:700 14px/1.2 'JetBrains Mono',monospace;text-align:right">8–12<br><span style="color:var(--mu);font-size:11px">GUESTS</span></span></div></div>
+          <div style="border:2px solid var(--ac);border-radius:20px;overflow:hidden"><div style="aspect-ratio:16/10;background:repeating-linear-gradient(135deg,var(--ph1) 0 10px,var(--ph2) 10px 20px);display:flex;align-items:flex-end;padding:16px;font:500 10px/1 'JetBrains Mono',monospace;color:var(--mu)">[ THE BACK ROOM, RED LIGHT ]</div><div style="padding:22px;display:flex;justify-content:space-between;align-items:flex-end"><div><div style="font:900 40px/.9 'Big Shoulders Display',sans-serif;color:var(--act)">THE BACK ROOM ✓</div><div style="font:500 14px/1.4 Archivo,sans-serif;color:var(--mu);margin-top:6px">Own bar, own speakers, own door</div></div><span style="font:700 14px/1.2 'JetBrains Mono',monospace;text-align:right">20–45<br><span style="color:var(--mu);font-size:11px">GUESTS</span></span></div></div>
+          <div style="border:1px solid var(--ln);border-radius:20px;overflow:hidden;cursor:pointer;transition:transform .3s" style-hover="transform:translateY(-6px)"><div style="aspect-ratio:16/10;background:repeating-linear-gradient(135deg,var(--ph1) 0 10px,var(--ph2) 10px 20px);display:flex;align-items:flex-end;padding:16px;font:500 10px/1 'JetBrains Mono',monospace;color:var(--mu)">[ FULL VENUE BUYOUT ]</div><div style="padding:22px;display:flex;justify-content:space-between;align-items:flex-end"><div><div style="font:900 40px/.9 'Big Shoulders Display',sans-serif">FULL BUYOUT</div><div style="font:500 14px/1.4 Archivo,sans-serif;color:var(--mu);margin-top:6px">Launches, wraps, after-parties</div></div><span style="font:700 14px/1.2 'JetBrains Mono',monospace;text-align:right">60–180<br><span style="color:var(--mu);font-size:11px">GUESTS</span></span></div></div>
+        </div>
+        <div style="margin:56px 48px 72px;background:var(--sf);border:1px solid var(--ln);border-radius:24px;padding:40px;display:grid;grid-template-columns:1fr 1.6fr;gap:56px">
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div style="font:900 64px/.85 'Big Shoulders Display',sans-serif">TELL US WHAT YOU’RE PLANNING.</div>
+            <span style="font:500 15px/1.55 Archivo,sans-serif;color:var(--mu)">Our events lead replies within 24 hours with a proposal, menu and a straight-up price. No “contact for pricing” runaround.</span>
+            <div style="display:flex;flex-direction:column;gap:12px;margin-top:10px;font:600 14px/1.3 Archivo,sans-serif">
+              <span style="display:flex;gap:12px"><span style="color:var(--act)">✶</span>Custom cocktail named after you</span>
+              <span style="display:flex;gap:12px"><span style="color:var(--act)">✶</span>Bring your DJ or use ours</span>
+              <span style="display:flex;gap:12px"><span style="color:var(--act)">✶</span>Minimum spends from $1,200</span>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:22px">
+            <div style="display:flex;flex-direction:column;gap:12px"><span style="font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu)">WHAT’S THE OCCASION</span>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;font:700 12px/1 Archivo,sans-serif;letter-spacing:.1em">
+                <span style="border:1px solid var(--ln);padding:12px 16px;border-radius:999px">BIRTHDAY</span><span style="background:var(--ac);color:var(--on);padding:12px 16px;border-radius:999px">PRODUCT LAUNCH</span><span style="border:1px solid var(--ln);padding:12px 16px;border-radius:999px">CORPORATE</span><span style="border:1px solid var(--ln);padding:12px 16px;border-radius:999px">WEDDING AFTER-PARTY</span><span style="border:1px solid var(--ln);padding:12px 16px;border-radius:999px">SOMETHING WEIRD</span>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
+              <div style="border:1px solid var(--ln);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:8px"><span style="font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu)">DATE</span><span style="font:500 16px/1 Archivo,sans-serif">Thu 22 Oct</span></div>
+              <div style="border:1px solid var(--ln);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:8px"><span style="font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu)">GUESTS</span><span style="font:500 16px/1 Archivo,sans-serif">~40</span></div>
+              <div style="border:1px solid var(--ln);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:8px"><span style="font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu)">BUDGET</span><span style="font:500 16px/1 Archivo,sans-serif">$3–5k</span></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <div style="border:1px solid var(--ln);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:8px"><span style="font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu)">NAME</span><span style="font:500 16px/1 Archivo,sans-serif">Sam Okafor</span></div>
+              <div style="border:1.5px solid var(--tx);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:8px"><span style="font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu)">EMAIL</span><span style="font:500 16px/1 Archivo,sans-serif">sam@studiofern.co</span></div>
+            </div>
+            <div style="border:1px solid var(--ln);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;min-height:92px"><span style="font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu)">THE VIBE</span><span style="font:500 16px/1.45 Archivo,sans-serif">Sneaker launch. Want it to feel like a secret party that accidentally got press.</span></div>
+            <span style="align-self:flex-start;background:var(--ac);color:var(--on);padding:20px 30px;border-radius:999px;font:800 13px/1 Archivo,sans-serif;letter-spacing:.14em;cursor:pointer;transition:transform .2s" style-hover="transform:translateY(-3px) rotate(-1.5deg)">SEND ENQUIRY →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:10px;align-items:center;font:500 12px/1 'JetBrains Mono',monospace;color:#B5B2AA"><span style="background:#CFFF2E;color:#0B0B0D;padding:4px 7px;border-radius:4px;font-weight:600">A10</span>Account / loyalty</div>
+      <div data-screen-label="A10 Rewards" style="width:1440px;background:var(--bg);color:var(--tx);overflow:hidden;border-radius:6px">
+        <dc-import name="LowlifeNav" active="rewards" badge="{{ cartBadge }}" hint-size="1440px,88px"></dc-import>
+        <div style="padding:56px 48px 0;display:grid;grid-template-columns:1fr 560px;gap:48px;align-items:end">
+          <div>
+            <div style="font:600 12px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:var(--mu);margin-bottom:16px">MEMBER SINCE MAR 2024 · 31 VISITS</div>
+            <div style="font:900 220px/.78 'Big Shoulders Display',sans-serif">HEY,<br>JORDAN.</div>
+          </div>
+          <div style="position:relative;aspect-ratio:1.6;border-radius:26px;background:var(--ac);color:var(--on);padding:30px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;transform:rotate(-2deg);transition:transform .4s" style-hover="transform:rotate(0deg) scale(1.02)">
+            <div style="position:absolute;right:-60px;bottom:-90px;font:900 300px/.8 'Big Shoulders Display',sans-serif;opacity:.1">LL</div>
+            <div style="display:flex;justify-content:space-between;font:700 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em"><span>LOWLIFE MEMBERS</span><span>TIER 2 / 3</span></div>
+            <div><div style="font:900 80px/.82 'Big Shoulders Display',sans-serif">REGULAR</div><div style="font:700 15px/1 'JetBrains Mono',monospace;margin-top:12px">1,240 PTS</div></div>
+            <div style="display:flex;flex-direction:column;gap:8px"><div style="height:8px;border-radius:99px;background:color-mix(in srgb,var(--on) 18%,transparent);overflow:hidden"><div style="width:62%;height:100%;background:var(--on);border-radius:99px"></div></div><div style="display:flex;justify-content:space-between;font:600 11px/1 'JetBrains Mono',monospace"><span>760 PTS TO INNER CIRCLE</span><span>2,000</span></div></div>
+          </div>
+        </div>
+        <div style="padding:64px 48px 72px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;align-items:start">
+          <div style="background:var(--sf);border:1px solid var(--ln);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:16px">
+            <span style="font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu)">UP NEXT</span>
+            <span style="font:900 52px/.85 'Big Shoulders Display',sans-serif">FRI 09 · 9:30PM<br>BOOTH 02</span>
+            <span style="font:500 14px/1.4 Archivo,sans-serif;color:var(--mu)">4 guests · DJ Kaya · $40 deposit as credit</span>
+            <div style="display:flex;gap:8px;font:800 11px/1 Archivo,sans-serif;letter-spacing:.12em"><span style="background:var(--ac);color:var(--on);padding:13px 16px;border-radius:999px">PRE-ORDER DRINKS</span><span style="border:1px solid var(--ln);padding:13px 16px;border-radius:999px">CHANGE</span></div>
+          </div>
+          <div style="background:var(--sf);border:1px solid var(--ln);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:6px">
+            <span style="font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu);margin-bottom:10px">SPEND YOUR POINTS</span>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--ln)"><span style="font:800 22px/1 'Big Shoulders Display',sans-serif">ROUND OF SHOTS</span><span style="background:var(--ac);color:var(--on);padding:9px 12px;border-radius:999px;font:700 11px/1 'JetBrains Mono',monospace">500 · REDEEM</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--ln)"><span style="font:800 22px/1 'Big Shoulders Display',sans-serif">SKIP-THE-LINE PASS</span><span style="background:var(--ac);color:var(--on);padding:9px 12px;border-radius:999px;font:700 11px/1 'JetBrains Mono',monospace">800 · REDEEM</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--ln);opacity:.45"><span style="font:800 22px/1 'Big Shoulders Display',sans-serif">NAME A COCKTAIL</span><span style="border:1px solid var(--ln);padding:9px 12px;border-radius:999px;font:700 11px/1 'JetBrains Mono',monospace">2,000</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;opacity:.45"><span style="font:800 22px/1 'Big Shoulders Display',sans-serif">BACK ROOM FOR 2HRS</span><span style="border:1px solid var(--ln);padding:9px 12px;border-radius:999px;font:700 11px/1 'JetBrains Mono',monospace">5,000</span></div>
+          </div>
+          <div style="background:var(--sf);border:1px solid var(--ln);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:6px">
+            <span style="font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu);margin-bottom:10px">YOUR USUALS</span>
+            <div style="display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--ln)"><span style="width:48px;height:48px;border-radius:10px;background:repeating-linear-gradient(135deg,var(--ph1) 0 6px,var(--ph2) 6px 12px);flex:none"></span><div style="flex:1;display:flex;flex-direction:column;gap:4px"><span style="font:700 14px/1.2 Archivo,sans-serif">Wings, Sliders, Fries</span><span style="font:500 12px/1 'JetBrains Mono',monospace;color:var(--mu)">27 SEP · $58.40</span></div><span style="border:1.5px solid var(--tx);padding:9px 12px;border-radius:999px;font:700 11px/1 'JetBrains Mono',monospace">REORDER</span></div>
+            <div style="display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--ln)"><span style="width:48px;height:48px;border-radius:10px;background:repeating-linear-gradient(135deg,var(--ph1) 0 6px,var(--ph2) 6px 12px);flex:none"></span><div style="flex:1;display:flex;flex-direction:column;gap:4px"><span style="font:700 14px/1.2 Archivo,sans-serif">Crudo, Corn Ribs, Bao ×2</span><span style="font:500 12px/1 'JetBrains Mono',monospace;color:var(--mu)">19 SEP · $61.00</span></div><span style="border:1.5px solid var(--tx);padding:9px 12px;border-radius:999px;font:700 11px/1 'JetBrains Mono',monospace">REORDER</span></div>
+            <div style="display:flex;gap:12px;align-items:center;padding:12px 0"><span style="width:48px;height:48px;border-radius:10px;background:repeating-linear-gradient(135deg,var(--ph1) 0 6px,var(--ph2) 6px 12px);flex:none"></span><div style="flex:1;display:flex;flex-direction:column;gap:4px"><span style="font:700 14px/1.2 Archivo,sans-serif">Midnight Churros ×3</span><span style="font:500 12px/1 'JetBrains Mono',monospace;color:var(--mu)">02 SEP · $30.00</span></div><span style="border:1.5px solid var(--tx);padding:9px 12px;border-radius:999px;font:700 11px/1 'JetBrains Mono',monospace">REORDER</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:10px;align-items:center;font:500 12px/1 'JetBrains Mono',monospace;color:#B5B2AA"><span style="background:#CFFF2E;color:#0B0B0D;padding:4px 7px;border-radius:4px;font-weight:600">A11</span>Contact &amp; location</div>
+      <div data-screen-label="A11 Visit" style="width:1440px;background:var(--bg);color:var(--tx);overflow:hidden;border-radius:6px">
+        <dc-import name="LowlifeNav" active="visit" badge="{{ cartBadge }}" hint-size="1440px,88px"></dc-import>
+        <div style="padding:56px 48px 0;font:900 170px/.8 'Big Shoulders Display',sans-serif">FIND US.<br><span style="color:var(--act)">WE’RE THE LOUD ONE.</span></div>
+        <div style="padding:56px 48px 0;display:grid;grid-template-columns:1.4fr 1fr;gap:20px">
+          <div style="position:relative;height:520px;border-radius:24px;background:repeating-linear-gradient(135deg,var(--ph1) 0 10px,var(--ph2) 10px 20px);overflow:hidden">
+            <div style="position:absolute;left:24px;top:24px;font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.08em;color:var(--mu)">[ MAP — DARK STYLE, 88 WIRE ST ]</div>
+            <div style="position:absolute;left:52%;top:46%;display:flex;flex-direction:column;align-items:center;gap:10px">
+              <span style="background:var(--ac);color:var(--on);padding:12px 16px;border-radius:999px;font:900 22px/1 'Big Shoulders Display',sans-serif;box-shadow:0 12px 30px rgba(0,0,0,.4)">LOWLIFE</span>
+              {{ liveDot }}
+            </div>
+            <div style="position:absolute;right:20px;bottom:20px;display:flex;gap:8px;font:800 11px/1 Archivo,sans-serif;letter-spacing:.12em"><span style="background:var(--tx);color:var(--bg);padding:14px 18px;border-radius:999px">DIRECTIONS</span><span style="background:var(--bg);border:1px solid var(--ln);padding:14px 18px;border-radius:999px">CALL A RIDE</span></div>
+          </div>
+          <div style="background:var(--sf);border:1px solid var(--ln);border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:22px">
+            <div style="display:flex;justify-content:space-between;align-items:center"><span style="font:600 11px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu)">HOURS</span><span style="display:flex;gap:8px;align-items:center;font:700 11px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--act)">{{ liveDot }}OPEN NOW</span></div>
+            <div style="display:flex;flex-direction:column;font:500 16px/1 Archivo,sans-serif">
+              <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--ln);color:var(--mu)"><span>Monday</span><span>Closed (recovering)</span></div>
+              <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--ln)"><span>Tue – Thu</span><span style="font-family:'JetBrains Mono',monospace">5PM – 1AM</span></div>
+              <div style="display:flex;justify-content:space-between;padding:14px 12px;margin:0 -12px;background:var(--ac);color:var(--on);border-radius:10px;font-weight:700"><span>Fri – Sat · today</span><span style="font-family:'JetBrains Mono',monospace">5PM – 3AM</span></div>
+              <div style="display:flex;justify-content:space-between;padding:14px 0"><span>Sunday</span><span style="font-family:'JetBrains Mono',monospace">4PM – 12AM</span></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;border-top:1px solid var(--ln);padding-top:22px;font:500 15px/1.5 Archivo,sans-serif">
+              <div><div style="font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu);margin-bottom:10px">ADDRESS</div>88 Wire St<br>Downtown<br>Side door after 11</div>
+              <div><div style="font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu);margin-bottom:10px">TALK TO US</div>(555) 014-0300<br>hi@lowlife.bar<br>@lowlife.bar</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:72px 48px 72px;display:grid;grid-template-columns:1fr 2fr;gap:48px">
+          <div style="font:900 80px/.85 'Big Shoulders Display',sans-serif">THINGS PEOPLE ASK.</div>
+          <div style="display:flex;flex-direction:column">
+            <div style="padding:24px 0;border-top:1px solid var(--ln)"><div style="display:flex;justify-content:space-between;font:800 30px/1 'Big Shoulders Display',sans-serif"><span>DRESS CODE?</span><span style="color:var(--act)">−</span></div><div style="font:500 16px/1.55 Archivo,sans-serif;color:var(--mu);margin-top:12px;max-width:640px">Come as you are. Unless you are wearing a backpack. Lose the backpack.</div></div>
+            <div style="padding:24px 0;border-top:1px solid var(--ln);display:flex;justify-content:space-between;font:800 30px/1 'Big Shoulders Display',sans-serif;cursor:pointer;transition:color .2s" style-hover="color:var(--act)"><span>DO YOU TAKE WALK-INS?</span><span>+</span></div>
+            <div style="padding:24px 0;border-top:1px solid var(--ln);display:flex;justify-content:space-between;font:800 30px/1 'Big Shoulders Display',sans-serif;cursor:pointer;transition:color .2s" style-hover="color:var(--act)"><span>IS THE KITCHEN REALLY OPEN TIL 1?</span><span>+</span></div>
+            <div style="padding:24px 0;border-top:1px solid var(--ln);border-bottom:1px solid var(--ln);display:flex;justify-content:space-between;font:800 30px/1 'Big Shoulders Display',sans-serif;cursor:pointer;transition:color .2s" style-hover="color:var(--act)"><span>ACCESSIBILITY &amp; DIETARY</span><span>+</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<section style="padding:48px 72px 120px">
+  <div style="font:600 12px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#8A8780;margin-bottom:28px">MOBILE · 390 — SAME SYSTEM, THUMB-FIRST</div>
+  <div style="display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start">
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:10px;align-items:center;font:500 12px/1 'JetBrains Mono',monospace;color:#B5B2AA"><span style="background:#CFFF2E;color:#0B0B0D;padding:4px 7px;border-radius:4px;font-weight:600">M01</span>Home</div>
+      <div style="padding:10px;background:#000;border-radius:58px;box-shadow:0 30px 60px rgba(0,0,0,.4)">
+        <div data-screen-label="M01 Home" style="position:relative;width:390px;height:844px;border-radius:48px;overflow:hidden;background:var(--bg);color:var(--tx)">
+          <div style="height:50px;display:flex;justify-content:space-between;align-items:center;padding:0 30px;font:600 15px/1 Archivo,sans-serif"><span>9:41</span><span style="width:110px;height:30px;border-radius:99px;background:#000"></span><span style="font:600 11px/1 'JetBrains Mono',monospace">5G ▮▮▮</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 22px"><span style="font:900 28px/1 'Big Shoulders Display',sans-serif">LOWLIFE</span><span style="display:flex;gap:8px;align-items:center;background:var(--ac);color:var(--on);padding:8px 8px 8px 14px;border-radius:99px;font:800 11px/1 Archivo,sans-serif;letter-spacing:.12em">BAG <span style="width:22px;height:22px;border-radius:50%;background:var(--on);color:var(--ac);display:grid;place-items:center;font:700 10px/1 'JetBrains Mono',monospace">{{ cartBadge }}</span></span></div>
+          <div style="padding:18px 22px 0;display:flex;align-items:center;gap:10px;font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:.12em">{{ liveDot }}OPEN · BAR TIL 3AM</div>
+          <div style="padding:14px 22px 0;font:900 86px/.82 'Big Shoulders Display',sans-serif;letter-spacing:-.01em">DRINK<br>LIKE<br>NOBODY’S<br><span style="color:var(--act)">WATCHING.</span></div>
+          <div style="margin:22px 22px 0;height:200px;border-radius:22px;background:repeating-linear-gradient(135deg,var(--ph1) 0 10px,var(--ph2) 10px 20px);display:flex;align-items:flex-end;padding:14px;box-sizing:border-box;font:500 10px/1.4 'JetBrains Mono',monospace;color:var(--mu)">[ HERO — OLD FASHIONED, TORCH ]</div>
+          <div style="position:absolute;left:14px;right:14px;bottom:30px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <span style="background:var(--ac);color:var(--on);padding:20px 0;border-radius:99px;text-align:center;font:800 12px/1 Archivo,sans-serif;letter-spacing:.14em">BOOK</span>
+            <span style="background:var(--tx);color:var(--bg);padding:20px 0;border-radius:99px;text-align:center;font:800 12px/1 Archivo,sans-serif;letter-spacing:.14em">ORDER</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:10px;align-items:center;font:500 12px/1 'JetBrains Mono',monospace;color:#B5B2AA"><span style="background:#CFFF2E;color:#0B0B0D;padding:4px 7px;border-radius:4px;font-weight:600">M02</span>Menu</div>
+      <div style="padding:10px;background:#000;border-radius:58px;box-shadow:0 30px 60px rgba(0,0,0,.4)">
+        <div data-screen-label="M02 Menu" style="position:relative;width:390px;height:844px;border-radius:48px;overflow:hidden;background:var(--bg);color:var(--tx)">
+          <div style="height:50px;display:flex;justify-content:space-between;align-items:center;padding:0 30px;font:600 15px/1 Archivo,sans-serif"><span>9:41</span><span style="width:110px;height:30px;border-radius:99px;background:#000"></span><span style="font:600 11px/1 'JetBrains Mono',monospace">5G ▮▮▮</span></div>
+          <div style="padding:10px 22px 0;font:900 76px/.8 'Big Shoulders Display',sans-serif">THE MENU</div>
+          <div style="padding:16px 22px 0;display:flex;gap:6px;overflow:hidden;font:700 11px/1 Archivo,sans-serif;letter-spacing:.1em;white-space:nowrap">
+            <span style="background:var(--ac);color:var(--on);padding:11px 14px;border-radius:99px">SMALL PLATES</span><span style="border:1px solid var(--ln);padding:11px 14px;border-radius:99px">RAW BAR</span><span style="border:1px solid var(--ln);padding:11px 14px;border-radius:99px">FRIED</span><span style="border:1px solid var(--ln);padding:11px 14px;border-radius:99px">SWEETS</span>
+          </div>
+          <div style="padding:16px 22px 0;display:flex;flex-direction:column;gap:12px">
+            <sc-for list="{{ dishes }}" as="d" hint-placeholder-count="4">
+              <div style="display:flex;gap:14px;align-items:center;padding-bottom:12px;border-bottom:1px solid var(--ln)">
+                <span style="width:88px;height:88px;border-radius:16px;background:repeating-linear-gradient(135deg,var(--ph1) 0 6px,var(--ph2) 6px 12px);flex:none"></span>
+                <div style="flex:1;display:flex;flex-direction:column;gap:6px;min-width:0">
+                  <span style="font:600 9px/1 'JetBrains Mono',monospace;letter-spacing:.1em;color:var(--act)">{{ d.tag }}</span>
+                  <span style="font:800 22px/.95 'Big Shoulders Display',sans-serif;text-transform:uppercase">{{ d.name }}</span>
+                  <span style="font:600 13px/1 'JetBrains Mono',monospace">${{ d.price }}</span>
+                </div>
+                <span style="width:40px;height:40px;border-radius:50%;background:var(--ac);color:var(--on);display:grid;place-items:center;font:500 22px/1 Archivo,sans-serif;flex:none">+</span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="position:absolute;left:14px;right:14px;bottom:30px;background:var(--ac);color:var(--on);border-radius:99px;padding:8px 8px 8px 22px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 20px 40px rgba(0,0,0,.4)">
+            <span style="font:800 12px/1 Archivo,sans-serif;letter-spacing:.14em">VIEW BAG · {{ cartBadge }}</span>
+            <span style="background:var(--on);color:var(--ac);padding:14px 18px;border-radius:99px;font:700 13px/1 'JetBrains Mono',monospace">$47.00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:10px;align-items:center;font:500 12px/1 'JetBrains Mono',monospace;color:#B5B2AA"><span style="background:#CFFF2E;color:#0B0B0D;padding:4px 7px;border-radius:4px;font-weight:600">M03</span>Dish detail sheet</div>
+      <div style="padding:10px;background:#000;border-radius:58px;box-shadow:0 30px 60px rgba(0,0,0,.4)">
+        <div data-screen-label="M03 Dish" style="position:relative;width:390px;height:844px;border-radius:48px;overflow:hidden;background:repeating-linear-gradient(135deg,var(--ph1) 0 10px,var(--ph2) 10px 20px);color:var(--tx)">
+          <div style="position:absolute;left:22px;top:70px;font:500 10px/1.4 'JetBrains Mono',monospace;color:var(--mu)">[ SLIDERS — CHEESE PULL ]</div>
+          <span style="position:absolute;left:22px;top:110px;width:44px;height:44px;border-radius:50%;background:var(--bg);display:grid;place-items:center;font:500 20px/1 Archivo,sans-serif">✕</span>
+          <div style="position:absolute;left:0;right:0;bottom:0;height:560px;background:var(--bg);border-radius:32px 32px 0 0;padding:14px 22px 0;box-sizing:border-box;display:flex;flex-direction:column;gap:16px">
+            <span style="align-self:center;width:44px;height:5px;border-radius:9px;background:var(--ln)"></span>
+            <div style="display:flex;justify-content:space-between;align-items:flex-start"><span style="font:900 60px/.8 'Big Shoulders Display',sans-serif">WAGYU<br>SMASH<br>SLIDERS</span><span style="font:600 20px/1 'JetBrains Mono',monospace">$18</span></div>
+            <span style="font:500 14px/1.45 Archivo,sans-serif;color:var(--mu)">Black garlic aioli, pickled shallot, American cheese that refuses to apologise.</span>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--ln);border-radius:99px;padding:4px;font:800 11px/1 Archivo,sans-serif;letter-spacing:.12em;text-align:center"><span style="padding:13px 0;opacity:.6">MILD</span><span style="padding:13px 0;background:var(--ac);color:var(--on);border-radius:99px">LOUD</span><span style="padding:13px 0;opacity:.6">UNHINGED</span></div>
+            <div style="display:flex;flex-direction:column;font:500 15px/1 Archivo,sans-serif">
+              <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--ln)"><span style="display:flex;gap:12px;align-items:center"><span style="width:20px;height:20px;border-radius:6px;background:var(--ac);color:var(--on);display:grid;place-items:center;font-size:12px;font-weight:800">✓</span>Truffle cheese</span><span style="font-family:'JetBrains Mono',monospace;color:var(--mu)">+$4</span></div>
+              <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--ln)"><span style="display:flex;gap:12px;align-items:center"><span style="width:18px;height:18px;border-radius:6px;border:1.5px solid var(--mu)"></span>Extra patty</span><span style="font-family:'JetBrains Mono',monospace;color:var(--mu)">+$6</span></div>
+            </div>
+            <div style="position:absolute;left:14px;right:14px;bottom:30px;display:flex;gap:8px">
+              <span style="display:flex;align-items:center;gap:16px;border:1.5px solid var(--ln);border-radius:99px;padding:0 18px;font:600 16px/1 'JetBrains Mono',monospace">− 2 +</span>
+              <span style="flex:1;background:var(--ac);color:var(--on);border-radius:99px;padding:20px;display:flex;justify-content:space-between;font:800 12px/1 Archivo,sans-serif;letter-spacing:.12em"><span>ADD</span><span style="font-family:'JetBrains Mono',monospace">$44</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:10px;align-items:center;font:500 12px/1 'JetBrains Mono',monospace;color:#B5B2AA"><span style="background:#CFFF2E;color:#0B0B0D;padding:4px 7px;border-radius:4px;font-weight:600">M04</span>Booking</div>
+      <div style="padding:10px;background:#000;border-radius:58px;box-shadow:0 30px 60px rgba(0,0,0,.4)">
+        <div data-screen-label="M04 Booking" style="position:relative;width:390px;height:844px;border-radius:48px;overflow:hidden;background:var(--bg);color:var(--tx)">
+          <div style="height:50px;display:flex;justify-content:space-between;align-items:center;padding:0 30px;font:600 15px/1 Archivo,sans-serif"><span>9:41</span><span style="width:110px;height:30px;border-radius:99px;background:#000"></span><span style="font:600 11px/1 'JetBrains Mono',monospace">5G ▮▮▮</span></div>
+          <div style="padding:10px 22px 0;font:900 64px/.82 'Big Shoulders Display',sans-serif">GET A<br>TABLE.</div>
+          <div style="margin:16px 22px 0;background:var(--ac);color:var(--on);border-radius:16px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center"><span style="font:700 10px/1.3 'JetBrains Mono',monospace;letter-spacing:.12em">LIVE · FRIDAY<br>37 PEOPLE LOOKING</span><span style="font:900 44px/.8 'Big Shoulders Display',sans-serif">{{ seats }} LEFT</span></div>
+          <div style="padding:22px 22px 0;display:flex;justify-content:space-between;align-items:center"><span style="font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu)">PARTY</span><div style="display:flex;align-items:center;gap:18px"><span style="width:44px;height:44px;border-radius:50%;border:1.5px solid var(--ln);display:grid;place-items:center;font-size:22px">−</span><span style="font:900 56px/.8 'Big Shoulders Display',sans-serif">4</span><span style="width:44px;height:44px;border-radius:50%;background:var(--ac);color:var(--on);display:grid;place-items:center;font-size:22px">+</span></div></div>
+          <div style="padding:22px 22px 0;display:flex;gap:8px">
+            <div style="flex:1;border:1px solid var(--ln);border-radius:14px;padding:12px 0;display:flex;flex-direction:column;align-items:center;gap:6px"><span style="font:600 9px/1 'JetBrains Mono',monospace">WED</span><span style="font:900 30px/.8 'Big Shoulders Display',sans-serif">07</span></div>
+            <div style="flex:1;border:1px solid var(--ln);border-radius:14px;padding:12px 0;display:flex;flex-direction:column;align-items:center;gap:6px"><span style="font:600 9px/1 'JetBrains Mono',monospace">THU</span><span style="font:900 30px/.8 'Big Shoulders Display',sans-serif">08</span></div>
+            <div style="flex:1;background:var(--ac);color:var(--on);border-radius:14px;padding:12px 0;display:flex;flex-direction:column;align-items:center;gap:6px"><span style="font:700 9px/1 'JetBrains Mono',monospace">FRI</span><span style="font:900 30px/.8 'Big Shoulders Display',sans-serif">09</span></div>
+            <div style="flex:1;border:1px solid var(--ln);border-radius:14px;padding:12px 0;display:flex;flex-direction:column;align-items:center;gap:6px"><span style="font:600 9px/1 'JetBrains Mono',monospace">SAT</span><span style="font:900 30px/.8 'Big Shoulders Display',sans-serif">10</span></div>
+            <div style="flex:1;border:1px solid var(--ln);border-radius:14px;padding:12px 0;display:flex;flex-direction:column;align-items:center;gap:6px"><span style="font:600 9px/1 'JetBrains Mono',monospace">SUN</span><span style="font:900 30px/.8 'Big Shoulders Display',sans-serif">11</span></div>
+          </div>
+          <div style="padding:18px 22px 0;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;font:600 14px/1 'JetBrains Mono',monospace;text-align:center">
+            <span style="border:1px solid var(--ln);border-radius:12px;padding:15px 0;color:var(--mu);text-decoration:line-through">7:30</span>
+            <span style="border:1px solid var(--ln);border-radius:12px;padding:15px 0">8:00</span>
+            <span style="border:1px solid var(--ln);border-radius:12px;padding:15px 0">8:30</span>
+            <span style="border:1px solid var(--ln);border-radius:12px;padding:15px 0;color:var(--mu);text-decoration:line-through">9:00</span>
+            <span style="background:var(--ac);color:var(--on);border-radius:12px;padding:15px 0">9:30</span>
+            <span style="border:1px solid var(--ln);border-radius:12px;padding:15px 0">10:00</span>
+            <span style="border:1px solid var(--ln);border-radius:12px;padding:15px 0">10:30</span>
+            <span style="border:1px solid var(--ln);border-radius:12px;padding:15px 0">11:00</span>
+          </div>
+          <div style="position:absolute;left:14px;right:14px;bottom:30px;display:flex;flex-direction:column;gap:8px">
+            <span style="border:1.5px solid var(--tx);padding:18px 0;border-radius:99px;text-align:center;font:800 11px/1 Archivo,sans-serif;letter-spacing:.14em">PICK TABLE ON MAP</span>
+            <span style="background:var(--ac);color:var(--on);padding:20px 0;border-radius:99px;text-align:center;font:800 12px/1 Archivo,sans-serif;letter-spacing:.14em">CONTINUE · FRI 9:30 →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:10px;align-items:center;font:500 12px/1 'JetBrains Mono',monospace;color:#B5B2AA"><span style="background:#CFFF2E;color:#0B0B0D;padding:4px 7px;border-radius:4px;font-weight:600">M05</span>Confirmation</div>
+      <div style="padding:10px;background:#000;border-radius:58px;box-shadow:0 30px 60px rgba(0,0,0,.4)">
+        <div data-screen-label="M05 Confirmation" style="position:relative;width:390px;height:844px;border-radius:48px;overflow:hidden;background:var(--bg);color:var(--tx)">
+          <div style="height:50px;display:flex;justify-content:space-between;align-items:center;padding:0 30px;font:600 15px/1 Archivo,sans-serif"><span>9:41</span><span style="width:110px;height:30px;border-radius:99px;background:#000"></span><span style="font:600 11px/1 'JetBrains Mono',monospace">5G ▮▮▮</span></div>
+          <div style="padding:24px 22px 0;font:900 128px/.9 'Big Shoulders Display',sans-serif">YOU’RE<br><span style="color:var(--act)">IN.</span></div>
+          <div style="margin:30px 22px 0;background:var(--ac);color:var(--on);border-radius:24px;transform:rotate(-2deg)">
+            <div style="padding:22px;display:flex;flex-direction:column;gap:12px"><div style="display:flex;justify-content:space-between;font:700 10px/1 'JetBrains Mono',monospace;letter-spacing:.12em"><span>ADMIT 4</span><span>FRI 09.10</span></div><div style="font:900 56px/.82 'Big Shoulders Display',sans-serif">BOOTH 02<br>9:30 PM</div></div>
+            <div style="border-top:2px dashed color-mix(in srgb,var(--on) 35%,transparent);padding:16px 22px;display:flex;justify-content:space-between;align-items:center"><span style="font:600 11px/1.5 'JetBrains Mono',monospace">LL-0917-B02<br>SHOW AT DOOR</span><span style="width:72px;height:72px;border-radius:10px;background:var(--on);display:grid;place-items:center;font:600 8px/1 'JetBrains Mono',monospace;color:var(--ac)">[ QR ]</span></div>
+          </div>
+          <div style="position:absolute;left:14px;right:14px;bottom:30px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <span style="border:1.5px solid var(--tx);padding:18px 0;border-radius:99px;text-align:center;font:800 11px/1 Archivo,sans-serif;letter-spacing:.12em">CALENDAR</span>
+            <span style="background:var(--ac);color:var(--on);padding:18px 0;border-radius:99px;text-align:center;font:800 11px/1 Archivo,sans-serif;letter-spacing:.12em">PRE-ORDER</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:10px;align-items:center;font:500 12px/1 'JetBrains Mono',monospace;color:#B5B2AA"><span style="background:#CFFF2E;color:#0B0B0D;padding:4px 7px;border-radius:4px;font-weight:600">M06</span>Rewards</div>
+      <div style="padding:10px;background:#000;border-radius:58px;box-shadow:0 30px 60px rgba(0,0,0,.4)">
+        <div data-screen-label="M06 Rewards" style="position:relative;width:390px;height:844px;border-radius:48px;overflow:hidden;background:var(--bg);color:var(--tx)">
+          <div style="height:50px;display:flex;justify-content:space-between;align-items:center;padding:0 30px;font:600 15px/1 Archivo,sans-serif"><span>9:41</span><span style="width:110px;height:30px;border-radius:99px;background:#000"></span><span style="font:600 11px/1 'JetBrains Mono',monospace">5G ▮▮▮</span></div>
+          <div style="padding:14px 22px 0;font:900 80px/.8 'Big Shoulders Display',sans-serif">HEY,<br>JORDAN.</div>
+          <div style="margin:22px 22px 0;aspect-ratio:1.6;border-radius:22px;background:var(--ac);color:var(--on);padding:20px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between">
+            <div style="display:flex;justify-content:space-between;font:700 10px/1 'JetBrains Mono',monospace;letter-spacing:.12em"><span>LOWLIFE MEMBERS</span><span>2/3</span></div>
+            <div><div style="font:900 52px/.82 'Big Shoulders Display',sans-serif">REGULAR</div><div style="font:700 13px/1 'JetBrains Mono',monospace;margin-top:8px">1,240 PTS</div></div>
+            <div style="height:7px;border-radius:99px;background:color-mix(in srgb,var(--on) 18%,transparent)"><div style="width:62%;height:100%;background:var(--on);border-radius:99px"></div></div>
+          </div>
+          <div style="padding:22px 22px 0;display:flex;flex-direction:column">
+            <span style="font:600 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--mu);margin-bottom:6px">SPEND POINTS</span>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--ln)"><span style="font:800 20px/1 'Big Shoulders Display',sans-serif">ROUND OF SHOTS</span><span style="background:var(--ac);color:var(--on);padding:9px 12px;border-radius:99px;font:700 10px/1 'JetBrains Mono',monospace">500</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--ln)"><span style="font:800 20px/1 'Big Shoulders Display',sans-serif">SKIP-THE-LINE</span><span style="background:var(--ac);color:var(--on);padding:9px 12px;border-radius:99px;font:700 10px/1 'JetBrains Mono',monospace">800</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;opacity:.45"><span style="font:800 20px/1 'Big Shoulders Display',sans-serif">NAME A COCKTAIL</span><span style="border:1px solid var(--ln);padding:9px 12px;border-radius:99px;font:700 10px/1 'JetBrains Mono',monospace">2,000</span></div>
+          </div>
+          <div style="position:absolute;left:0;right:0;bottom:0;height:84px;border-top:1px solid var(--ln);background:var(--bg);display:grid;grid-template-columns:repeat(4,1fr);padding-top:14px;font:700 10px/1 'JetBrains Mono',monospace;letter-spacing:.1em;text-align:center;color:var(--mu)"><span>HOME</span><span>MENU</span><span>BOOK</span><span style="color:var(--act)">ME ●</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section></x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;mode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dark&quot;,&quot;light&quot;],&quot;default&quot;:&quot;dark&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;lime&quot;,&quot;electric&quot;,&quot;hot&quot;],&quot;default&quot;:&quot;lime&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;live&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { tables: null, count: 2, seats: 14 };
+  static T = [
+    ...[0,1,2,3,4,5,6,7].map(i => ({ id: 'S' + (i + 1), x: 64 + i * 62, y: 92, w: 32, h: 32, r: '50%', z: 'bar' })),
+    ...[0,1,2,3].map(i => ({ id: 'B' + (i + 1), x: 40, y: 168 + i * 92, w: 96, h: 72, r: '14px', z: 'booth' })),
+    ...[0,1,2].flatMap(c => [0,1].map(r => ({ id: 'T' + (c * 2 + r + 1), x: 200 + c * 118, y: 180 + r * 112, w: 68, h: 68, r: '50%', z: 'floor' }))),
+    ...[0,1,2,3,4].map(i => ({ id: 'C' + (i + 1), x: 226 + i * 66, y: 484, w: 32, h: 32, r: '50%', z: 'chef' })),
+    ...[[660,86],[760,86],[660,196],[760,196]].map(([x,y],i) => ({ id: 'P' + (i + 1), x, y, w: 76, h: 76, r: '12px', z: 'terrace' })),
+    { id: 'P5', x: 660, y: 316, w: 176, h: 76, r: '14px', z: 'terrace' },
+    { id: 'P6', x: 660, y: 412, w: 176, h: 76, r: '14px', z: 'terrace' },
+  ];
+  componentDidMount() {
+    const taken = ['S2','S3','S6','B1','T2','T5','C1','C2','C4','P2','P5'], held = ['T3','S7'];
+    this.setState({ tables: Component.T.map(t => ({ ...t, s: t.id === 'B2' ? 'sel' : taken.includes(t.id) ? 'taken' : held.includes(t.id) ? 'held' : 'free' })) });
+    this.apply();
+    this.iv = setInterval(() => this.tick(), 1900);
+  }
+  componentDidUpdate() { this.apply(); }
+  componentWillUnmount() { clearInterval(this.iv); }
+  apply() {
+    const r = document.documentElement, mode = this.props.mode ?? 'dark';
+    r.dataset.mode = mode;
+    const acc = { lime: ['#CFFF2E', '#4A6800'], electric: ['#3DF2FF', '#006C75'], hot: ['#FF3D8B', '#B3004B'] }[this.props.accent ?? 'lime'];
+    r.style.setProperty('--ac', acc[0]);
+    r.style.setProperty('--act', mode === 'light' ? acc[1] : acc[0]);
+  }
+  tick() {
+    if (this.props.live === false || !this.state.tables) return;
+    this.setState(st => {
+      const tables = st.tables.slice();
+      const pool = tables.map((t, i) => i).filter(i => tables[i].s !== 'sel');
+      const i = pool[Math.floor(Math.random() * pool.length)];
+      const next = { free: 'held', held: 'taken', taken: 'free' }[tables[i].s];
+      tables[i] = { ...tables[i], s: next };
+      const free = tables.filter(t => t.s === 'free').length;
+      return { tables, count: st.count >= 6 ? 2 : st.count + (Math.random() < .4 ? 1 : 0), seats: Math.max(4, free) };
+    });
+  }
+  renderVals() {
+    const h = React.createElement;
+    const { count, seats } = this.state;
+    const liveDot = h('span', { style: { width: 8, height: 8, borderRadius: '50%', background: 'var(--ac)', display: 'inline-block', flex: 'none', animation: 'llpulse 1.6s ease-out infinite' } });
+    const marqText = 'NEGRONI SBAGLIATO ✶ $6 OYSTERS TIL 7 ✶ DJ KAYA FRI ✶ KITCHEN TIL 1AM ✶ BAD DECISIONS ✶ ';
+    const marquee = h('div', { style: { display: 'flex', width: 'max-content', animation: 'llmarq 26s linear infinite' } }, [0, 1].map(i => h('span', { key: i, style: { paddingRight: 0 } }, marqText.repeat(2))));
+    const cartBadge = h('span', { key: 'b' + count, style: { display: 'inline-block', animation: 'llbump .55s cubic-bezier(.3,1.6,.5,1)' } }, count);
+    const toast = h('div', { key: 't' + count, style: { position: 'absolute', top: 108, right: 48, display: 'flex', gap: 12, alignItems: 'center', background: 'var(--tx)', color: 'var(--bg)', padding: '14px 18px 14px 14px', borderRadius: 999, font: "700 12px/1 'JetBrains Mono',monospace", letterSpacing: '.1em', animation: 'lltoast 3.8s ease forwards', boxShadow: '0 20px 40px rgba(0,0,0,.35)', zIndex: 2 } },
+      h('span', { style: { width: 26, height: 26, borderRadius: '50%', background: 'var(--ac)', color: 'var(--on)', display: 'grid', placeItems: 'center' } }, '+1'), 'NEON GIMLET ADDED TO BAG');
+    const col = {
+      free: { bg: 'transparent', bd: '1.5px solid var(--ac)', fg: 'var(--act)', sh: 'none' },
+      held: { bg: 'transparent', bd: '1.5px dashed var(--mu)', fg: 'var(--mu)', sh: 'none' },
+      taken: { bg: 'repeating-linear-gradient(45deg,var(--ln) 0 4px,transparent 4px 8px)', bd: '1.5px solid transparent', fg: 'var(--mu)', sh: 'none' },
+      sel: { bg: 'var(--ac)', bd: '1.5px solid var(--ac)', fg: 'var(--on)', sh: '0 0 0 8px color-mix(in srgb,var(--ac) 22%,transparent),0 0 40px color-mix(in srgb,var(--ac) 50%,transparent)' },
+    };
+    const tables = (this.state.tables || []).map(t => ({ ...t, l: t.x + 'px', t: t.y + 'px', wd: t.w + 'px', ht: t.h + 'px', ...col[t.s], label: t.s === 'held' ? 'HELD' : t.id }));
+    const hits = [
+      { n: '01', name: 'Bad Decisions', price: 17, spec: 'Mezcal, passionfruit, ancho chili, lime, smoke', shot: 'SMOKING COUPE' },
+      { n: '02', name: 'Velvet Underground', price: 18, spec: 'Rye, black cherry, cacao nib, bitters', shot: 'ROCKS, BIG CUBE' },
+      { n: '03', name: 'Neon Gimlet', price: 16, spec: 'Gin, makrut lime leaf, cucumber, salt', shot: 'GLOWING GREEN' },
+      { n: '04', name: 'Clean Slate', price: 11, spec: 'Zero-proof: yuzu, verjus, tonic, shiso', shot: 'HIGHBALL, ICE' },
+    ];
+    const dishes = [
+      { name: 'Burnt Honey Wings', desc: 'Six wings, gochujang butter, sesame, scallion.', price: 14, tag: '🌶 LOUD', shot: 'WINGS, GLAZE CLOSE-UP' },
+      { name: 'Wagyu Smash Sliders', desc: 'Two per order. Black garlic aioli, pickled shallot.', price: 18, tag: '#1 AFTER MIDNIGHT', shot: 'SLIDERS, CHEESE PULL' },
+      { name: 'Yuzu Tuna Crudo', desc: 'Chili oil, crispy shallot, finger lime.', price: 19, tag: 'GF', shot: 'CRUDO, TOP-DOWN' },
+      { name: 'Filthy Truffle Fries', desc: 'Parmesan snow, truffle salt, aioli.', price: 11, tag: 'VEG', shot: 'FRIES IN PAPER CONE' },
+      { name: 'Charred Corn Ribs', desc: 'Miso butter, lime, cotija, tajín.', price: 12, tag: 'VEG · GF', shot: 'CORN RIBS, CHAR' },
+      { name: 'Hot Honey Chicken Bao', desc: 'Buttermilk thigh, kewpie slaw, pickles.', price: 15, tag: 'NEW', shot: 'BAO, HAND-HELD' },
+    ];
+    const events = [
+      { d: '09', m: 'OCT', w: 'FRI', title: 'DJ KAYA — DISCO AFTER DARK', meta: 'DISCO · BOOGIE · 10PM–3AM', cta: 'GUESTLIST' },
+      { d: '10', m: 'OCT', w: 'SAT', title: 'HOUSE PARTY: MARLO B2B ITO', meta: 'HOUSE · 10PM–3AM · $15', cta: 'TICKETS' },
+      { d: '14', m: 'OCT', w: 'WED', title: 'MEZCAL TASTING WITH ALMA', meta: '6 POURS · 7PM · 24 SEATS', cta: 'BOOK $45' },
+      { d: '16', m: 'OCT', w: 'THU', title: 'LOUD QUIZ (LOSERS BUY)', meta: 'TEAMS OF 6 · 8PM · FREE', cta: 'ENTER' },
+      { d: '17', m: 'OCT', w: 'FRI', title: 'LIVE: THE SOFT EXITS', meta: 'SOUL · NEO-JAZZ · 9PM', cta: 'TICKETS' },
+    ];
+    return { events, liveDot, marquee, cartBadge, toast, tables, hits, dishes, seats, count };
+  }
+}
+</script>
+</body>
+</html>

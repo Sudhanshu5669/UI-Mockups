@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="height:88px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;border-bottom:1px solid var(--ln);background:var(--bg);color:var(--tx);font-family:Archivo,sans-serif;box-sizing:border-box">
+  <div style="display:flex;align-items:baseline;gap:10px">
+    <span style="font:900 36px/1 'Big Shoulders Display',sans-serif;letter-spacing:.02em">LOWLIFE</span>
+    <span style="font:600 10px/1 'JetBrains Mono',monospace;color:var(--act);letter-spacing:.1em">TIL 3AM</span>
+  </div>
+  <nav style="display:flex;gap:36px">
+    <sc-for list="{{ items }}" as="it" hint-placeholder-count="6">
+      <span style="font:700 12px/1 Archivo,sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:8px 0;border-bottom:2px solid {{ it.line }};opacity:{{ it.op }};cursor:pointer;transition:opacity .2s" style-hover="opacity:1">{{ it.label }}</span>
+    </sc-for>
+  </nav>
+  <div style="display:flex;align-items:center;gap:20px">
+    <span style="font:600 12px/1 Archivo,sans-serif;letter-spacing:.14em;text-transform:uppercase;opacity:.7">Sign in</span>
+    <div style="display:flex;align-items:center;gap:10px;background:var(--ac);color:var(--on);padding:10px 10px 10px 18px;border-radius:999px;font:800 12px/1 Archivo,sans-serif;letter-spacing:.14em;cursor:pointer;transition:transform .2s" style-hover="transform:scale(1.05)">
+      <span>BAG</span>
+      <span style="display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--on);color:var(--ac);font:700 11px/1 'JetBrains Mono',monospace">{{ badge }}</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:88},&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;menu&quot;,&quot;book&quot;,&quot;events&quot;,&quot;private&quot;,&quot;rewards&quot;,&quot;visit&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;badge&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;ReactNode&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const a = this.props.active ?? 'home';
+    const items = [['menu','Menu'],['book','Book'],['events','Events'],['private','Private'],['rewards','Rewards'],['visit','Visit']]
+      .map(([k,l]) => ({ label: l, line: k === a ? 'var(--ac)' : 'transparent', op: k === a ? 1 : .62 }));
+    return { items, badge: this.props.badge ?? 2 };
+  }
+}
+</script>
+</body>
+</html>
