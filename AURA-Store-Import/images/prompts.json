@@ -1,0 +1,216 @@
+[
+  {
+    "id": "aura-p1",
+    "file": "product-1-front.png",
+    "prompt": "Use case: product-mockup. Premium contemporary minimalist fashion e-commerce photograph. Warm neutral palette, realistic fabric detail, soft directional studio light, muted ivory seamless backdrop. No text, branding, watermark, borders, labels, or collage. Full product clearly visible with generous margins, portrait 4:5 framing. Subject: long camel double-faced Italian wool overcoat, easy shoulders, notch lapels, minimal single-breasted front and black buttons, unlined relaxed tailoring. Front view, clean sculptural ghost-mannequin styling with no mannequin visible."
+  },
+  {
+    "id": "aura-p2",
+    "file": "product-2-front.png",
+    "prompt": "Use case: product-mockup. Premium contemporary minimalist fashion e-commerce photograph. Warm neutral palette, realistic fabric detail, soft directional studio light, muted ivory seamless backdrop. No text, branding, watermark, borders, labels, or collage. Full product clearly visible with generous margins, portrait 4:5 framing. Subject: oat-colored brushed merino-alpaca sweater, relaxed slightly cropped silhouette, crew neck, dropped shoulders, ribbed cuffs and hem. Front view, clean sculptural ghost-mannequin styling with no mannequin visible."
+  },
+  {
+    "id": "aura-p3",
+    "file": "product-3-front.png",
+    "prompt": "Use case: product-mockup. Premium contemporary minimalist fashion e-commerce photograph. Warm neutral palette, realistic fabric detail, soft directional studio light, muted ivory seamless backdrop. No text, branding, watermark, borders, labels, or collage. Full product clearly visible with generous margins, portrait 4:5 framing. Subject: ivory sandwashed silk shirt, relaxed cut, soft camp collar, mother-of-pearl buttons, short sleeves. Front view, clean sculptural ghost-mannequin styling with no mannequin visible."
+  },
+  {
+    "id": "aura-p4",
+    "file": "product-4-front.png",
+    "prompt": "Use case: product-mockup. Premium contemporary minimalist fashion e-commerce photograph. Warm neutral palette, realistic fabric detail, soft directional studio light, muted ivory seamless backdrop. No text, branding, watermark, borders, labels, or collage. Full product clearly visible with generous margins, portrait 4:5 framing. Subject: olive heavy cotton twill cargo trousers, wide straight legs, low-profile utility pockets. Front view, clean sculptural ghost-mannequin styling with no mannequin visible."
+  },
+  {
+    "id": "aura-p5",
+    "file": "product-5-front.png",
+    "prompt": "Use case: product-mockup. Premium contemporary minimalist fashion e-commerce photograph. Warm neutral palette, realistic fabric detail, soft directional studio light, muted ivory seamless backdrop. No text, branding, watermark, borders, labels, or collage. Full product clearly visible with generous margins, portrait 4:5 framing. Subject: black recycled wool crepe midi skirt, one deep front pleat, clean waistband, concealed side zip. Front view, clean sculptural ghost-mannequin styling with no mannequin visible."
+  },
+  {
+    "id": "aura-p6",
+    "file": "product-6-front.png",
+    "prompt": "Use case: product-mockup. Premium contemporary minimalist fashion e-commerce photograph. Warm neutral palette, realistic fabric detail, soft directional studio light, muted ivory seamless backdrop. No text, branding, watermark, borders, labels, or collage. Full product clearly visible with generous margins, portrait 4:5 framing. Subject: cognac vegetable-tanned leather tote, sculptural curved side gussets, two long shoulder straps, fits a 14-inch laptop, no hardware or logos. Front view, clean sculptural ghost-mannequin styling (bag standing upright)."
+  },
+  {
+    "id": "aura-p7",
+    "file": "product-7-front.png",
+    "prompt": "Use case: product-mockup. Premium contemporary minimalist fashion e-commerce photograph. Warm neutral palette, realistic fabric detail, soft directional studio light, muted ivory seamless backdrop. No text, branding, watermark, borders, labels, or collage. Full product clearly visible with generous margins, portrait 4:5 framing. Subject: white fine-rib organic cotton tee, close clean fit, short sleeves and crew neck. Front view, clean sculptural ghost-mannequin styling with no mannequin visible."
+  },
+  {
+    "id": "aura-p8",
+    "file": "product-8-front.png",
+    "prompt": "Use case: product-mockup. Premium contemporary minimalist fashion e-commerce photograph. Warm neutral palette, realistic fabric detail, soft directional studio light, muted ivory seamless backdrop. No text, branding, watermark, borders, labels, or collage. Full product clearly visible with generous margins, portrait 4:5 framing. Subject: rust orange matte ripstop quilted puffer vest, simple stand collar, front zip, recycled down fill, two discreet side pockets. Front view, clean sculptural ghost-mannequin styling with no mannequin visible."
+  },
+  {
+    "id": "aura-hero",
+    "file": "campaign-coat.png",
+    "prompt": "Use case: ads-marketing. Premium fashion campaign photograph, portrait 4:5 framing, no text or logos. A stylish adult woman with short dark hair wearing a long camel wool overcoat, ivory knit and black tailored trousers. Full-length natural pose beside pale stone modern architecture, overcast daylight, restrained warm neutral grading, sophisticated magazine photography, realistic fabric detail."
+  },
+  {
+    "id": "aura-hero-full",
+    "file": "campaign-street.png",
+    "prompt": "Use case: ads-marketing. Wide horizontal 16:9 premium autumn fashion street campaign. Two stylish adult models walking beside warm grey concrete architecture: one wears a long camel wool overcoat with black trousers and cognac leather tote, the other an oat knit sweater and olive wide-leg cargos. Quiet urban morning, editorial natural daylight, sophisticated muted neutral colors, subjects on right two-thirds, dark stone in lower left offers room for overlaid white page typography. No text, logo or watermark."
+  },
+  {
+    "id": "aura-cat-outer",
+    "file": "category-outerwear.png",
+    "prompt": "Use case: product-mockup. Premium editorial fashion photo, portrait 4:5. Stylish adult model wearing a long camel wool overcoat with relaxed shoulders, black buttons and clean notch lapels, standing beside warm ivory stone wall. Crop from neck to just below coat hem; rich wool texture, understated soft daylight, neutral palette, no text, logo or watermark."
+  },
+  {
+    "id": "aura-cat-knit",
+    "file": "category-knitwear.png",
+    "prompt": "Use case: product-mockup. Premium editorial fashion photo, portrait 4:5. Adult model wearing an oat brushed merino-alpaca crewneck sweater, relaxed slightly cropped fit, ribbed cuffs and hem. Seated with arms gently folded, face cropped out above neck, warm beige studio backdrop, directional soft light reveals fine fuzzy knit. No text, logo or watermark."
+  },
+  {
+    "id": "aura-cat-acc",
+    "file": "category-accessories.png",
+    "prompt": "Use case: product-mockup. Premium fashion accessories still life, portrait 4:5. A cognac vegetable-tanned leather tote with two long shoulder straps and curved side gussets on a warm stone plinth, full bag visible, rich natural grain, ivory studio wall and gentle angled shadow. Refined editorial luxury photography, no text, logo or watermark."
+  },
+  {
+    "id": "aura-journal",
+    "file": "atelier-process.png",
+    "prompt": "Use case: photorealistic-natural. Wide horizontal premium fashion atelier editorial photograph. Close view of a craftsperson's hands carefully hand-stitching camel double-faced wool fabric at a warm oak worktable; tailoring shears, thread spools and paper pattern pieces nearby. Soft natural window light, quiet authentic workshop, detailed fabric texture, muted warm neutrals. No readable writing, no logo, no watermark."
+  },
+  {
+    "id": "aura-p2-1",
+    "file": "product-2-detail.png",
+    "prompt": "Use case: product-mockup. Input image is a product design reference. Generate a NEW premium e-commerce photograph of the SAME garment, preserve its exact color, material, silhouette and construction. Close-up of the fabric and a characteristic construction detail, fine visible fibers, seams or ribbing; the garment fills frame, editorial macro. Warm ivory seamless studio background, soft natural directional lighting, portrait 4:5. No text, branding, watermark or collage.",
+    "reference": "product-2-front.png"
+  },
+  {
+    "id": "aura-p2-2",
+    "file": "product-2-back.png",
+    "prompt": "Use case: product-mockup. Input image is a product design reference. Generate a NEW premium e-commerce photograph of the SAME garment, preserve its exact color, material, silhouette and construction. Full back view of the exact same garment, ghost mannequin with no mannequin visible, entire garment in frame and generous margins. Warm ivory seamless studio background, soft natural directional lighting, portrait 4:5. No text, branding, watermark or collage.",
+    "reference": "product-2-front.png"
+  },
+  {
+    "id": "aura-p2-3",
+    "file": "product-2-model.png",
+    "prompt": "Use case: product-mockup. Input image is a product design reference. Generate a NEW premium e-commerce photograph of the SAME garment, preserve its exact color, material, silhouette and construction. An adult fashion model wearing the exact referenced garment, relaxed natural pose, coordinated minimalist neutral clothing; the referenced product completely visible. Full length for trousers, waist-up for tops. Warm ivory seamless studio background, soft natural directional lighting, portrait 4:5. No text, branding, watermark or collage.",
+    "reference": "product-2-front.png"
+  },
+  {
+    "id": "aura-p3-1",
+    "file": "product-3-detail.png",
+    "prompt": "Use case: product-mockup. Input image is a product design reference. Generate a NEW premium e-commerce photograph of the SAME garment, preserve its exact color, material, silhouette and construction. Close-up of the fabric and a characteristic construction detail, fine visible fibers, seams or ribbing; the garment fills frame, editorial macro. Warm ivory seamless studio background, soft natural directional lighting, portrait 4:5. No text, branding, watermark or collage.",
+    "reference": "product-3-front.png"
+  },
+  {
+    "id": "aura-p3-2",
+    "file": "product-3-back.png",
+    "prompt": "Use case: product-mockup. Input image is a product design reference. Generate a NEW premium e-commerce photograph of the SAME garment, preserve its exact color, material, silhouette and construction. Full back view of the exact same garment, ghost mannequin with no mannequin visible, entire garment in frame and generous margins. Warm ivory seamless studio background, soft natural directional lighting, portrait 4:5. No text, branding, watermark or collage.",
+    "reference": "product-3-front.png"
+  },
+  {
+    "id": "aura-p3-3",
+    "file": "product-3-model.png",
+    "prompt": "Use case: product-mockup. Input image is a product design reference. Generate a NEW premium e-commerce photograph of the SAME garment, preserve its exact color, material, silhouette and construction. An adult fashion model wearing the exact referenced garment, relaxed natural pose, coordinated minimalist neutral clothing; the referenced product completely visible. Full length for trousers, waist-up for tops. Warm ivory seamless studio background, soft natural directional lighting, portrait 4:5. No text, branding, watermark or collage.",
+    "reference": "product-3-front.png"
+  },
+  {
+    "id": "aura-p4-1",
+    "file": "product-4-detail.png",
+    "prompt": "Use case: product-mockup. Input image is a product design reference. Generate a NEW premium e-commerce photograph of the SAME garment, preserve its exact color, material, silhouette and construction. Close-up of the fabric and a characteristic construction detail, fine visible fibers, seams or ribbing; the garment fills frame, editorial macro. Warm ivory seamless studio background, soft natural directional lighting, portrait 4:5. No text, branding, watermark or collage.",
+    "reference": "product-4-front.png"
+  },
+  {
+    "id": "aura-p4-2",
+    "file": "product-4-back.png",
+    "prompt": "Use case: product-mockup. Input image is a product design reference. Generate a NEW premium e-commerce photograph of the SAME garment, preserve its exact color, material, silhouette and construction. Full back view of the exact same garment, ghost mannequin with no mannequin visible, entire garment in frame and generous margins. Warm ivory seamless studio background, soft natural directional lighting, portrait 4:5. No text, branding, watermark or collage.",
+    "reference": "product-4-front.png"
+  },
+  {
+    "id": "aura-p4-3",
+    "file": "product-4-model.png",
+    "prompt": "Use case: product-mockup. Input image is a product design reference. Generate a NEW premium e-commerce photograph of the SAME garment, preserve its exact color, material, silhouette and construction. An adult fashion model wearing the exact referenced garment, relaxed natural pose, coordinated minimalist neutral clothing; the referenced product completely visible. Full length for trousers, waist-up for tops. Warm ivory seamless studio background, soft natural directional lighting, portrait 4:5. No text, branding, watermark or collage.",
+    "reference": "product-4-front.png"
+  },
+  {
+    "id": "aura-p7-1",
+    "file": "product-7-detail.png",
+    "prompt": "Use case: product-mockup. Input image is a product design reference. Generate a NEW premium e-commerce photograph of the SAME garment, preserve its exact color, material, silhouette and construction. Close-up of the fabric and a characteristic construction detail, fine visible fibers, seams or ribbing; the garment fills frame, editorial macro. Warm ivory seamless studio background, soft natural directional lighting, portrait 4:5. No text, branding, watermark or collage.",
+    "reference": "product-7-front.png"
+  },
+  {
+    "id": "aura-p7-2",
+    "file": "product-7-back.png",
+    "prompt": "Use case: product-mockup. Input image is a product design reference. Generate a NEW premium e-commerce photograph of the SAME garment, preserve its exact color, material, silhouette and construction. Full back view of the exact same garment, ghost mannequin with no mannequin visible, entire garment in frame and generous margins. Warm ivory seamless studio background, soft natural directional lighting, portrait 4:5. No text, branding, watermark or collage.",
+    "reference": "product-7-front.png"
+  },
+  {
+    "id": "aura-p7-3",
+    "file": "product-7-model.png",
+    "prompt": "Use case: product-mockup. Input image is a product design reference. Generate a NEW premium e-commerce photograph of the SAME garment, preserve its exact color, material, silhouette and construction. An adult fashion model wearing the exact referenced garment, relaxed natural pose, coordinated minimalist neutral clothing; the referenced product completely visible. Full length for trousers, waist-up for tops. Warm ivory seamless studio background, soft natural directional lighting, portrait 4:5. No text, branding, watermark or collage.",
+    "reference": "product-7-front.png"
+  },
+  {
+    "id": "aura-p1-1",
+    "file": "product-1-detail.png",
+    "prompt": "Use case: product-mockup. Input image is a product design reference. Generate a NEW premium e-commerce photograph of the SAME product, preserve its exact color, material, silhouette and construction. Close-up of the material and a characteristic construction detail, fine visible fibers, grain, seams or stitching; product fills frame, editorial macro. Warm ivory seamless studio background, soft natural directional lighting, portrait 4:5. No text, branding, watermark or collage.",
+    "reference": "product-1-front.png"
+  },
+  {
+    "id": "aura-p1-2",
+    "file": "product-1-back.png",
+    "prompt": "Use case: product-mockup. Input image is a product design reference. Generate a NEW premium e-commerce photograph of the SAME product, preserve its exact color, material, silhouette and construction. Full back view of the exact same product, ghost mannequin with no mannequin visible for garments, bag standing upright for tote. Entire product in frame with generous margins. Warm ivory seamless studio background, soft natural directional lighting, portrait 4:5. No text, branding, watermark or collage.",
+    "reference": "product-1-front.png"
+  },
+  {
+    "id": "aura-p1-3",
+    "file": "product-1-model.png",
+    "prompt": "Use case: product-mockup. Input image is a product design reference. Generate a NEW premium e-commerce photograph of the SAME product, preserve its exact color, material, silhouette and construction. An adult fashion model wearing the exact referenced garment, product completely visible, relaxed natural pose, coordinated minimalist neutral clothing; full-length styling for overcoat or skirt, waist-up for vest or tote. Warm ivory seamless studio background, soft natural directional lighting, portrait 4:5. No text, branding, watermark or collage.",
+    "reference": "product-1-front.png"
+  },
+  {
+    "id": "aura-p5-1",
+    "file": "product-5-detail.png",
+    "prompt": "Use case: product-mockup. Input image is a product design reference. Generate a NEW premium e-commerce photograph of the SAME product, preserve its exact color, material, silhouette and construction. Close-up of the material and a characteristic construction detail, fine visible fibers, grain, seams or stitching; product fills frame, editorial macro. Warm ivory seamless studio background, soft natural directional lighting, portrait 4:5. No text, branding, watermark or collage.",
+    "reference": "product-5-front.png"
+  },
+  {
+    "id": "aura-p5-2",
+    "file": "product-5-back.png",
+    "prompt": "Use case: product-mockup. Input image is a product design reference. Generate a NEW premium e-commerce photograph of the SAME product, preserve its exact color, material, silhouette and construction. Full back view of the exact same product, ghost mannequin with no mannequin visible for garments, bag standing upright for tote. Entire product in frame with generous margins. Warm ivory seamless studio background, soft natural directional lighting, portrait 4:5. No text, branding, watermark or collage.",
+    "reference": "product-5-front.png"
+  },
+  {
+    "id": "aura-p5-3",
+    "file": "product-5-model.png",
+    "prompt": "Use case: product-mockup. Input image is a product design reference. Generate a NEW premium e-commerce photograph of the SAME product, preserve its exact color, material, silhouette and construction. An adult fashion model wearing the exact referenced garment, product completely visible, relaxed natural pose, coordinated minimalist neutral clothing; full-length styling for overcoat or skirt, waist-up for vest or tote. Warm ivory seamless studio background, soft natural directional lighting, portrait 4:5. No text, branding, watermark or collage.",
+    "reference": "product-5-front.png"
+  },
+  {
+    "id": "aura-p6-1",
+    "file": "product-6-detail.png",
+    "prompt": "Use case: product-mockup. Input image is a product design reference. Generate a NEW premium e-commerce photograph of the SAME product, preserve its exact color, material, silhouette and construction. Close-up of the material and a characteristic construction detail, fine visible fibers, grain, seams or stitching; product fills frame, editorial macro. Warm ivory seamless studio background, soft natural directional lighting, portrait 4:5. No text, branding, watermark or collage.",
+    "reference": "product-6-front.png"
+  },
+  {
+    "id": "aura-p6-2",
+    "file": "product-6-back.png",
+    "prompt": "Use case: product-mockup. Input image is a product design reference. Generate a NEW premium e-commerce photograph of the SAME product, preserve its exact color, material, silhouette and construction. Full back view of the exact same product, ghost mannequin with no mannequin visible for garments, bag standing upright for tote. Entire product in frame with generous margins. Warm ivory seamless studio background, soft natural directional lighting, portrait 4:5. No text, branding, watermark or collage.",
+    "reference": "product-6-front.png"
+  },
+  {
+    "id": "aura-p6-3",
+    "file": "product-6-model.png",
+    "prompt": "Use case: product-mockup. Input image is a product design reference. Generate a NEW premium e-commerce photograph of the SAME product, preserve its exact color, material, silhouette and construction. An adult fashion model carrying the exact referenced tote on their shoulder, entire bag visible, relaxed natural pose, coordinated minimalist neutral clothing; full-length styling for overcoat or skirt, waist-up for vest or tote. Warm ivory seamless studio background, soft natural directional lighting, portrait 4:5. No text, branding, watermark or collage.",
+    "reference": "product-6-front.png"
+  },
+  {
+    "id": "aura-p8-1",
+    "file": "product-8-detail.png",
+    "prompt": "Use case: product-mockup. Input image is a product design reference. Generate a NEW premium e-commerce photograph of the SAME product, preserve its exact color, material, silhouette and construction. Close-up of the material and a characteristic construction detail, fine visible fibers, grain, seams or stitching; product fills frame, editorial macro. Warm ivory seamless studio background, soft natural directional lighting, portrait 4:5. No text, branding, watermark or collage.",
+    "reference": "product-8-front.png"
+  },
+  {
+    "id": "aura-p8-2",
+    "file": "product-8-back.png",
+    "prompt": "Use case: product-mockup. Input image is a product design reference. Generate a NEW premium e-commerce photograph of the SAME product, preserve its exact color, material, silhouette and construction. Full back view of the exact same product, ghost mannequin with no mannequin visible for garments, bag standing upright for tote. Entire product in frame with generous margins. Warm ivory seamless studio background, soft natural directional lighting, portrait 4:5. No text, branding, watermark or collage.",
+    "reference": "product-8-front.png"
+  },
+  {
+    "id": "aura-p8-3",
+    "file": "product-8-model.png",
+    "prompt": "Use case: product-mockup. Input image is a product design reference. Generate a NEW premium e-commerce photograph of the SAME product, preserve its exact color, material, silhouette and construction. An adult fashion model wearing the exact referenced garment, product completely visible, relaxed natural pose, coordinated minimalist neutral clothing; full-length styling for overcoat or skirt, waist-up for vest or tote. Warm ivory seamless studio background, soft natural directional lighting, portrait 4:5. No text, branding, watermark or collage.",
+    "reference": "product-8-front.png"
+  }
+]

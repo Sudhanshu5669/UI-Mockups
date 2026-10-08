@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600&family=Unbounded:wght@400..700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html,body{margin:0;height:100%}
+*{-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+a:hover{opacity:.7}
+input::placeholder{color:currentColor;opacity:.45}
+@keyframes auraMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="height:100vh;width:100%;display:flex;align-items:center;justify-content:center;background:{{ stageBg }};transition:background .4s">
+<div style="position:relative;overflow:hidden;width:{{ L.frameW }};height:{{ L.frameH }};border-radius:{{ L.frameR }};box-shadow:{{ L.frameShadow }};background:{{ t.bg }};color:{{ t.ink }};font-family:{{ t.bodyF }};transition:width .5s cubic-bezier(.7,0,.2,1),height .5s cubic-bezier(.7,0,.2,1),border-radius .5s">
+<div ref="{{ scrollRef }}" style="height:100%;overflow-y:auto;overflow-x:hidden">
+
+<div style="height:34px;overflow:hidden;display:flex;align-items:center;background:{{ t.ink }};color:{{ t.bg }};font:500 11px/1 {{ t.monoF }};letter-spacing:.12em;text-transform:uppercase">
+<div style="display:flex;white-space:nowrap;animation:auraMarquee 38s linear infinite">
+<span style="padding-right:48px">Free shipping over {{ freeShipF }}  ✦  Complimentary 30-day returns  ✦  AW26 Collection now live  ✦  Made in small runs  ✦  Free shipping over {{ freeShipF }}  ✦  Complimentary 30-day returns  ✦  AW26 Collection now live  ✦  Made in small runs  ✦</span>
+<span style="padding-right:48px">Free shipping over {{ freeShipF }}  ✦  Complimentary 30-day returns  ✦  AW26 Collection now live  ✦  Made in small runs  ✦  Free shipping over {{ freeShipF }}  ✦  Complimentary 30-day returns  ✦  AW26 Collection now live  ✦  Made in small runs  ✦</span>
+</div>
+</div>
+
+<header style="position:sticky;top:0;z-index:20;height:68px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 {{ L.pad }};background:{{ t.headerBg }};backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid {{ t.line }}">
+<div style="display:flex;align-items:center;gap:28px;font-size:13px;letter-spacing:{{ t.navLs }};text-transform:{{ t.navCase }}">
+<sc-if value="{{ L.desk }}" hint-placeholder-val="{{ true }}">
+<sc-for list="{{ navLinks }}" as="n" hint-placeholder-count="4">
+<button onClick="{{ n.go }}" style="white-space:nowrap;background:none;border:none;padding:6px 0;font:inherit;letter-spacing:inherit;text-transform:inherit;color:{{ t.ink }};cursor:pointer;opacity:{{ n.op }};border-bottom:1px solid {{ n.bd }};transition:opacity .2s" style-hover="opacity:1">{{ n.label }}</button>
+</sc-for>
+</sc-if>
+<sc-if value="{{ L.mob }}" hint-placeholder-val="{{ false }}">
+<button onClick="{{ toggleMenu }}" style="background:none;border:none;padding:10px 0;cursor:pointer;display:flex;flex-direction:column;gap:5px;width:44px">
+<span style="display:block;width:22px;height:1.5px;background:{{ t.ink }}"></span>
+<span style="display:block;width:14px;height:1.5px;background:{{ t.ink }}"></span>
+</button>
+</sc-if>
+</div>
+<button onClick="{{ goHome }}" style="background:none;border:none;cursor:pointer;color:{{ t.ink }};font-family:{{ t.dispF }};font-size:{{ t.logoSize }};letter-spacing:{{ t.logoLs }};font-style:{{ t.logoStyle }};line-height:1;padding:0">AURA</button>
+<div style="display:flex;align-items:center;justify-content:flex-end;gap:22px;font-size:13px;letter-spacing:{{ t.navLs }};text-transform:{{ t.navCase }}">
+<sc-if value="{{ L.desk }}" hint-placeholder-val="{{ true }}">
+<span style="opacity:.7;cursor:pointer">Search</span>
+<span style="opacity:.7;cursor:pointer">Account</span>
+</sc-if>
+<button onClick="{{ openCart }}" style="background:none;border:none;cursor:pointer;color:{{ t.ink }};font:inherit;letter-spacing:inherit;text-transform:inherit;display:flex;align-items:center;gap:8px;padding:8px 0">Bag<span style="min-width:22px;height:22px;padding:0 6px;box-sizing:border-box;border-radius:999px;background:{{ t.accent }};color:{{ t.accentInk }};font:600 11px/22px {{ t.monoF }};text-align:center;transform:scale({{ bumpScale }});transition:transform .25s cubic-bezier(.3,1.8,.5,1)">{{ count }}</span></button>
+</div>
+</header>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<main data-screen-label="Home">
+<sc-if value="{{ heroSplit }}" hint-placeholder-val="{{ true }}">
+<section style="display:grid;grid-template-columns:{{ L.split }};min-height:{{ L.heroH }};border-bottom:1px solid {{ t.line }}">
+<div style="order:1;min-width:0;display:flex;flex-direction:column;justify-content:space-between;gap:40px;padding:{{ L.heroPad }}">
+<div style="display:flex;justify-content:space-between;font:500 11px/1 {{ t.monoF }};letter-spacing:.14em;text-transform:uppercase;color:{{ t.muted }}"><span>{{ t.eyebrow }}</span><span>01 / 03</span></div>
+<div style="display:flex;flex-direction:column;gap:28px">
+<h1 style="margin:0;font-family:{{ t.dispF }};font-weight:{{ t.dispW }};font-size:{{ heroSize }};line-height:{{ t.lh }};letter-spacing:{{ t.ls }};text-transform:{{ t.dispCase }}">{{ t.heroA }}<br><span style="font-style:{{ t.heroBStyle }};color:{{ t.heroBColor }}">{{ t.heroB }}</span></h1>
+<p style="margin:0;max-width:400px;font-size:16px;line-height:1.55;color:{{ t.muted }};text-wrap:pretty">{{ t.heroSub }}</p>
+<div style="display:flex;flex-wrap:wrap;gap:12px">
+<button onClick="{{ goShop }}" style="height:52px;padding:0 30px;border:none;background:{{ t.ink }};color:{{ t.bg }};border-radius:{{ t.btnR }};font:500 14px/1 {{ t.bodyF }};letter-spacing:{{ t.btnLs }};text-transform:{{ t.btnCase }};cursor:pointer;transition:transform .2s,opacity .2s" style-hover="opacity:.85" style-active="transform:scale(.97)">Shop the collection</button>
+<button onClick="{{ goOuter }}" style="height:52px;padding:0 30px;border:1px solid {{ t.ink }};background:transparent;color:{{ t.ink }};border-radius:{{ t.btnR }};font:500 14px/1 {{ t.bodyF }};letter-spacing:{{ t.btnLs }};text-transform:{{ t.btnCase }};cursor:pointer;transition:background .2s" style-hover="background:{{ t.surface }}">Outerwear</button>
+</div>
+</div>
+</div>
+<div style="order:{{ heroImgOrder }};position:relative;min-height:{{ L.heroImgH }};background:{{ t.surface }}">
+<image-slot id="aura-hero" src="images/campaign-coat.png" shape="rect" placeholder="Hero campaign image — model in coat, 4:5"></image-slot>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ heroFull }}" hint-placeholder-val="{{ false }}">
+<section style="position:relative;height:{{ L.heroH }};background:{{ t.surface }};overflow:hidden">
+<image-slot id="aura-hero-full" src="images/campaign-street.png" shape="rect" placeholder="Full-bleed campaign image — street shot"></image-slot>
+<div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.55) 100%)"></div>
+<div style="position:absolute;left:{{ L.pad }};right:{{ L.pad }};bottom:{{ L.pad }};display:flex;flex-direction:column;gap:24px;pointer-events:none;color:#fff">
+<div style="font:500 11px/1 {{ t.monoF }};letter-spacing:.14em;text-transform:uppercase">{{ t.eyebrow }}</div>
+<h1 style="margin:0;font-family:{{ t.dispF }};font-weight:{{ t.dispW }};font-size:{{ heroSize }};line-height:{{ t.lh }};letter-spacing:{{ t.ls }};text-transform:{{ t.dispCase }}">{{ t.heroA }}<br><span style="color:{{ t.heroBColor }}">{{ t.heroB }}</span></h1>
+<div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px">
+<p style="margin:0;max-width:380px;font-size:15px;line-height:1.55;text-wrap:pretty">{{ t.heroSub }}</p>
+<button onClick="{{ goShop }}" style="pointer-events:auto;height:56px;padding:0 34px;border:none;background:{{ t.accent }};color:{{ t.accentInk }};border-radius:{{ t.btnR }};font:600 14px/1 {{ t.bodyF }};letter-spacing:{{ t.btnLs }};text-transform:{{ t.btnCase }};cursor:pointer;transition:transform .2s" style-hover="transform:translateY(-2px)" style-active="transform:scale(.97)">Shop the drop →</button>
+</div>
+</div>
+</section>
+</sc-if>
+
+<section style="padding:{{ L.secPad }} {{ L.pad }} 0">
+<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:32px">
+<h2 style="margin:0;font-family:{{ t.dispF }};font-weight:{{ t.dispW }};font-size:{{ h2 }};line-height:{{ t.lh }};letter-spacing:{{ t.ls }};text-transform:{{ t.dispCase }}">Shop by category</h2>
+</div>
+<div style="display:grid;grid-template-columns:{{ L.grid3 }};gap:{{ L.gap }}">
+<sc-for list="{{ catTiles }}" as="c" hint-placeholder-count="3">
+<div style="position:relative;aspect-ratio:{{ L.tileRatio }};background:{{ t.surface }};border-radius:{{ t.radius }};overflow:hidden">
+<image-slot id="{{ c.slot }}" src="{{ images[c.slot] }}" shape="rect" placeholder="{{ c.ph }}"></image-slot>
+<button onClick="{{ c.go }}" style="position:absolute;left:16px;bottom:16px;right:16px;display:flex;justify-content:space-between;align-items:center;height:52px;padding:0 20px;border:none;background:{{ t.bg }};color:{{ t.ink }};border-radius:{{ t.btnR }};font:500 14px/1 {{ t.bodyF }};letter-spacing:{{ t.btnLs }};text-transform:{{ t.btnCase }};cursor:pointer;transition:padding .3s" style-hover="padding:0 26px">{{ c.name }}<span>→</span></button>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="padding:{{ L.secPad }} {{ L.pad }} 0">
+<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:32px">
+<h2 style="margin:0;font-family:{{ t.dispF }};font-weight:{{ t.dispW }};font-size:{{ h2 }};line-height:{{ t.lh }};letter-spacing:{{ t.ls }};text-transform:{{ t.dispCase }}">New arrivals</h2>
+<button onClick="{{ goShop }}" style="background:none;border:none;padding:6px 0;border-bottom:1px solid {{ t.ink }};color:{{ t.ink }};font:500 13px/1 {{ t.bodyF }};letter-spacing:{{ t.btnLs }};text-transform:{{ t.btnCase }};cursor:pointer">View all</button>
+</div>
+<div style="display:grid;grid-template-columns:{{ L.grid4 }};gap:{{ L.gridGap }}">
+<sc-for list="{{ newArrivals }}" as="p" hint-placeholder-count="4">
+<div onMouseEnter="{{ p.enter }}" onMouseLeave="{{ p.leave }}" style="display:flex;flex-direction:column;gap:12px;cursor:pointer">
+<div onClick="{{ p.open }}" style="position:relative;aspect-ratio:3/4;background:{{ t.surface }};border-radius:{{ t.radius }};overflow:hidden">
+<div style="position:absolute;inset:0;transform:scale({{ p.scale }});transition:transform .9s cubic-bezier(.2,.7,.2,1)"><image-slot id="{{ p.slot }}" src="{{ images[p.slot] }}" shape="rect" placeholder="{{ p.name }}" style="pointer-events:none"></image-slot></div>
+<sc-if value="{{ p.hasTag }}"><span style="position:absolute;top:12px;left:12px;padding:6px 9px;background:{{ t.bg }};color:{{ t.ink }};border-radius:{{ t.btnR }};font:500 10px/1 {{ t.monoF }};letter-spacing:.1em;text-transform:uppercase">{{ p.tag }}</span></sc-if>
+<div style="position:absolute;left:10px;right:10px;bottom:10px;padding:12px;display:flex;flex-direction:column;gap:10px;background:{{ t.bg }};border-radius:{{ t.radius }};opacity:{{ p.qaOp }};transform:translateY({{ p.qaY }});pointer-events:{{ p.qaPe }};transition:opacity .3s,transform .4s cubic-bezier(.2,.7,.2,1)">
+<div style="font:500 10px/1 {{ t.monoF }};letter-spacing:.12em;text-transform:uppercase;color:{{ t.muted }}">Quick add</div>
+<div style="display:flex;gap:6px"><sc-for list="{{ p.quick }}" as="q"><button onClick="{{ q.add }}" style="flex:1;height:34px;border:1px solid {{ t.line }};background:transparent;color:{{ t.ink }};border-radius:{{ t.radius }};font:500 12px/1 {{ t.bodyF }};cursor:pointer;transition:background .15s,color .15s" style-hover="background:{{ t.ink }};color:{{ t.bg }}">{{ q.s }}</button></sc-for></div>
+</div>
+</div>
+<div onClick="{{ p.open }}" style="display:flex;justify-content:space-between;gap:12px;font-size:14px">
+<div style="display:flex;flex-direction:column;gap:4px"><span style="font-weight:500">{{ p.name }}</span><span style="color:{{ t.muted }};font-size:13px">{{ p.colorsLabel }}</span></div>
+<span style="font-family:{{ t.monoF }};font-size:13px">{{ p.priceF }}</span>
+</div>
+<div style="display:flex;gap:6px"><sc-for list="{{ p.swatches }}" as="sw"><span style="width:10px;height:10px;border-radius:50%;background:{{ sw.c }};box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)"></span></sc-for></div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="padding:{{ L.secPad }} {{ L.pad }} 0">
+<div style="display:grid;grid-template-columns:{{ L.split }};gap:{{ L.bandGap }};align-items:center">
+<div style="position:relative;aspect-ratio:4/5;background:{{ t.surface }};border-radius:{{ t.radius }};overflow:hidden">
+<image-slot id="aura-journal" src="images/atelier-process.png" shape="rect" placeholder="Atelier / process image"></image-slot>
+</div>
+<div style="display:flex;flex-direction:column;gap:24px;max-width:480px">
+<span style="font:500 11px/1 {{ t.monoF }};letter-spacing:.14em;text-transform:uppercase;color:{{ t.muted }}">The Journal</span>
+<h2 style="margin:0;font-family:{{ t.dispF }};font-weight:{{ t.dispW }};font-size:{{ h2 }};line-height:{{ t.lh }};letter-spacing:{{ t.ls }};text-transform:{{ t.dispCase }};text-wrap:balance">Made slowly, in small runs.</h2>
+<p style="margin:0;font-size:16px;line-height:1.6;color:{{ t.muted }};text-wrap:pretty">Every AURA piece is cut by one of three family-run mills in Portugal and Italy. We make less, so it can last longer — and we tell you exactly where it came from.</p>
+<button onClick="{{ goShop }}" style="align-self:flex-start;background:none;border:none;padding:6px 0;border-bottom:1px solid {{ t.ink }};color:{{ t.ink }};font:500 13px/1 {{ t.bodyF }};letter-spacing:{{ t.btnLs }};text-transform:{{ t.btnCase }};cursor:pointer">Read the story →</button>
+</div>
+</div>
+</section>
+
+<section style="margin:{{ L.secPad }} {{ L.pad }} 0;padding:{{ L.nlPad }};background:{{ t.surface }};border-radius:{{ t.radius }};display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px">
+<h2 style="margin:0;font-family:{{ t.dispF }};font-weight:{{ t.dispW }};font-size:{{ h2 }};line-height:{{ t.lh }};letter-spacing:{{ t.ls }};text-transform:{{ t.dispCase }}">Join the inner circle</h2>
+<p style="margin:0;max-width:420px;font-size:15px;line-height:1.55;color:{{ t.muted }}">Early access to drops, private sales and the occasional letter from the studio.</p>
+<sc-if value="{{ notSubscribed }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;width:100%;max-width:460px;gap:8px;flex-wrap:wrap">
+<input value="{{ email }}" onChange="{{ onEmail }}" placeholder="Email address" style="flex:1 1 220px;height:52px;padding:0 18px;border:1px solid {{ t.line }};background:{{ t.bg }};color:{{ t.ink }};border-radius:{{ t.btnR }};font:400 14px {{ t.bodyF }};outline:none"></input>
+<button onClick="{{ subscribe }}" style="height:52px;padding:0 26px;border:none;background:{{ t.ink }};color:{{ t.bg }};border-radius:{{ t.btnR }};font:500 14px/1 {{ t.bodyF }};letter-spacing:{{ t.btnLs }};text-transform:{{ t.btnCase }};cursor:pointer" style-active="transform:scale(.97)">Subscribe</button>
+</div>
+</sc-if>
+<sc-if value="{{ subscribed }}" hint-placeholder-val="{{ false }}">
+<div style="height:52px;display:flex;align-items:center;gap:10px;font-size:15px"><span style="width:8px;height:8px;border-radius:50%;background:{{ t.accent }}"></span>You're on the list. Welcome in.</div>
+</sc-if>
+</section>
+</main>
+</sc-if>
+
+<sc-if value="{{ isShop }}" hint-placeholder-val="{{ false }}">
+<main data-screen-label="Product listing" style="padding:{{ L.topPad }} {{ L.pad }} 0">
+<div style="display:flex;flex-direction:column;gap:10px;margin-bottom:32px">
+<span style="font:500 11px/1 {{ t.monoF }};letter-spacing:.14em;text-transform:uppercase;color:{{ t.muted }}">Shop / {{ cat }}</span>
+<div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap">
+<h1 style="margin:0;font-family:{{ t.dispF }};font-weight:{{ t.dispW }};font-size:{{ h1 }};line-height:{{ t.lh }};letter-spacing:{{ t.ls }};text-transform:{{ t.dispCase }}">{{ shopTitle }}</h1>
+<span style="font:500 13px/1 {{ t.monoF }};color:{{ t.muted }}">{{ shopCount }}</span>
+</div>
+</div>
+<div style="position:sticky;top:68px;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:14px 0;margin-bottom:24px;background:{{ t.headerBg }};backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid {{ t.line }}">
+<div style="display:flex;gap:8px;overflow-x:auto;max-width:100%">
+<sc-for list="{{ chips }}" as="c" hint-placeholder-count="6">
+<button onClick="{{ c.pick }}" style="flex:none;height:36px;padding:0 16px;border:1px solid {{ c.bd }};background:{{ c.bg }};color:{{ c.fg }};border-radius:{{ t.btnR }};font:500 13px/1 {{ t.bodyF }};letter-spacing:{{ t.navLs }};text-transform:{{ t.navCase }};cursor:pointer;transition:background .2s,color .2s">{{ c.label }}</button>
+</sc-for>
+</div>
+<div style="display:flex;align-items:center;gap:4px;font-size:13px">
+<span style="color:{{ t.muted }};margin-right:6px">Sort</span>
+<sc-for list="{{ sorts }}" as="o" hint-placeholder-count="3">
+<button onClick="{{ o.pick }}" style="height:32px;padding:0 10px;border:none;background:none;color:{{ t.ink }};font:500 13px/1 {{ t.bodyF }};cursor:pointer;opacity:{{ o.op }};text-decoration:{{ o.ul }};text-underline-offset:4px">{{ o.label }}</button>
+</sc-for>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:{{ L.grid4 }};gap:{{ L.gridGapLg }} {{ L.gridGap }}">
+<sc-for list="{{ shopList }}" as="p" hint-placeholder-count="8">
+<div onMouseEnter="{{ p.enter }}" onMouseLeave="{{ p.leave }}" style="display:flex;flex-direction:column;gap:12px;cursor:pointer">
+<div onClick="{{ p.open }}" style="position:relative;aspect-ratio:3/4;background:{{ t.surface }};border-radius:{{ t.radius }};overflow:hidden">
+<div style="position:absolute;inset:0;transform:scale({{ p.scale }});transition:transform .9s cubic-bezier(.2,.7,.2,1)"><image-slot id="{{ p.slot }}" src="{{ images[p.slot] }}" shape="rect" placeholder="{{ p.name }}" style="pointer-events:none"></image-slot></div>
+<sc-if value="{{ p.hasTag }}"><span style="position:absolute;top:12px;left:12px;padding:6px 9px;background:{{ t.bg }};color:{{ t.ink }};border-radius:{{ t.btnR }};font:500 10px/1 {{ t.monoF }};letter-spacing:.1em;text-transform:uppercase">{{ p.tag }}</span></sc-if>
+<div style="position:absolute;left:10px;right:10px;bottom:10px;padding:12px;display:flex;flex-direction:column;gap:10px;background:{{ t.bg }};border-radius:{{ t.radius }};opacity:{{ p.qaOp }};transform:translateY({{ p.qaY }});pointer-events:{{ p.qaPe }};transition:opacity .3s,transform .4s cubic-bezier(.2,.7,.2,1)">
+<div style="font:500 10px/1 {{ t.monoF }};letter-spacing:.12em;text-transform:uppercase;color:{{ t.muted }}">Quick add</div>
+<div style="display:flex;gap:6px"><sc-for list="{{ p.quick }}" as="q"><button onClick="{{ q.add }}" style="flex:1;height:34px;border:1px solid {{ t.line }};background:transparent;color:{{ t.ink }};border-radius:{{ t.radius }};font:500 12px/1 {{ t.bodyF }};cursor:pointer;transition:background .15s,color .15s" style-hover="background:{{ t.ink }};color:{{ t.bg }}">{{ q.s }}</button></sc-for></div>
+</div>
+</div>
+<div onClick="{{ p.open }}" style="display:flex;justify-content:space-between;gap:12px;font-size:14px">
+<div style="display:flex;flex-direction:column;gap:4px"><span style="font-weight:500">{{ p.name }}</span><span style="color:{{ t.muted }};font-size:13px">{{ p.colorsLabel }}</span></div>
+<span style="font-family:{{ t.monoF }};font-size:13px">{{ p.priceF }}</span>
+</div>
+<div style="display:flex;gap:6px"><sc-for list="{{ p.swatches }}" as="sw"><span style="width:10px;height:10px;border-radius:50%;background:{{ sw.c }};box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)"></span></sc-for></div>
+</div>
+</sc-for>
+</div>
+</main>
+</sc-if>
+
+<sc-if value="{{ isProduct }}" hint-placeholder-val="{{ false }}">
+<main data-screen-label="Product detail" style="padding:{{ L.topPadSm }} {{ L.pad }} 0">
+<div style="display:flex;gap:8px;margin-bottom:20px;font:500 11px/1 {{ t.monoF }};letter-spacing:.12em;text-transform:uppercase;color:{{ t.muted }}">
+<button onClick="{{ goShop }}" style="background:none;border:none;padding:0;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;cursor:pointer">Shop</button><span>/</span>
+<button onClick="{{ goProdCat }}" style="background:none;border:none;padding:0;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;cursor:pointer">{{ prod.cat }}</button><span>/</span><span style="color:{{ t.ink }}">{{ prod.name }}</span>
+</div>
+<div style="display:grid;grid-template-columns:{{ L.pdp }};gap:{{ L.pdpGap }};align-items:start">
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="position:relative;aspect-ratio:4/5;background:{{ t.surface }};border-radius:{{ t.radius }};overflow:hidden">
+<sc-for list="{{ gallery }}" as="g" hint-placeholder-count="4">
+<div style="position:absolute;inset:0;opacity:{{ g.op }};pointer-events:{{ g.pe }};z-index:{{ g.z }};transition:opacity .5s ease"><image-slot id="{{ g.slot }}" src="{{ images[g.slot] }}" shape="rect" placeholder="{{ g.ph }}"></image-slot></div>
+</sc-for>
+<div style="position:absolute;right:14px;top:14px;z-index:3;padding:6px 10px;background:{{ t.bg }};border-radius:{{ t.btnR }};font:500 11px/1 {{ t.monoF }}">{{ imgCounter }}</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px">
+<sc-for list="{{ gallery }}" as="g" hint-placeholder-count="4">
+<div onClick="{{ g.pick }}" style="position:relative;aspect-ratio:4/5;background:{{ t.surface }};border-radius:{{ t.radius }};overflow:hidden;cursor:pointer;outline:1.5px solid {{ g.bd }};outline-offset:2px;opacity:{{ g.thOp }};transition:opacity .2s,outline-color .2s" style-hover="opacity:1"><image-slot id="{{ g.slot }}" src="{{ images[g.slot] }}" shape="rect" placeholder="{{ g.short }}" style="pointer-events:none"></image-slot></div>
+</sc-for>
+</div>
+</div>
+
+<div style="position:{{ L.sticky }};top:96px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:14px">
+<sc-if value="{{ prod.hasTag }}"><span style="align-self:flex-start;padding:6px 9px;background:{{ t.accent }};color:{{ t.accentInk }};border-radius:{{ t.btnR }};font:500 10px/1 {{ t.monoF }};letter-spacing:.1em;text-transform:uppercase">{{ prod.tag }}</span></sc-if>
+<h1 style="margin:0;font-family:{{ t.dispF }};font-weight:{{ t.dispW }};font-size:{{ h1 }};line-height:{{ t.lh }};letter-spacing:{{ t.ls }};text-transform:{{ t.dispCase }};text-wrap:balance">{{ prod.name }}</h1>
+<div style="display:flex;align-items:center;gap:14px;font-size:15px"><span style="font-family:{{ t.monoF }};font-size:18px">{{ prod.priceF }}</span><span style="color:{{ t.muted }};font-size:13px">or 4 payments of {{ prod.split }}</span></div>
+<p style="margin:0;font-size:15px;line-height:1.6;color:{{ t.muted }};text-wrap:pretty;max-width:460px">{{ prod.desc }}</p>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="font-size:13px"><span style="color:{{ t.muted }}">Colour — </span>{{ colorName }}</div>
+<div style="display:flex;gap:10px">
+<sc-for list="{{ colorOpts }}" as="c" hint-placeholder-count="3">
+<button onClick="{{ c.pick }}" title="{{ c.name }}" style="width:34px;height:34px;padding:0;border-radius:50%;border:1.5px solid {{ c.ring }};background:{{ t.bg }};cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .2s,transform .2s" style-hover="transform:scale(1.08)"><span style="width:24px;height:24px;border-radius:50%;background:{{ c.c }};box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)"></span></button>
+</sc-for>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;justify-content:space-between;font-size:13px"><span>Size <span style="color:{{ t.accent }};opacity:{{ sizeErrOp }};transition:opacity .2s">— please select a size</span></span><span style="text-decoration:underline;text-underline-offset:3px;color:{{ t.muted }};cursor:pointer">Size guide</span></div>
+<div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;transform:translateX({{ shakeX }});transition:transform .08s">
+<sc-for list="{{ sizeOpts }}" as="z" hint-placeholder-count="5">
+<button onClick="{{ z.pick }}" style="height:48px;border:1px solid {{ z.bd }};background:{{ z.bg }};color:{{ z.fg }};border-radius:{{ t.radius }};font:500 13px/1 {{ t.bodyF }};cursor:pointer;grid-column:{{ z.span }};transition:background .2s,color .2s,border-color .2s" style-hover="border-color:{{ t.ink }}">{{ z.z }}</button>
+</sc-for>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<button onClick="{{ pdpAdd }}" style="height:58px;border:none;background:{{ addBg }};color:{{ addFg }};border-radius:{{ t.btnR }};font:500 15px/1 {{ t.bodyF }};letter-spacing:{{ t.btnLs }};text-transform:{{ t.btnCase }};cursor:pointer;transition:background .35s,color .35s,transform .15s" style-active="transform:scale(.985)">{{ addLabel }}</button>
+<div style="display:flex;justify-content:center;gap:18px;flex-wrap:wrap;font-size:12px;color:{{ t.muted }}"><span>Free shipping over {{ freeShipF }}</span><span>·</span><span>Free 30-day returns</span></div>
+</div>
+
+<div style="border-top:1px solid {{ t.line }}">
+<sc-for list="{{ accordion }}" as="a" hint-placeholder-count="3">
+<div style="border-bottom:1px solid {{ t.line }}">
+<button onClick="{{ a.toggle }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;height:56px;padding:0;border:none;background:none;color:{{ t.ink }};font:500 14px/1 {{ t.bodyF }};cursor:pointer">{{ a.title }}<span style="font-family:{{ t.monoF }};font-size:16px;display:inline-block;transform:rotate({{ a.rot }});transition:transform .3s">+</span></button>
+<div style="max-height:{{ a.maxH }};overflow:hidden;transition:max-height .45s cubic-bezier(.2,.7,.2,1)"><p style="margin:0 0 20px;font-size:14px;line-height:1.6;color:{{ t.muted }};text-wrap:pretty">{{ a.body }}</p></div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+
+<section style="padding:{{ L.secPad }} 0 0">
+<h2 style="margin:0 0 32px;font-family:{{ t.dispF }};font-weight:{{ t.dispW }};font-size:{{ h2 }};line-height:{{ t.lh }};letter-spacing:{{ t.ls }};text-transform:{{ t.dispCase }}">Complete the look</h2>
+<div style="display:grid;grid-template-columns:{{ L.grid4 }};gap:{{ L.gridGap }}">
+<sc-for list="{{ related }}" as="p" hint-placeholder-count="4">
+<div onMouseEnter="{{ p.enter }}" onMouseLeave="{{ p.leave }}" style="display:flex;flex-direction:column;gap:12px;cursor:pointer">
+<div onClick="{{ p.open }}" style="position:relative;aspect-ratio:3/4;background:{{ t.surface }};border-radius:{{ t.radius }};overflow:hidden">
+<div style="position:absolute;inset:0;transform:scale({{ p.scale }});transition:transform .9s cubic-bezier(.2,.7,.2,1)"><image-slot id="{{ p.slot }}" src="{{ images[p.slot] }}" shape="rect" placeholder="{{ p.name }}" style="pointer-events:none"></image-slot></div>
+<div style="position:absolute;left:10px;right:10px;bottom:10px;padding:12px;display:flex;flex-direction:column;gap:10px;background:{{ t.bg }};border-radius:{{ t.radius }};opacity:{{ p.qaOp }};transform:translateY({{ p.qaY }});pointer-events:{{ p.qaPe }};transition:opacity .3s,transform .4s cubic-bezier(.2,.7,.2,1)">
+<div style="font:500 10px/1 {{ t.monoF }};letter-spacing:.12em;text-transform:uppercase;color:{{ t.muted }}">Quick add</div>
+<div style="display:flex;gap:6px"><sc-for list="{{ p.quick }}" as="q"><button onClick="{{ q.add }}" style="flex:1;height:34px;border:1px solid {{ t.line }};background:transparent;color:{{ t.ink }};border-radius:{{ t.radius }};font:500 12px/1 {{ t.bodyF }};cursor:pointer" style-hover="background:{{ t.ink }};color:{{ t.bg }}">{{ q.s }}</button></sc-for></div>
+</div>
+</div>
+<div onClick="{{ p.open }}" style="display:flex;justify-content:space-between;gap:12px;font-size:14px"><span style="font-weight:500">{{ p.name }}</span><span style="font-family:{{ t.monoF }};font-size:13px">{{ p.priceF }}</span></div>
+</div>
+</sc-for>
+</div>
+</section>
+</main>
+</sc-if>
+
+<sc-if value="{{ isCheckout }}" hint-placeholder-val="{{ false }}">
+<main data-screen-label="Checkout" style="padding:{{ L.topPadSm }} {{ L.pad }} 0">
+<sc-if value="{{ notPlaced }}" hint-placeholder-val="{{ true }}">
+<div style="display:grid;grid-template-columns:{{ L.co }};gap:{{ L.pdpGap }};align-items:start">
+<div style="display:flex;flex-direction:column;gap:36px;order:{{ L.coFormOrder }}">
+<div style="display:flex;flex-direction:column;gap:20px">
+<h1 style="margin:0;font-family:{{ t.dispF }};font-weight:{{ t.dispW }};font-size:{{ h1 }};line-height:{{ t.lh }};letter-spacing:{{ t.ls }};text-transform:{{ t.dispCase }}">Checkout</h1>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+<sc-for list="{{ steps }}" as="st" hint-placeholder-count="3">
+<button onClick="{{ st.go }}" style="display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:0;border:none;background:none;color:{{ t.ink }};cursor:pointer;opacity:{{ st.op }};transition:opacity .3s">
+<span style="display:block;width:100%;height:2px;background:{{ st.line }};transition:background .4s"></span>
+<span style="font:500 11px/1.3 {{ t.monoF }};letter-spacing:.06em;text-transform:uppercase;text-align:left">{{ st.n }} · {{ st.l }}</span>
+</button>
+</sc-for>
+</div>
+</div>
+
+<sc-if value="{{ step0 }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="font-size:15px;font-weight:500">Contact</div>
+<input placeholder="Email" defaultValue="maya.lind@example.com" style="height:50px;padding:0 16px;border:1px solid {{ t.line }};background:transparent;color:{{ t.ink }};border-radius:{{ t.radius }};font:400 14px {{ t.bodyF }};outline:none" style-focus="border-color:{{ t.ink }}"></input>
+<label style="display:flex;align-items:center;gap:10px;font-size:13px;color:{{ t.muted }}"><input type="checkbox" defaultChecked="{{ true }}" style="accent-color:{{ t.ink }};width:16px;height:16px;margin:0"></input>Email me about new drops</label>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="font-size:15px;font-weight:500">Shipping address</div>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px">
+<input placeholder="First name" defaultValue="Maya" style="height:50px;padding:0 16px;border:1px solid {{ t.line }};background:transparent;color:{{ t.ink }};border-radius:{{ t.radius }};font:400 14px {{ t.bodyF }};outline:none;min-width:0" style-focus="border-color:{{ t.ink }}"></input>
+<input placeholder="Last name" defaultValue="Lind" style="height:50px;padding:0 16px;border:1px solid {{ t.line }};background:transparent;color:{{ t.ink }};border-radius:{{ t.radius }};font:400 14px {{ t.bodyF }};outline:none;min-width:0" style-focus="border-color:{{ t.ink }}"></input>
+</div>
+<input placeholder="Address" style="height:50px;padding:0 16px;border:1px solid {{ t.line }};background:transparent;color:{{ t.ink }};border-radius:{{ t.radius }};font:400 14px {{ t.bodyF }};outline:none" style-focus="border-color:{{ t.ink }}"></input>
+<div style="display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:12px">
+<input placeholder="City" style="height:50px;padding:0 16px;border:1px solid {{ t.line }};background:transparent;color:{{ t.ink }};border-radius:{{ t.radius }};font:400 14px {{ t.bodyF }};outline:none;min-width:0" style-focus="border-color:{{ t.ink }}"></input>
+<input placeholder="Postcode" style="height:50px;padding:0 16px;border:1px solid {{ t.line }};background:transparent;color:{{ t.ink }};border-radius:{{ t.radius }};font:400 14px {{ t.bodyF }};outline:none;min-width:0" style-focus="border-color:{{ t.ink }}"></input>
+</div>
+</div>
+<button onClick="{{ nextStep }}" style="height:56px;border:none;background:{{ t.ink }};color:{{ t.bg }};border-radius:{{ t.btnR }};font:500 15px/1 {{ t.bodyF }};letter-spacing:{{ t.btnLs }};text-transform:{{ t.btnCase }};cursor:pointer" style-active="transform:scale(.985)">Continue to shipping</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ step1 }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="font-size:15px;font-weight:500">Delivery method</div>
+<sc-for list="{{ shipOpts }}" as="o" hint-placeholder-count="3">
+<button onClick="{{ o.pick }}" style="display:flex;align-items:center;gap:14px;min-height:68px;padding:0 18px;border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ t.ink }};border-radius:{{ t.radius }};font:inherit;text-align:left;cursor:pointer;transition:border-color .2s,background .2s">
+<span style="flex:none;width:18px;height:18px;border-radius:50%;border:1.5px solid {{ t.ink }};display:flex;align-items:center;justify-content:center"><span style="width:8px;height:8px;border-radius:50%;background:{{ t.ink }};transform:scale({{ o.dot }});transition:transform .25s cubic-bezier(.3,1.6,.5,1)"></span></span>
+<span style="flex:1;display:flex;flex-direction:column;gap:4px"><span style="font-size:14px;font-weight:500">{{ o.label }}</span><span style="font-size:13px;color:{{ t.muted }}">{{ o.sub }}</span></span>
+<span style="font-family:{{ t.monoF }};font-size:13px">{{ o.priceF }}</span>
+</button>
+</sc-for>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:16px">
+<button onClick="{{ prevStep }}" style="background:none;border:none;padding:0;color:{{ t.muted }};font:500 13px {{ t.bodyF }};cursor:pointer">← Back</button>
+<button onClick="{{ nextStep }}" style="flex:1;max-width:320px;height:56px;border:none;background:{{ t.ink }};color:{{ t.bg }};border-radius:{{ t.btnR }};font:500 15px/1 {{ t.bodyF }};letter-spacing:{{ t.btnLs }};text-transform:{{ t.btnCase }};cursor:pointer" style-active="transform:scale(.985)">Continue to payment</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ step2 }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="font-size:15px;font-weight:500">Payment</div>
+<div style="display:flex;flex-direction:column;gap:12px;padding:18px;border:1px solid {{ t.line }};border-radius:{{ t.radius }};background:{{ t.surface }}">
+<input placeholder="Card number" defaultValue="4242 4242 4242 4242" style="height:50px;padding:0 16px;border:1px solid {{ t.line }};background:{{ t.bg }};color:{{ t.ink }};border-radius:{{ t.radius }};font:400 14px {{ t.monoF }};outline:none" style-focus="border-color:{{ t.ink }}"></input>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px">
+<input placeholder="MM / YY" defaultValue="08 / 29" style="height:50px;padding:0 16px;border:1px solid {{ t.line }};background:{{ t.bg }};color:{{ t.ink }};border-radius:{{ t.radius }};font:400 14px {{ t.monoF }};outline:none;min-width:0" style-focus="border-color:{{ t.ink }}"></input>
+<input placeholder="CVC" style="height:50px;padding:0 16px;border:1px solid {{ t.line }};background:{{ t.bg }};color:{{ t.ink }};border-radius:{{ t.radius }};font:400 14px {{ t.monoF }};outline:none;min-width:0" style-focus="border-color:{{ t.ink }}"></input>
+</div>
+<input placeholder="Name on card" defaultValue="Maya Lind" style="height:50px;padding:0 16px;border:1px solid {{ t.line }};background:{{ t.bg }};color:{{ t.ink }};border-radius:{{ t.radius }};font:400 14px {{ t.bodyF }};outline:none" style-focus="border-color:{{ t.ink }}"></input>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:16px">
+<button onClick="{{ prevStep }}" style="background:none;border:none;padding:0;color:{{ t.muted }};font:500 13px {{ t.bodyF }};cursor:pointer">← Back</button>
+<button onClick="{{ pay }}" style="flex:1;max-width:320px;height:56px;border:none;background:{{ t.accent }};color:{{ t.accentInk }};border-radius:{{ t.btnR }};font:600 15px/1 {{ t.bodyF }};letter-spacing:{{ t.btnLs }};text-transform:{{ t.btnCase }};cursor:pointer;opacity:{{ payOp }};transition:opacity .3s" style-active="transform:scale(.985)">{{ payLabel }}</button>
+</div>
+</div>
+</sc-if>
+</div>
+
+<aside style="position:{{ L.sticky }};top:96px;order:{{ L.coSumOrder }};display:flex;flex-direction:column;gap:20px;padding:{{ L.sumPad }};background:{{ t.surface }};border-radius:{{ t.radius }}">
+<div style="font:500 11px/1 {{ t.monoF }};letter-spacing:.12em;text-transform:uppercase;color:{{ t.muted }}">Order summary · {{ count }}</div>
+<sc-for list="{{ cartItems }}" as="c" hint-placeholder-count="2">
+<div style="display:flex;gap:14px;align-items:center">
+<div style="position:relative;flex:none;width:60px;height:76px;background:{{ t.bg }};border-radius:{{ t.radius }}">
+<div style="position:absolute;inset:0;border-radius:{{ t.radius }};overflow:hidden"><image-slot id="{{ c.slot }}" src="{{ images[c.slot] }}" shape="rect" placeholder=" " style="pointer-events:none"></image-slot></div>
+<span style="position:absolute;top:-7px;right:-7px;min-width:20px;height:20px;border-radius:999px;background:{{ t.ink }};color:{{ t.bg }};font:600 10px/20px {{ t.monoF }};text-align:center">{{ c.qty }}</span>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:4px;min-width:0"><span style="font-size:14px;font-weight:500">{{ c.name }}</span><span style="font-size:12px;color:{{ t.muted }}">{{ c.meta }}</span></div>
+<span style="font-family:{{ t.monoF }};font-size:13px">{{ c.lineF }}</span>
+</div>
+</sc-for>
+<div style="display:flex;gap:8px;padding-top:4px">
+<input value="{{ code }}" onChange="{{ onCode }}" placeholder="Discount code" style="flex:1;min-width:0;height:44px;padding:0 14px;border:1px solid {{ t.line }};background:{{ t.bg }};color:{{ t.ink }};border-radius:{{ t.radius }};font:400 13px {{ t.bodyF }};outline:none;text-transform:uppercase"></input>
+<button onClick="{{ applyCode }}" style="height:44px;padding:0 18px;border:1px solid {{ t.ink }};background:transparent;color:{{ t.ink }};border-radius:{{ t.radius }};font:500 13px/1 {{ t.bodyF }};cursor:pointer">Apply</button>
+</div>
+<sc-if value="{{ codeMsg }}"><div style="font-size:12px;color:{{ codeColor }};margin-top:-8px">{{ codeMsg }}</div></sc-if>
+<div style="display:flex;flex-direction:column;gap:10px;padding-top:16px;border-top:1px solid {{ t.line }};font-size:14px">
+<div style="display:flex;justify-content:space-between"><span style="color:{{ t.muted }}">Subtotal</span><span style="font-family:{{ t.monoF }}">{{ subtotalF }}</span></div>
+<sc-if value="{{ hasDiscount }}"><div style="display:flex;justify-content:space-between"><span style="color:{{ t.muted }}">Discount</span><span style="font-family:{{ t.monoF }}">−{{ discountF }}</span></div></sc-if>
+<div style="display:flex;justify-content:space-between"><span style="color:{{ t.muted }}">Shipping</span><span style="font-family:{{ t.monoF }}">{{ shipF }}</span></div>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:baseline;padding-top:16px;border-top:1px solid {{ t.line }}"><span style="font-size:15px;font-weight:500">Total</span><span style="font-family:{{ t.dispF }};font-size:36px;line-height:1">{{ totalF }}</span></div>
+</aside>
+</div>
+</sc-if>
+
+<sc-if value="{{ placed }}" hint-placeholder-val="{{ false }}">
+<div style="min-height:560px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:22px">
+<span style="font:500 11px/1 {{ t.monoF }};letter-spacing:.14em;text-transform:uppercase;color:{{ t.muted }}">Order AU-20481 confirmed</span>
+<h1 style="margin:0;font-family:{{ t.dispF }};font-weight:{{ t.dispW }};font-size:{{ heroSize }};line-height:{{ t.lh }};letter-spacing:{{ t.ls }};text-transform:{{ t.dispCase }}">Thank you.</h1>
+<p style="margin:0;max-width:420px;font-size:15px;line-height:1.6;color:{{ t.muted }};text-wrap:pretty">We've sent a receipt for {{ placedTotalF }} to maya.lind@example.com. Your pieces ship from the studio within 48 hours.</p>
+<button onClick="{{ continueShopping }}" style="height:54px;padding:0 32px;border:none;background:{{ t.ink }};color:{{ t.bg }};border-radius:{{ t.btnR }};font:500 14px/1 {{ t.bodyF }};letter-spacing:{{ t.btnLs }};text-transform:{{ t.btnCase }};cursor:pointer">Continue shopping</button>
+</div>
+</sc-if>
+</main>
+</sc-if>
+
+<footer style="margin-top:{{ L.secPad }};padding:56px {{ L.pad }} 28px;border-top:1px solid {{ t.line }};display:flex;flex-direction:column;gap:56px">
+<div style="display:grid;grid-template-columns:{{ L.foot }};gap:36px 24px">
+<div style="display:flex;flex-direction:column;gap:14px;grid-column:{{ L.footBrandSpan }}">
+<span style="font-family:{{ t.dispF }};font-size:40px;line-height:1;letter-spacing:{{ t.logoLs }};font-style:{{ t.logoStyle }}">AURA</span>
+<p style="margin:0;max-width:300px;font-size:14px;line-height:1.55;color:{{ t.muted }}">Considered clothing, made in small runs. Designed in Copenhagen.</p>
+</div>
+<sc-for list="{{ footCols }}" as="f" hint-placeholder-count="3">
+<div style="display:flex;flex-direction:column;gap:12px;font-size:14px">
+<span style="font:500 11px/1 {{ t.monoF }};letter-spacing:.12em;text-transform:uppercase;color:{{ t.muted }};margin-bottom:4px">{{ f.h }}</span>
+<sc-for list="{{ f.links }}" as="l"><span style="cursor:pointer">{{ l }}</span></sc-for>
+</div>
+</sc-for>
+</div>
+<div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font:400 12px/1 {{ t.monoF }};color:{{ t.muted }}"><span>© 2026 AURA Studio</span><span>Privacy · Terms · Accessibility</span></div>
+</footer>
+</div>
+
+<div onClick="{{ closeCart }}" style="position:absolute;inset:0;z-index:50;background:rgba(10,9,8,.45);opacity:{{ scrimOp }};pointer-events:{{ scrimPe }};transition:opacity .45s"></div>
+<aside data-screen-label="Cart drawer" style="position:absolute;top:0;right:0;bottom:0;z-index:51;width:{{ L.drawerW }};max-width:100%;display:flex;flex-direction:column;background:{{ t.bg }};color:{{ t.ink }};transform:translateX({{ drawerX }});transition:transform .55s cubic-bezier(.7,0,.2,1);box-shadow:-20px 0 60px rgba(0,0,0,.12)">
+<div style="display:flex;justify-content:space-between;align-items:center;height:68px;padding:0 24px;border-bottom:1px solid {{ t.line }}">
+<span style="white-space:nowrap;font-family:{{ t.dispF }};font-size:28px;line-height:1;text-transform:{{ t.dispCase }};letter-spacing:{{ t.ls }}">Your bag <span style="font-family:{{ t.monoF }};font-size:13px;color:{{ t.muted }};letter-spacing:0">({{ count }})</span></span>
+<button onClick="{{ closeCart }}" style="background:none;border:none;padding:10px 0;color:{{ t.ink }};font:500 13px/1 {{ t.bodyF }};cursor:pointer;text-transform:{{ t.navCase }};letter-spacing:{{ t.navLs }}">Close</button>
+</div>
+<div style="padding:18px 24px;display:flex;flex-direction:column;gap:10px;border-bottom:1px solid {{ t.line }}">
+<span style="font-size:13px">{{ freeMsg }}</span>
+<div style="height:4px;border-radius:4px;background:{{ t.surface }};overflow:hidden"><div style="height:100%;width:{{ prog }};background:{{ t.accent }};border-radius:4px;transition:width .7s cubic-bezier(.2,.7,.2,1)"></div></div>
+</div>
+<div style="flex:1;overflow-y:auto;padding:8px 24px">
+<sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ false }}">
+<div style="height:100%;min-height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center">
+<span style="font-family:{{ t.dispF }};font-size:32px;text-transform:{{ t.dispCase }}">Your bag is empty</span>
+<button onClick="{{ goShop }}" style="height:48px;padding:0 26px;border:1px solid {{ t.ink }};background:transparent;color:{{ t.ink }};border-radius:{{ t.btnR }};font:500 14px/1 {{ t.bodyF }};text-transform:{{ t.btnCase }};letter-spacing:{{ t.btnLs }};cursor:pointer">Start shopping</button>
+</div>
+</sc-if>
+<sc-for list="{{ cartItems }}" as="c" hint-placeholder-count="2">
+<div style="display:flex;gap:16px;padding:16px 0;border-bottom:1px solid {{ t.line }}">
+<div style="position:relative;flex:none;width:84px;height:108px;background:{{ t.surface }};border-radius:{{ t.radius }};overflow:hidden"><image-slot id="{{ c.slot }}" src="{{ images[c.slot] }}" shape="rect" placeholder=" " style="pointer-events:none"></image-slot></div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;justify-content:space-between;gap:10px">
+<div style="display:flex;justify-content:space-between;gap:10px"><div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:14px;font-weight:500">{{ c.name }}</span><span style="font-size:12px;color:{{ t.muted }}">{{ c.meta }}</span></div><span style="font-family:{{ t.monoF }};font-size:13px">{{ c.lineF }}</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center">
+<div style="display:flex;align-items:center;border:1px solid {{ t.line }};border-radius:{{ t.btnR }};height:34px">
+<button onClick="{{ c.dec }}" style="width:34px;height:32px;border:none;background:none;color:{{ t.ink }};font:500 15px/1 {{ t.monoF }};cursor:pointer">−</button>
+<span style="min-width:20px;text-align:center;font:500 13px/1 {{ t.monoF }}">{{ c.qty }}</span>
+<button onClick="{{ c.inc }}" style="width:34px;height:32px;border:none;background:none;color:{{ t.ink }};font:500 15px/1 {{ t.monoF }};cursor:pointer">+</button>
+</div>
+<button onClick="{{ c.remove }}" style="background:none;border:none;padding:0;color:{{ t.muted }};font:400 12px {{ t.bodyF }};text-decoration:underline;text-underline-offset:3px;cursor:pointer">Remove</button>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{ cartHas }}" hint-placeholder-val="{{ true }}">
+<div style="padding:20px 24px 24px;border-top:1px solid {{ t.line }};display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:14px">Subtotal</span><span style="font-family:{{ t.monoF }};font-size:16px">{{ subtotalF }}</span></div>
+<span style="font-size:12px;color:{{ t.muted }};margin-top:-6px">Taxes and shipping calculated at checkout.</span>
+<button onClick="{{ goCheckout }}" style="height:56px;border:none;background:{{ t.ink }};color:{{ t.bg }};border-radius:{{ t.btnR }};font:500 15px/1 {{ t.bodyF }};letter-spacing:{{ t.btnLs }};text-transform:{{ t.btnCase }};cursor:pointer;transition:opacity .2s" style-hover="opacity:.86" style-active="transform:scale(.985)">Checkout · {{ subtotalF }}</button>
+</div>
+</sc-if>
+</aside>
+
+<div style="position:absolute;inset:0;z-index:40;display:flex;flex-direction:column;gap:8px;padding:110px 24px 24px;background:{{ t.bg }};transform:translateY({{ menuY }});transition:transform .55s cubic-bezier(.7,0,.2,1)">
+<button onClick="{{ toggleMenu }}" style="position:absolute;top:50px;left:20px;background:none;border:none;padding:10px 0;color:{{ t.ink }};font:500 13px/1 {{ t.bodyF }};cursor:pointer">Close</button>
+<sc-for list="{{ navLinks }}" as="n" hint-placeholder-count="4">
+<button onClick="{{ n.go }}" style="text-align:left;background:none;border:none;border-bottom:1px solid {{ t.line }};padding:16px 0;color:{{ t.ink }};font-family:{{ t.dispF }};font-weight:{{ t.dispW }};font-size:44px;line-height:1;letter-spacing:{{ t.ls }};text-transform:{{ t.dispCase }};cursor:pointer">{{ n.label }}</button>
+</sc-for>
+</div>
+
+<div style="position:absolute;top:118px;right:{{ L.pad }};z-index:30;display:flex;align-items:center;gap:12px;max-width:calc(100% - 40px);padding:14px 18px;background:{{ t.ink }};color:{{ t.bg }};border-radius:{{ t.btnR }};font-size:13px;box-shadow:0 12px 40px rgba(0,0,0,.18);opacity:{{ toastOp }};transform:translateY({{ toastY }});pointer-events:{{ toastPe }};transition:opacity .35s,transform .45s cubic-bezier(.2,.7,.2,1)">
+<span style="width:8px;height:8px;border-radius:50%;background:{{ t.accent }};flex:none"></span><span>{{ toast }}</span>
+<button onClick="{{ openCart }}" style="background:none;border:none;padding:0 0 0 6px;color:{{ t.bg }};font:600 13px {{ t.bodyF }};text-decoration:underline;text-underline-offset:3px;cursor:pointer">View bag</button>
+</div>
+</div>
+
+<sc-if value="{{ showToolbar }}" hint-placeholder-val="{{ true }}">
+<div style="position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:1000;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:4px;max-width:calc(100% - 24px);padding:6px;background:rgba(17,17,17,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;border-radius:16px;font:500 12px/1 'Geist',system-ui,sans-serif;box-shadow:0 10px 40px rgba(0,0,0,.25)">
+<sc-for list="{{ dirBtns }}" as="b" hint-placeholder-count="3"><button onClick="{{ b.pick }}" style="height:32px;padding:0 12px;border:none;border-radius:10px;background:{{ b.bg }};color:{{ b.fg }};font:inherit;cursor:pointer;transition:background .2s">{{ b.label }}</button></sc-for>
+<span style="width:1px;height:18px;background:rgba(255,255,255,.2);margin:0 4px"></span>
+<sc-for list="{{ viewBtns }}" as="b" hint-placeholder-count="2"><button onClick="{{ b.pick }}" style="height:32px;padding:0 12px;border:none;border-radius:10px;background:{{ b.bg }};color:{{ b.fg }};font:inherit;cursor:pointer;transition:background .2s">{{ b.label }}</button></sc-for>
+<span style="width:1px;height:18px;background:rgba(255,255,255,.2);margin:0 4px"></span>
+<sc-for list="{{ pageBtns }}" as="b" hint-placeholder-count="5"><button onClick="{{ b.pick }}" style="height:32px;padding:0 12px;border:none;border-radius:10px;background:{{ b.bg }};color:{{ b.fg }};font:inherit;cursor:pointer;transition:background .2s">{{ b.label }}</button></sc-for>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;direction&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;editorial&quot;,&quot;street&quot;,&quot;y2k&quot;,&quot;scandi&quot;,&quot;noir&quot;],&quot;default&quot;:&quot;street&quot;,&quot;tsType&quot;:&quot;'editorial'|'street'|'y2k'|'scandi'|'noir'&quot;},&quot;freeShip&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:250,&quot;min&quot;:0,&quot;max&quot;:1000,&quot;step&quot;:10,&quot;unit&quot;:&quot;$&quot;,&quot;tsType&quot;:&quot;number&quot;},&quot;showToolbar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const AURA_IMAGES = {
+  "aura-cat-outer": "images/category-outerwear.png",
+  "aura-cat-knit": "images/category-knitwear.png",
+  "aura-cat-acc": "images/category-accessories.png",
+  "aura-p1": "images/product-1-front.png",
+  "aura-p1-1": "images/product-1-detail.png",
+  "aura-p1-2": "images/product-1-back.png",
+  "aura-p1-3": "images/product-1-model.png",
+  "aura-p2": "images/product-2-front.png",
+  "aura-p2-1": "images/product-2-detail.png",
+  "aura-p2-2": "images/product-2-back.png",
+  "aura-p2-3": "images/product-2-model.png",
+  "aura-p3": "images/product-3-front.png",
+  "aura-p3-1": "images/product-3-detail.png",
+  "aura-p3-2": "images/product-3-back.png",
+  "aura-p3-3": "images/product-3-model.png",
+  "aura-p4": "images/product-4-front.png",
+  "aura-p4-1": "images/product-4-detail.png",
+  "aura-p4-2": "images/product-4-back.png",
+  "aura-p4-3": "images/product-4-model.png",
+  "aura-p5": "images/product-5-front.png",
+  "aura-p5-1": "images/product-5-detail.png",
+  "aura-p5-2": "images/product-5-back.png",
+  "aura-p5-3": "images/product-5-model.png",
+  "aura-p6": "images/product-6-front.png",
+  "aura-p6-1": "images/product-6-detail.png",
+  "aura-p6-2": "images/product-6-back.png",
+  "aura-p6-3": "images/product-6-model.png",
+  "aura-p7": "images/product-7-front.png",
+  "aura-p7-1": "images/product-7-detail.png",
+  "aura-p7-2": "images/product-7-back.png",
+  "aura-p7-3": "images/product-7-model.png",
+  "aura-p8": "images/product-8-front.png",
+  "aura-p8-1": "images/product-8-detail.png",
+  "aura-p8-2": "images/product-8-back.png",
+  "aura-p8-3": "images/product-8-model.png"
+};
+const P = [
+  {id:1,name:'Halo Wool Overcoat',cat:'Outerwear',price:320,tag:'New',colors:[['Camel','#a9845a'],['Charcoal','#393734'],['Bone','#ddd5c5']],desc:'Double-faced Italian wool, cut long and easy through the shoulder. Unlined, so it drapes like a cardigan and layers like a coat.'},
+  {id:2,name:'Drift Knit Sweater',cat:'Knitwear',price:145,tag:null,colors:[['Oat','#d8cdb8'],['Moss','#6b6a4b'],['Ink','#24252b']],desc:'Brushed merino-alpaca blend in a relaxed, slightly cropped fit. Soft enough to wear against skin.'},
+  {id:3,name:'Lumen Silk Shirt',cat:'Tops',price:180,tag:'New',colors:[['Ivory','#ece6d8'],['Sage','#a3ab95']],desc:'Sandwashed silk with a soft camp collar and mother-of-pearl buttons. Tuck it, or don\'t.'},
+  {id:4,name:'Field Cargo Trouser',cat:'Bottoms',price:160,tag:null,colors:[['Olive','#5d5c3f'],['Stone','#b5ab98'],['Black','#1b1b1b']],desc:'Heavy cotton twill with a wide, straight leg and low-profile utility pockets.'},
+  {id:5,name:'Mono Pleat Skirt',cat:'Bottoms',price:130,tag:null,colors:[['Black','#1b1b1b'],['Taupe','#8c7d6c']],desc:'A single deep pleat in recycled wool crepe. Midi length, side zip.'},
+  {id:6,name:'Arc Leather Tote',cat:'Accessories',price:240,tag:'Bestseller',colors:[['Cognac','#8a4f2a'],['Black','#1b1b1b']],desc:'Vegetable-tanned leather that softens and darkens with wear. Fits a 14" laptop.'},
+  {id:7,name:'Vale Ribbed Tee',cat:'Tops',price:55,tag:null,colors:[['White','#f1efe9'],['Grey','#9c9a95'],['Black','#1b1b1b']],desc:'Fine-rib organic cotton with a close, clean fit. The one you\'ll buy three of.'},
+  {id:8,name:'Ember Puffer Vest',cat:'Outerwear',price:210,tag:'Low stock',colors:[['Rust','#9c4a2c'],['Black','#1b1b1b']],desc:'Recycled down fill in a matte ripstop shell. Packs into its own pocket.'}
+];
+const CATS = ['All','Outerwear','Knitwear','Tops','Bottoms','Accessories'];
+const SIZES = ['XS','S','M','L','XL'];
+const sizesFor = p => p.cat === 'Accessories' ? ['One size'] : SIZES;
+const $ = n => '$' + Math.round(n).toLocaleString('en-US');
+const mono = "'Geist Mono', ui-monospace, monospace";
+const T = {
+  editorial: {heroEm:4.2, label:'Soft Luxury', bg:'#f4f1ea', headerBg:'rgba(244,241,234,.82)', surface:'#e9e3d8', ink:'#1c1a17', muted:'#6b655c', line:'rgba(28,26,23,.14)', accent:'oklch(0.56 0.14 40)', accentInk:'#fff',
+    dispF:"'Instrument Serif', Georgia, serif", bodyF:"'Geist', system-ui, sans-serif", monoF:mono, dispW:400, dispCase:'none', ls:'-0.02em', lh:.92,
+    radius:'4px', btnR:'999px', btnLs:'0', btnCase:'none', navLs:'0', navCase:'none', logoSize:'30px', logoLs:'0.18em', logoStyle:'normal',
+    heroA:'Wear the', heroB:'quiet.', heroBStyle:'italic', heroBColor:'inherit', heroSub:'Autumn/Winter 26 — soft tailoring, heavy knits and coats built to outlast the season.', eyebrow:'AW26 Collection', heroLayout:'split', hero:[136,72], h2s:[72,44], h1s:[84,48]},
+  street: {heroEm:4, label:'Street', bg:'#eeeee8', headerBg:'rgba(238,238,232,.85)', surface:'#deded7', ink:'#0c0c0c', muted:'#5a5a55', line:'rgba(12,12,12,.16)', accent:'oklch(0.89 0.2 124)', accentInk:'#0c0c0c',
+    dispF:"'Anton', Impact, sans-serif", bodyF:"'Space Grotesk', system-ui, sans-serif", monoF:mono, dispW:400, dispCase:'uppercase', ls:'0', lh:.88,
+    radius:'0px', btnR:'0px', btnLs:'.06em', btnCase:'uppercase', navLs:'.06em', navCase:'uppercase', logoSize:'34px', logoLs:'0.02em', logoStyle:'normal',
+    heroA:'Built for', heroB:'the city.', heroBStyle:'normal', heroBColor:'oklch(0.89 0.2 124)', heroSub:'AW26 drop 01 — technical outerwear and heavyweight basics. Limited run, no restocks.', eyebrow:'Drop 01 · AW26', heroLayout:'full', hero:[220,96], h2s:[96,56], h1s:[120,64]},
+  y2k: {heroEm:7.2, label:'Y2K', bg:'#f1edfb', headerBg:'rgba(241,237,251,.82)', surface:'#e3dcf6', ink:'#1b1533', muted:'#5f5880', line:'rgba(27,21,51,.14)', accent:'oklch(0.68 0.2 340)', accentInk:'#fff',
+    dispF:"'Unbounded', system-ui, sans-serif", bodyF:"'Space Grotesk', system-ui, sans-serif", monoF:mono, dispW:600, dispCase:'none', ls:'-0.04em', lh:.95,
+    radius:'22px', btnR:'999px', btnLs:'0', btnCase:'none', navLs:'0', navCase:'none', logoSize:'26px', logoLs:'0.06em', logoStyle:'normal',
+    heroA:'Main', heroB:'character ✦', heroBStyle:'normal', heroBColor:'oklch(0.68 0.2 340)', heroSub:'Drop 02 — glossy puffers, baby tees and everything shiny. Play dress-up, every day.', eyebrow:'Drop 02 · Now live', heroLayout:'split', hero:[104,50], h2s:[60,36], h1s:[64,38]},
+  scandi: {heroEm:4.6, label:'Scandi', bg:'#f4f4f2', headerBg:'rgba(244,244,242,.85)', surface:'#e7e7e3', ink:'#202122', muted:'#6c6e70', line:'rgba(32,33,34,.12)', accent:'oklch(0.58 0.07 230)', accentInk:'#fff',
+    dispF:"'Geist', system-ui, sans-serif", bodyF:"'Geist', system-ui, sans-serif", monoF:mono, dispW:500, dispCase:'none', ls:'-0.05em', lh:.94,
+    radius:'0px', btnR:'2px', btnLs:'0', btnCase:'none', navLs:'0', navCase:'none', logoSize:'24px', logoLs:'0.32em', logoStyle:'normal',
+    heroA:'Less, but', heroB:'better.', heroBStyle:'normal', heroBColor:'oklch(0.58 0.07 230)', heroSub:'Essentials for AW26 — honest materials, quiet colours, cut to be worn for a decade.', eyebrow:'Essentials · AW26', heroLayout:'split', hero:[132,64], h2s:[64,40], h1s:[72,44]},
+  noir: {heroEm:6.4, label:'Noir', bg:'#110f0d', headerBg:'rgba(17,15,13,.8)', surface:'#1d1a17', ink:'#ede7dd', muted:'#a39b8f', line:'rgba(237,231,221,.14)', accent:'oklch(0.79 0.1 78)', accentInk:'#110f0d',
+    dispF:"'Bodoni Moda', Didot, serif", bodyF:"'Geist', system-ui, sans-serif", monoF:mono, dispW:400, dispCase:'none', ls:'-0.03em', lh:.95,
+    radius:'0px', btnR:'0px', btnLs:'.08em', btnCase:'uppercase', navLs:'.08em', navCase:'uppercase', logoSize:'28px', logoLs:'0.3em', logoStyle:'normal',
+    heroA:'After dark,', heroB:'made to last.', heroBStyle:'italic', heroBColor:'oklch(0.79 0.1 78)', heroSub:'The evening edit — liquid silks, sharp wool and leather that only gets better.', eyebrow:'The Evening Edit', heroLayout:'split', hero:[112,58], h2s:[64,40], h1s:[72,44]}
+};
+
+class Component extends DCLogic {
+  state = {dir:null, view:'desktop', w:1280, page:'home', pid:1, img:0, size:null, color:0, sizeErr:false, shake:0, addState:'idle',
+    cart:[{id:2,size:'M',color:0,qty:1},{id:6,size:'One size',color:0,qty:1}], cartOpen:false, hover:null, cat:'All', sort:'featured', acc:0,
+    toast:'', toastOn:false, step:0, ship:0, code:'', discount:0, codeMsg:'', codeOk:false, paying:false, placed:false, placedTotal:0, bump:false, menu:false, email:'', subscribed:false};
+
+  componentDidMount() {
+    this.ro = new ResizeObserver(e => { const w = e[0].contentRect.width; if (Math.abs(w - this.state.w) > 2) this.setState({w}); });
+    if (this.rootEl) this.ro.observe(this.rootEl);
+  }
+  componentWillUnmount() { this.ro && this.ro.disconnect(); }
+  rootRef = el => { this.rootEl = el; if (el && this.ro) this.ro.observe(el); };
+  scrollRef = el => { this.scroller = el; };
+
+  go(page, extra = {}) {
+    this.setState({page, menu:false, cartOpen:false, hover:null, ...extra});
+    if (this.scroller) this.scroller.scrollTo({top:0, behavior:'smooth'});
+  }
+  openP(id) {
+    const pr = P.find(x => x.id === id);
+    this.go('product', {pid:id, img:0, color:0, sizeErr:false, addState:'idle', acc:0, size: sizesFor(pr).length === 1 ? 'One size' : null});
+  }
+  addToCart(id, size, color) {
+    this.setState(s => {
+      const cart = [...s.cart];
+      const i = cart.findIndex(c => c.id === id && c.size === size && c.color === color);
+      if (i >= 0) cart[i] = {...cart[i], qty: cart[i].qty + 1}; else cart.push({id, size, color, qty:1});
+      return {cart, bump:true};
+    });
+    setTimeout(() => this.setState({bump:false}), 260);
+  }
+  showToast(msg) {
+    clearTimeout(this.tt);
+    this.setState({toast:msg, toastOn:true});
+    this.tt = setTimeout(() => this.setState({toastOn:false}), 2600);
+  }
+  setQty(i, d) {
+    this.setState(s => {
+      const cart = [...s.cart];
+      const q = cart[i].qty + d;
+      if (q <= 0) cart.splice(i, 1); else cart[i] = {...cart[i], qty:q};
+      return {cart};
+    });
+  }
+  pdpAdd = () => {
+    const s = this.state;
+    if (!s.size) {
+      this.setState({sizeErr:true});
+      [8,-6,4,0].forEach((x, k) => setTimeout(() => this.setState({shake:x}), k * 80));
+      return;
+    }
+    if (s.addState !== 'idle') return;
+    this.setState({addState:'adding'});
+    setTimeout(() => {
+      this.addToCart(s.pid, s.size, s.color);
+      this.setState({addState:'added'});
+      setTimeout(() => this.setState({cartOpen:true}), 500);
+      setTimeout(() => this.setState({addState:'idle'}), 2200);
+    }, 650);
+  };
+
+  renderVals() {
+    const s = this.state, pr = this.props;
+    const dirKey = s.dir || pr.direction || 'street';
+    const t = T[dirKey] || T.editorial;
+    const m = s.view === 'mobile' || s.w < 760;
+    const framed = s.view === 'mobile' && s.w >= 500;
+    const freeShip = pr.freeShip ?? 250;
+    const L = {
+      desk: !m && s.w >= 1100, mob: m || s.w < 1100,
+      frameW: framed ? '390px' : '100%', frameH: framed ? 'min(844px, calc(100vh - 110px))' : '100vh', frameR: framed ? '44px' : '0px',
+      frameShadow: framed ? '0 0 0 10px #111, 0 40px 80px rgba(0,0,0,.35)' : 'none',
+      pad: m ? '20px' : '48px', gap: m ? '12px' : '20px', gridGap: m ? '12px' : '20px', gridGapLg: m ? '28px' : '48px',
+      grid4: m ? 'repeat(2,minmax(0,1fr))' : 'repeat(4,minmax(0,1fr))', grid3: m ? '1fr' : 'repeat(3,minmax(0,1fr))',
+      split: m ? '1fr' : 'minmax(0,1.05fr) minmax(0,1fr)', pdp: m ? '1fr' : 'minmax(0,1.2fr) minmax(0,1fr)', co: m ? '1fr' : 'minmax(0,1.25fr) minmax(0,1fr)',
+      foot: m ? '1fr 1fr' : '2fr 1fr 1fr 1fr', footBrandSpan: m ? '1 / -1' : 'auto',
+      secPad: m ? '72px' : '128px', topPad: m ? '32px' : '56px', topPadSm: m ? '20px' : '32px',
+      heroH: m ? '600px' : 'max(680px, calc(100vh - 102px))', heroImgH: m ? '440px' : '640px', heroPad: m ? '32px 20px 40px' : '40px 48px 56px',
+      bandGap: m ? '32px' : '80px', nlPad: m ? '56px 20px' : '96px 48px', tileRatio: m ? '4/3' : '4/5',
+      pdpGap: m ? '28px' : '64px', sticky: m ? 'static' : 'sticky', drawerW: m ? '100%' : '440px', sumPad: m ? '20px' : '28px',
+      coFormOrder: m ? 2 : 1, coSumOrder: m ? 1 : 2
+    };
+    const pick = (a) => m ? a[1] + 'px' : a[0] + 'px';
+
+    const mk = p => {
+      const hov = s.hover === p.id && !m;
+      return {...p, priceF:$(p.price), slot:'aura-p' + p.id, hasTag:!!p.tag,
+        colorsLabel: p.colors.length + (p.colors.length > 1 ? ' colours' : ' colour'),
+        swatches: p.colors.map(c => ({c:c[1]})),
+        scale: hov ? 1.05 : 1, qaOp: hov ? 1 : 0, qaY: hov ? '0px' : '14px', qaPe: hov ? 'auto' : 'none',
+        enter: () => this.setState({hover:p.id}), leave: () => this.setState({hover:null}), open: () => this.openP(p.id),
+        quick: sizesFor(p).map(z => ({s: z === 'One size' ? 'Add to bag' : z, add: e => { e.stopPropagation(); this.addToCart(p.id, z, 0); this.showToast(p.name + ' · ' + z + ' added'); }}))
+      };
+    };
+
+    let list = P.filter(p => s.cat === 'All' || p.cat === s.cat);
+    if (s.sort === 'low') list = [...list].sort((a, b) => a.price - b.price);
+    if (s.sort === 'high') list = [...list].sort((a, b) => b.price - a.price);
+
+    const prod0 = P.find(p => p.id === s.pid) || P[0];
+    const prod = {...prod0, priceF:$(prod0.price), split:$(prod0.price / 4), hasTag:!!prod0.tag};
+    const views = ['Front','Detail','Back','On model'];
+    const gallery = views.map((v, i) => ({slot: i === 0 ? 'aura-p' + prod.id : 'aura-p' + prod.id + '-' + i, ph: v + ' — ' + prod.name, short: v,
+      op: s.img === i ? 1 : 0, pe: s.img === i ? 'auto' : 'none', z: s.img === i ? 2 : 1, bd: s.img === i ? t.ink : 'transparent', thOp: s.img === i ? 1 : .6,
+      pick: () => this.setState({img:i})}));
+    const sz = sizesFor(prod);
+    const addLabel = s.addState === 'adding' ? 'Adding…' : s.addState === 'added' ? 'Added to bag ✓' : 'Add to bag — ' + prod.priceF;
+    const accItems = [
+      {title:'Details & fit', body: prod.desc + ' Model is 185cm and wears a size M.'},
+      {title:'Shipping & returns', body:'Free standard shipping on orders over ' + $(freeShip) + '. Free returns and exchanges within 30 days.'},
+      {title:'Materials & care', body:'Traceable, responsibly sourced fibres. Dry clean or cold hand wash, dry flat away from heat.'}
+    ];
+    const relIdx = P.findIndex(p => p.id === prod.id);
+    const related = [1,2,3,4].map(k => mk(P[(relIdx + k) % P.length]));
+
+    const cartItems = s.cart.map((c, i) => { const p = P.find(x => x.id === c.id); return {name:p.name, slot:'aura-p' + p.id, qty:c.qty, meta:p.colors[c.color][0] + ' · ' + c.size, lineF:$(p.price * c.qty),
+      inc: () => this.setQty(i, 1), dec: () => this.setQty(i, -1), remove: () => this.setQty(i, -c.qty)}; });
+    const count = s.cart.reduce((a, c) => a + c.qty, 0);
+    const subtotal = s.cart.reduce((a, c) => a + P.find(x => x.id === c.id).price * c.qty, 0);
+    const freeLeft = Math.max(0, freeShip - subtotal);
+
+    const shipOpts = [
+      {label:'Standard', sub:'3–5 business days · carbon-neutral', price: subtotal >= freeShip ? 0 : 8},
+      {label:'Express', sub:'1–2 business days', price:15},
+      {label:'Next day', sub:'Order before 2pm', price:25}
+    ].map((o, i) => ({...o, priceF: o.price === 0 ? 'Free' : $(o.price), bd: s.ship === i ? t.ink : t.line, bg: s.ship === i ? t.surface : 'transparent', dot: s.ship === i ? 1 : 0, pick: () => this.setState({ship:i})}));
+    const discountAmt = Math.round(subtotal * s.discount);
+    const shipCost = shipOpts[s.ship].price;
+    const total = subtotal - discountAmt + shipCost;
+
+    const btn = (active) => ({bg: active ? '#fff' : 'transparent', fg: active ? '#111' : 'rgba(255,255,255,.75)'});
+
+    return {
+      images: AURA_IMAGES, rootRef: this.rootRef, scrollRef: this.scrollRef, t, L, freeShipF: $(freeShip),
+      stageBg: framed ? '#d7d3cc' : t.bg,
+      heroSize: Math.round(Math.max(36, Math.min(m ? t.hero[1] : t.hero[0], (t.heroLayout === 'full' || m ? (framed ? 390 : s.w) - (m ? 40 : 96) : s.w * 0.51 - 96) / t.heroEm))) + 'px', h2: pick(t.h2s), h1: pick(t.h1s),
+      heroSplit: t.heroLayout === 'split', heroFull: t.heroLayout === 'full', heroImgOrder: (m || dirKey === 'noir') ? 0 : 2,
+      isHome: s.page === 'home', isShop: s.page === 'shop', isProduct: s.page === 'product', isCheckout: s.page === 'checkout',
+      navLinks: [['Shop all','All'],['Outerwear','Outerwear'],['Knitwear','Knitwear'],['Accessories','Accessories']].map(([label, c]) => ({label,
+        op: s.page === 'shop' && s.cat === c ? 1 : .72, bd: s.page === 'shop' && s.cat === c ? t.ink : 'transparent', go: () => this.go('shop', {cat:c})})),
+      toggleMenu: () => this.setState({menu: !s.menu}), menuY: s.menu ? '0%' : '-102%',
+      goHome: () => this.go('home'), goShop: () => this.go('shop', {cat:'All'}), goOuter: () => this.go('shop', {cat:'Outerwear'}),
+      goProdCat: () => this.go('shop', {cat: prod.cat}), goCheckout: () => this.go('checkout', {step:0, placed:false}),
+      openCart: () => this.setState({cartOpen:true, toastOn:false}), closeCart: () => this.setState({cartOpen:false}),
+      count, bumpScale: s.bump ? 1.35 : 1,
+      catTiles: [['Outerwear','aura-cat-outer'],['Knitwear','aura-cat-knit'],['Accessories','aura-cat-acc']].map(([name, slot]) => ({name, slot, ph: name + ' category image', go: () => this.go('shop', {cat:name})})),
+      newArrivals: [1,3,8,2].map(id => mk(P.find(p => p.id === id))),
+      email: s.email, onEmail: e => this.setState({email:e.target.value}),
+      subscribe: () => { if (s.email.includes('@')) this.setState({subscribed:true}); },
+      subscribed: s.subscribed, notSubscribed: !s.subscribed,
+      cat: s.cat, shopTitle: s.cat === 'All' ? 'Shop all' : s.cat, shopCount: list.length + (list.length === 1 ? ' piece' : ' pieces'),
+      chips: CATS.map(c => ({label:c, bg: s.cat === c ? t.ink : 'transparent', fg: s.cat === c ? t.bg : t.ink, bd: s.cat === c ? t.ink : t.line, pick: () => this.setState({cat:c})})),
+      sorts: [['featured','Featured'],['low','Price ↑'],['high','Price ↓']].map(([k, label]) => ({label, op: s.sort === k ? 1 : .55, ul: s.sort === k ? 'underline' : 'none', pick: () => this.setState({sort:k})})),
+      shopList: list.map(mk),
+      prod, gallery, imgCounter: (s.img + 1) + ' / 4',
+      colorName: prod.colors[s.color] ? prod.colors[s.color][0] : '',
+      colorOpts: prod.colors.map((c, i) => ({c:c[1], name:c[0], ring: s.color === i ? t.ink : 'transparent', pick: () => this.setState({color:i})})),
+      sizeOpts: sz.map(z => ({z, span: sz.length === 1 ? '1 / -1' : 'auto', bg: s.size === z ? t.ink : 'transparent', fg: s.size === z ? t.bg : t.ink,
+        bd: s.sizeErr ? t.accent : (s.size === z ? t.ink : t.line), pick: () => this.setState({size:z, sizeErr:false})})),
+      sizeErrOp: s.sizeErr ? 1 : 0, shakeX: s.shake + 'px',
+      pdpAdd: this.pdpAdd, addLabel, addBg: s.addState === 'added' ? t.accent : t.ink, addFg: s.addState === 'added' ? t.accentInk : t.bg,
+      accordion: accItems.map((a, i) => ({...a, rot: s.acc === i ? '45deg' : '0deg', maxH: s.acc === i ? '220px' : '0px', toggle: () => this.setState({acc: s.acc === i ? -1 : i})})),
+      related,
+      cartItems, cartEmpty: s.cart.length === 0, cartHas: s.cart.length > 0, subtotalF: $(subtotal),
+      freeMsg: freeLeft > 0 ? 'You\'re ' + $(freeLeft) + ' away from free shipping' : 'You\'ve unlocked free shipping ✓',
+      prog: Math.min(100, subtotal / freeShip * 100) + '%',
+      drawerX: s.cartOpen ? '0%' : '105%', scrimOp: s.cartOpen ? 1 : 0, scrimPe: s.cartOpen ? 'auto' : 'none',
+      toast: s.toast, toastOp: s.toastOn ? 1 : 0, toastY: s.toastOn ? '0px' : '-12px', toastPe: s.toastOn ? 'auto' : 'none',
+      steps: ['Information','Shipping','Payment'].map((l, i) => ({l, n: '0' + (i + 1), op: i <= s.step ? 1 : .4, line: i <= s.step ? t.ink : t.line, go: () => { if (i < s.step) this.setState({step:i}); }})),
+      step0: s.step === 0, step1: s.step === 1, step2: s.step === 2,
+      nextStep: () => this.setState({step: Math.min(2, s.step + 1)}), prevStep: () => this.setState({step: Math.max(0, s.step - 1)}),
+      shipOpts, shipF: shipCost === 0 ? 'Free' : $(shipCost), hasDiscount: discountAmt > 0, discountF: $(discountAmt), totalF: $(total),
+      code: s.code, onCode: e => this.setState({code:e.target.value}), codeMsg: s.codeMsg, codeColor: s.codeOk ? t.ink : t.accent,
+      applyCode: () => { const ok = s.code.trim().toUpperCase() === 'AURA10'; this.setState({discount: ok ? .1 : 0, codeOk: ok, codeMsg: ok ? 'AURA10 applied — 10% off your order' : 'Code not recognised — try AURA10'}); },
+      payLabel: s.paying ? 'Processing…' : 'Pay ' + $(total), payOp: s.paying ? .6 : 1,
+      pay: () => { if (s.paying) return; this.setState({paying:true}); setTimeout(() => { this.setState({paying:false, placed:true, placedTotal: total, cart:[]}); if (this.scroller) this.scroller.scrollTo({top:0}); }, 1500); },
+      placed: s.placed, notPlaced: !s.placed, placedTotalF: $(s.placedTotal),
+      continueShopping: () => this.go('shop', {placed:false, step:0, discount:0, code:'', codeMsg:'', cat:'All'}),
+      footCols: [{h:'Shop', links:['New arrivals','Outerwear','Knitwear','Accessories']},{h:'Help', links:['Shipping','Returns','Size guide','Contact']},{h:'Studio', links:['Journal','Sustainability','Instagram','Careers']}],
+      showToolbar: pr.showToolbar ?? true,
+      dirBtns: Object.keys(T).map(k => ({label:T[k].label, ...btn(k === dirKey), pick: () => this.setState({dir:k})})),
+      viewBtns: [['desktop','Desktop'],['mobile','Mobile']].map(([k, label]) => ({label, ...btn(s.view === k), pick: () => this.setState({view:k, menu:false})})),
+      pageBtns: [['home','Home'],['shop','Shop'],['product','Product'],['checkout','Checkout'],['bag','Bag']].map(([k, label]) => ({label,
+        ...btn(k === 'bag' ? s.cartOpen : (s.page === k && !s.cartOpen)),
+        pick: () => k === 'bag' ? this.setState({cartOpen:true}) : k === 'product' ? this.openP(s.pid) : k === 'checkout' ? this.go('checkout', {step:0, placed:false}) : this.go(k, k === 'shop' ? {cat:'All'} : {})}))
+    };
+  }
+}
+</script>
+</body>
+</html>
